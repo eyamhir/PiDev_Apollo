@@ -28,6 +28,7 @@ public class Oeuvre {
         this.disponibilite = disponibilite;
         this.prix = prix;
         this.quantite = quantite;
+
     }
 
     public int getId_Oeuvre() {
