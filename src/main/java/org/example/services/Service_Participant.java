@@ -16,7 +16,7 @@ public class Service_Participant  implements Interface_Participant<Participant> 
     private Connection connection; // Connexion à la base de données
 
     // Constructeur prenant la connexion en paramètre
-    public Service_Participant(Connection connection) {
+    public Service_Participant() {
         this.connection = connection;
     }
 
