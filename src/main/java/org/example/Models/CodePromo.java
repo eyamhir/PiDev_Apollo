@@ -39,4 +39,13 @@ public class CodePromo {
     public void setDateExpiration(Date dateExpiration) {
         this.dateExpiration = dateExpiration;
     }
+
+    @Override
+    public String toString() {
+        return "CodePromo{" +
+                "id_CodePromo=" + id_CodePromo +
+                ", code='" + code + '\'' +
+                ", dateExpiration=" + dateExpiration +
+                '}';
+    }
 }
