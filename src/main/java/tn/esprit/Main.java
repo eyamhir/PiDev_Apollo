@@ -31,5 +31,6 @@ public class Main {
         //panierService.supprimer(1);
         List<Panier> paniers = panierService.recuperer();
         System.out.println(paniers);
+        //Test Commit
     }
 }
