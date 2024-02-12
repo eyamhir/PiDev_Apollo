@@ -2,6 +2,7 @@ package org.example.Services;
 
 import org.example.Interfaces.Interface_Client;
 import org.example.Models.Client;
+import org.example.Utils.MaConnexion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,9 +14,12 @@ import java.util.List;
 public class Service_Client implements Interface_Client {
     private Connection connection;
 
-    public Service_Client(Connection connection) {
-        this.connection = connection;
+
+    public Service_Client()
+    {
+        connection = MaConnexion.getInstance().getCnx();
     }
+
 
     @Override
     public void creerClient(Client client) throws SQLException {

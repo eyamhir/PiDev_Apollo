@@ -1,6 +1,8 @@
 package org.example;
 
+import org.example.Models.Client;
 import org.example.Models.Utilisateur;
+import org.example.Services.Service_Client;
 import org.example.Services.Service_Utilisateur;
 import org.example.Utils.MaConnexion;
 
@@ -10,7 +12,8 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) throws SQLException {
         MaConnexion cnx = MaConnexion.getInstance();
-        Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+        //Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+        //********************************TEST CRUD UTILISATEUR************************//
         // Création d'un utilisateur
         //Utilisateur utilisateur1 = new Utilisateur();
         //utilisateur1.setNom("Mhir");
@@ -22,8 +25,8 @@ public class Main {
         //utilisateur1.setRole("Admin");
         //utilisateur1.setMot_passe("eyamhir123");
         //try {
-            // Création d'un utilisateur
-            //serviceUtilisateur.creerUtilisateur(utilisateur1);
+        // Création d'un utilisateur
+        //serviceUtilisateur.creerUtilisateur(utilisateur1);
         //} catch (SQLException e) {
         //    throw new RuntimeException(e);
         //}
@@ -39,6 +42,7 @@ public class Main {
 
         // Suppression d'un utilisateur
         // serviceUtilisateur.supprimerUtilisateur(1);
+
 
     }
 }

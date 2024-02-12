@@ -2,6 +2,7 @@ package org.example.Services;
 
 import org.example.Interfaces.Interface_CodePromo;
 import org.example.Models.CodePromo;
+import org.example.Utils.MaConnexion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +16,10 @@ public class Service_CodePromo implements Interface_CodePromo {
 
     public Service_CodePromo(Connection connection) {
         this.connection = connection;
+    }
+    public Service_CodePromo()
+    {
+        connection = MaConnexion.getInstance().getCnx();
     }
 
     @Override
