@@ -9,8 +9,7 @@ public class Main {
         MyDatabase db2= MyDatabase.getInstance();
 
 
-        System.out.println(db);
-        System.out.println(db2);
+
 
     }
 }
