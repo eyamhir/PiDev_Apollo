@@ -10,9 +10,20 @@ public class Main {
     public static void main(String[] args) {
         EvenementService es = new EvenementService();
         try {
-            es.ajouter(new evenement("Elyes", "desevent", "tevent", new Date(), new Date()));
+
+            //es.ajouter(new evenement("test", "descrsevent", "tevent", new Date(), new Date()));
+
+
+          //evenement eventToUpdate = new evenement("test2", "wdescrsevent", "tevent", new Date(), new Date());
+          //  eventToUpdate.setId(4);
+           // es.modifier(eventToUpdate);
+
+
+            es.supprimer(4);
+            System.out.println(es.recuperer());
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
 }
+
