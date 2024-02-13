@@ -9,7 +9,7 @@ public class evenement {
     private Date Date_debut,Date_fin;
 
 
-    public evenement(int id, String nom, String description, String type, Date date_debut, Date date_fin) {
+    public evenement() {
         this.id = id;
         Nom = nom;
         Description = description;
