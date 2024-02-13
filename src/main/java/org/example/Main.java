@@ -1,8 +1,10 @@
 package org.example;
 
+import org.example.Models.Artiste;
 import org.example.Models.Client;
 import org.example.Models.CodePromo;
 import org.example.Models.Utilisateur;
+import org.example.Services.Service_Artiste;
 import org.example.Services.Service_Client;
 import org.example.Services.Service_CodePromo;
 import org.example.Services.Service_Utilisateur;
@@ -17,25 +19,25 @@ public class Main {
         //Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
         //********************************TEST CRUD UTILISATEUR************************//
         // Création d'un utilisateur
-        //Utilisateur utilisateur1 = new Utilisateur();
-        //utilisateur1.setNom("Mhir");
-        //utilisateur1.setPrenom("Eya");
-        //utilisateur1.setAdresse_mail("eya.mhir@esprit.tn");
-        //utilisateur1.setNum_tel(50859320);
-        //utilisateur1.setDate_naissance(new Date());
-        //utilisateur1.setDate_inscription(new Date());
-        //utilisateur1.setRole("Admin");
-        //utilisateur1.setMot_passe("eyamhir123");
+        /*//Utilisateur utilisateur = new Utilisateur();
+        utilisateur.setNom("Mhir");
+        utilisateur.setPrenom("Zaineb");
+        utilisateur.setAdresse_mail("zainebmhir@gmail.com");
+        utilisateur.setNum_tel(22264665);
+        utilisateur.setDate_naissance(new Date());
+        utilisateur.setDate_inscription(new Date());
+        utilisateur.setRole("Client");
+        utilisateur.setMot_passe("zaineb123");*/
         //try {
         // Création d'un utilisateur
-        //serviceUtilisateur.creerUtilisateur(utilisateur1);
-        //} catch (SQLException e) {
-        //    throw new RuntimeException(e);
-        //}
+        /*serviceUtilisateur.creerUtilisateur(utilisateur);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }*/
 
         // Lecture des données utilisateur
-        // Utilisateur utilisateurLu = serviceUtilisateur.getUtilisateurParId(1);
-        // System.out.println("utilisateur lu : " + utilisateurLu);
+         /*Utilisateur utilisateurLu = serviceUtilisateur.getUtilisateurParId(2);
+         System.out.println("utilisateur lu : " + utilisateurLu);*/
 
         // Mise à jour de l'utilisateur
         //utilisateurLu.setAdresse_mail("eyamhir329@gmail.com");
@@ -44,13 +46,57 @@ public class Main {
 
         // Suppression d'un utilisateur
         // serviceUtilisateur.supprimerUtilisateur(1);
-        //********************************TEST CRUD CLIENT************************//
 
+        //********************************TEST CRUD CLIENT************************//
+        // Création d'un client
+        //Service_Client serviceClient = new Service_Client();
+        //Client client = new Client();
+        //client.setId_utilisateur(2);
+
+
+        //try {
+        // Création d'un client
+        //    serviceClient.creerClient(client);
+        //} catch (SQLException e) {
+        //    throw new RuntimeException(e);
+        //}
+
+        // Lecture des données client
+        //Client clientLu = serviceClient.getClientParId(1);
+        //System.out.println("Client lu : " + clientLu);
+
+
+        // Suppression d'un artiste
+        // serviceClient.supprimerClient(2);
 
 
 
         //********************************TEST CRUD ARTISTE************************//
+        // Création d'un artiste
+        //Service_Artiste serviceArtiste = new Service_Artiste();
+        //Artiste artiste1 = new Artiste();
+        //artiste1.setSpecialite_Artistique("peintre");
+        //artiste1.setId_utilisateur(1);
 
+
+        //try {
+            // Création d'un artiste
+        //    serviceArtiste.creerArtiste(artiste1);
+        //} catch (SQLException e) {
+        //    throw new RuntimeException(e);
+        //}
+
+        // Lecture des données artiste
+        //Artiste artisteLu = serviceArtiste.getArtisteParId(1);
+        //System.out.println("Artiste lu : " + artisteLu);
+
+        // Mise à jour de l'artiste
+     /*   artisteLu.setSpecialite_Artistique("Musique Classique");
+        serviceArtiste.mettreAJourArtiste(artisteLu);
+        System.out.println("Artiste mis à jour : " + artisteLu);*/
+
+        // Suppression d'un artiste
+        //  serviceArtiste.supprimerArtiste(1);
 
 
 

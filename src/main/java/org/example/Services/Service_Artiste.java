@@ -24,10 +24,11 @@ public class Service_Artiste implements Interface_Artiste {
 
     @Override
     public void creerArtiste(Artiste artiste) throws SQLException {
-        String query = "INSERT INTO artiste (specialite_artistique) VALUES (?)";
+        String query = "INSERT INTO artiste (specialite_artistique, id_utilisateur) VALUES (?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, artiste.getSpecialite_Artistique());
-
+        statement.setInt(2, artiste.getId_utilisateur());
+        statement.executeUpdate();
     }
 
     @Override
