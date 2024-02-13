@@ -35,6 +35,7 @@ public class MyDatabase {
     }
 
 
-
-
+    public Connection getConnection() {
+        return connection;
+    }
 }
