@@ -11,11 +11,11 @@ public class evenement {
 
     public evenement() {
         this.id = id;
-        Nom = nom;
-        Description = description;
-        Type = type;
-        Date_debut = date_debut;
-        Date_fin = date_fin;
+        Nom = Nom;
+        Description = Description;
+        Type = Type;
+        Date_debut = Date_debut;
+        Date_fin = Date_fin;
 
     }
 
