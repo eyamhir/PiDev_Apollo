@@ -16,10 +16,10 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) throws SQLException {
         MaConnexion cnx = MaConnexion.getInstance();
-        //Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+        Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
         //********************************TEST CRUD UTILISATEUR************************//
         // Création d'un utilisateur
-        /*//Utilisateur utilisateur = new Utilisateur();
+        /*Utilisateur utilisateur = new Utilisateur();
         utilisateur.setNom("Mhir");
         utilisateur.setPrenom("Zaineb");
         utilisateur.setAdresse_mail("zainebmhir@gmail.com");
@@ -27,25 +27,25 @@ public class Main {
         utilisateur.setDate_naissance(new Date());
         utilisateur.setDate_inscription(new Date());
         utilisateur.setRole("Client");
-        utilisateur.setMot_passe("zaineb123");*/
-        //try {
-        // Création d'un utilisateur
-        /*serviceUtilisateur.creerUtilisateur(utilisateur);
+        utilisateur.setMot_passe("zaineb123");
+        try {
+         //Création d'un utilisateur
+        serviceUtilisateur.creerUtilisateur(utilisateur);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }*/
 
         // Lecture des données utilisateur
-         /*Utilisateur utilisateurLu = serviceUtilisateur.getUtilisateurParId(2);
-         System.out.println("utilisateur lu : " + utilisateurLu);*/
+         //Utilisateur utilisateurLu = serviceUtilisateur.getUtilisateurParId(2);
+         //System.out.println("utilisateur lu : " + utilisateurLu);
 
         // Mise à jour de l'utilisateur
-        //utilisateurLu.setAdresse_mail("eyamhir329@gmail.com");
+        //utilisateurLu.setNom("eya");
         //serviceUtilisateur.mettreAJourUtilisateur(utilisateurLu);
         //System.out.println("Utilisateur mis à jour : " + utilisateurLu);
 
         // Suppression d'un utilisateur
-        // serviceUtilisateur.supprimerUtilisateur(1);
+         serviceUtilisateur.supprimerUtilisateur(2);
 
         //********************************TEST CRUD CLIENT************************//
         // Création d'un client
