@@ -1,6 +1,7 @@
 package org.example.Models;
 
 import java.sql.Blob;
+import java.time.LocalDate;
 import java.util.*;
     public class Utilisateur {
         private int id_utilisateur;
@@ -8,7 +9,7 @@ import java.util.*;
         private String prenom;
         private String adresse_mail;
         private int num_tel;
-        private Date date_naissance;
+        private LocalDate date_naissance;
         private Date date_inscription;
         private Blob profile_image;
         private String role;
@@ -18,7 +19,7 @@ import java.util.*;
         public Utilisateur() {
         }
         public Utilisateur(int id_utilisateur, String nom, String prenom, String adresse_mail, int num_tel,
-                           Date date_naissance, Date date_inscription, Blob profile_image, String role, String mot_passe) {
+                           LocalDate date_naissance, Date date_inscription, Blob profile_image, String role, String mot_passe) {
             this.id_utilisateur = id_utilisateur;
             this.nom = nom;
             this.prenom = prenom;
@@ -71,11 +72,11 @@ import java.util.*;
             this.num_tel = num_tel;
         }
 
-        public Date getDate_naissance() {
+        public LocalDate getDate_naissance() {
             return date_naissance;
         }
 
-        public void setDate_naissance(Date date_naissance) {
+        public void setDate_naissance(LocalDate date_naissance) {
             this.date_naissance = date_naissance;
         }
 

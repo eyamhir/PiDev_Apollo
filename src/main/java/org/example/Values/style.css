@@ -1,0 +1,19 @@
+.left-side-background{
+    -fx-background-color: #ded7d1;
+}
+.custom-button {
+    -fx-background-color: #4c3627; /* couleur de fond */
+    -fx-text-fill: white; /* couleur du texte */
+    -fx-font-size: 12px; /* taille de la police */
+    -fx-padding: 10px 20px; /* espace intérieur */
+    -fx-border-radius: 5px; /* rayon des coins */
+    -fx-background-radius: 5px; /* rayon des coins du fond */
+}
+
+.custom-button:hover {
+    -fx-background-color: #ded7d1; /* couleur de fond au survol */
+}
+
+.custom-button:pressed {
+    -fx-background-color: #b5a595; /* couleur de fond lorsque pressé */
+}
