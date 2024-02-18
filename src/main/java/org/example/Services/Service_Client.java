@@ -23,9 +23,10 @@ public class Service_Client implements Interface_Client {
 
     @Override
     public void creerClient(Client client) throws SQLException {
-        String query = "INSERT INTO client (id_utilisateur) VALUES (?)";
+        String query = "INSERT INTO client (Adresse, id_utilisateur) VALUES (?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
-        statement.setInt(1, client.getId_utilisateur());
+        statement.setString(1, client.getAdresse());
+        statement.setInt(2, client.getId_utilisateur());
         statement.executeUpdate();
     }
 
@@ -41,7 +42,9 @@ public class Service_Client implements Interface_Client {
         if (resultSet.next()) {
             client = new Client();
             client.setId_Client(resultSet.getInt("id_Client"));
+            client.setAdresse(resultSet.getString("Adresse"));
             client.setId_utilisateur(resultSet.getInt("id_utilisateur"));
+
 
         }
 
@@ -59,6 +62,7 @@ public class Service_Client implements Interface_Client {
         while (resultSet.next()) {
             Client client = new Client();
             client.setId_Client(resultSet.getInt("id_Client"));
+            client.setAdresse(resultSet.getString("Adresse"));
             client.setId_utilisateur(resultSet.getInt("id_utilisateur"));
             clients.add(client);
         }

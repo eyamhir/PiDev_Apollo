@@ -1,6 +1,5 @@
 package org.example.Models;
 
-import java.sql.Blob;
 import java.time.LocalDate;
 import java.util.*;
     public class Utilisateur {
@@ -10,16 +9,27 @@ import java.util.*;
         private String adresse_mail;
         private int num_tel;
         private LocalDate date_naissance;
-        private Date date_inscription;
-        private Blob profile_image;
+        private LocalDate date_inscription;
         private String role;
         private String mot_passe;
 
         // Constructor
         public Utilisateur() {
         }
-        public Utilisateur(int id_utilisateur, String nom, String prenom, String adresse_mail, int num_tel,
-                           LocalDate date_naissance, Date date_inscription, Blob profile_image, String role, String mot_passe) {
+
+        public Utilisateur(String nom, String prenom, String adresse_mail, int num_tel, LocalDate date_naissance, LocalDate date_inscription, String role, String mot_passe) {
+            this.nom = nom;
+            this.prenom = prenom;
+            this.adresse_mail = adresse_mail;
+            this.num_tel = num_tel;
+            this.date_naissance = date_naissance;
+            this.date_inscription = date_inscription;
+            this.role = role;
+            this.mot_passe = mot_passe;
+        }
+
+
+        public Utilisateur(int id_utilisateur, String nom, String prenom, String adresse_mail, int num_tel, LocalDate date_naissance, LocalDate date_inscription, String role, String mot_passe) {
             this.id_utilisateur = id_utilisateur;
             this.nom = nom;
             this.prenom = prenom;
@@ -27,7 +37,6 @@ import java.util.*;
             this.num_tel = num_tel;
             this.date_naissance = date_naissance;
             this.date_inscription = date_inscription;
-            this.profile_image = profile_image;
             this.role = role;
             this.mot_passe = mot_passe;
         }
@@ -80,21 +89,13 @@ import java.util.*;
             this.date_naissance = date_naissance;
         }
 
-        public Date getDate_inscription() {
+        public LocalDate getDate_inscription() {
             return date_inscription;
         }
 
-        public void setDate_inscription(Date date_inscription) {
+        public void setDate_inscription(LocalDate date_inscription) {
             this.date_inscription = date_inscription;
         }
-
-        //public Blob getProfile_image() {
-        //    return profile_image;
-        //}
-
-        //public void setProfile_image(Blob profile_image) {
-        //   this.profile_image = profile_image;
-        //}
 
         public String getRole() {
             return role;
@@ -122,13 +123,10 @@ import java.util.*;
                     ", num_tel=" + num_tel +
                     ", date_naissance=" + date_naissance +
                     ", date_inscription=" + date_inscription +
-                    ", profile_image=" + Arrays.toString(new Blob[]{profile_image}) +
                     ", role='" + role + '\'' +
                     ", mot_passe='" + mot_passe + '\'' +
                     '}';
         }
-
     }
-
 
 

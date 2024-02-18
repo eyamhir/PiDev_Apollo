@@ -1,4 +1,4 @@
-package org.example;
+package org.example.test;
 
 import org.example.Models.Artiste;
 import org.example.Models.Client;
@@ -15,8 +15,8 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        MaConnexion cnx = MaConnexion.getInstance();
-        Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+        //MaConnexion cnx = MaConnexion.getInstance();
+        //Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
         //********************************TEST CRUD UTILISATEUR************************//
         // Création d'un utilisateur
         /*Utilisateur utilisateur = new Utilisateur();
@@ -45,7 +45,7 @@ public class Main {
         //System.out.println("Utilisateur mis à jour : " + utilisateurLu);
 
         // Suppression d'un utilisateur
-         serviceUtilisateur.supprimerUtilisateur(2);
+        // serviceUtilisateur.supprimerUtilisateur(2);
 
         //********************************TEST CRUD CLIENT************************//
         // Création d'un client

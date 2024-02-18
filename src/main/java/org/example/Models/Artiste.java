@@ -1,6 +1,7 @@
 package org.example.Models;
 
 import java.sql.Blob;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Artiste extends Utilisateur{
@@ -12,8 +13,8 @@ public class Artiste extends Utilisateur{
         Specialite_Artistique = specialite_Artistique;
     }
 
-    public Artiste(int id_utilisateur, String nom, String prenom, String adresse_mail, int num_tel, Date date_naissance, Date date_inscription, Blob profile_image, String role, String mot_passe, int id_Artiste, String specialite_Artistique) {
-        super(id_utilisateur, nom, prenom, adresse_mail, num_tel, date_naissance, date_inscription, profile_image, role, mot_passe);
+    public Artiste(int id_utilisateur, String nom, String prenom, String adresse_mail, int num_tel, LocalDate date_naissance, LocalDate date_inscription, Blob profile_image, String role, String mot_passe, int id_Artiste, String specialite_Artistique) {
+        super(id_utilisateur, nom, prenom, adresse_mail, num_tel, date_naissance, date_inscription, role, mot_passe);
         this.id_Artiste = id_Artiste;
         Specialite_Artistique = specialite_Artistique;
     }

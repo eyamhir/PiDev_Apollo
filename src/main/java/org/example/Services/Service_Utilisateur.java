@@ -4,10 +4,8 @@ import org.example.Interfaces.Interface_Utilisateur;
 import org.example.Models.Utilisateur;
 import org.example.Utils.MaConnexion;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +24,8 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.setString(2, utilisateur.getPrenom());
         statement.setString(3, utilisateur.getAdresse_mail());
         statement.setInt(4, utilisateur.getNum_tel());
-        statement.setDate(5, new java.sql.Date(utilisateur.getDate_naissance().getTime()));
-        statement.setDate(6, new java.sql.Date(utilisateur.getDate_inscription().getTime()));
+        statement.setDate(5, Date.valueOf(utilisateur.getDate_naissance()));
+        statement.setDate(6, Date.valueOf(utilisateur.getDate_inscription()));
         //statement.setBlob(7, utilisateur.getProfile_image());
         statement.setString(7, utilisateur.getRole());
         statement.setString(8, utilisateur.getMot_passe());
@@ -52,9 +50,8 @@ public class Service_Utilisateur implements Interface_Utilisateur {
             utilisateur.setPrenom(resultSet.getString("prenom"));
             utilisateur.setAdresse_mail(resultSet.getString("adresse_mail"));
             utilisateur.setNum_tel(resultSet.getInt("num_tel"));
-            utilisateur.setDate_naissance(resultSet.getDate("date_naissance"));
-            utilisateur.setDate_inscription(resultSet.getDate("date_inscription"));
-            //utilisateur.setProfile_image(resultSet.getBlob("profile_image"));
+            utilisateur.setDate_naissance(resultSet.getDate("date_naissance").toLocalDate());
+            utilisateur.setDate_inscription(resultSet.getDate("date_inscription").toLocalDate());
             utilisateur.setRole(resultSet.getString("role"));
             utilisateur.setMot_passe(resultSet.getString("mot_passe"));
         }
@@ -80,9 +77,8 @@ public class Service_Utilisateur implements Interface_Utilisateur {
             utilisateur.setPrenom(resultSet.getString("prenom"));
             utilisateur.setAdresse_mail(resultSet.getString("adresse_mail"));
             utilisateur.setNum_tel(resultSet.getInt("num_tel"));
-            utilisateur.setDate_naissance(resultSet.getDate("date_naissance"));
-            utilisateur.setDate_inscription(resultSet.getDate("date_inscription"));
-            //utilisateur.setProfile_image(resultSet.getBlob("profile_image"));
+            utilisateur.setDate_naissance(resultSet.getObject("date_naissance", LocalDate.class));
+            utilisateur.setDate_inscription(resultSet.getObject("date_inscription", LocalDate.class));
             utilisateur.setRole(resultSet.getString("role"));
             utilisateur.setMot_passe(resultSet.getString("mot_passe"));
 
@@ -102,8 +98,8 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.setString(2, utilisateur.getPrenom());
         statement.setString(3, utilisateur.getAdresse_mail());
         statement.setInt(4, utilisateur.getNum_tel());
-        statement.setDate(5, new java.sql.Date(utilisateur.getDate_naissance().getTime()));
-        statement.setDate(6, new java.sql.Date(utilisateur.getDate_inscription().getTime()));
+        statement.setDate(5, Date.valueOf(utilisateur.getDate_naissance()));
+        statement.setDate(6, Date.valueOf(utilisateur.getDate_inscription()));
         //statement.setBlob(7, utilisateur.getProfile_image());
         statement.setString(7, utilisateur.getRole());
         statement.setString(8, utilisateur.getMot_passe());
