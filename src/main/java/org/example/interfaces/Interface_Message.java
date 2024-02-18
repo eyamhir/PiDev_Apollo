@@ -16,10 +16,12 @@ public interface Interface_Message<T> {
 
     void supprimerMessage(int id) throws SQLException;
 
-    // Methode avancées
+
 
     List<T> listerMessages() throws SQLException;
 
+
+    // Methode avancées
     List<T> listerMessagesParConversation(int idConversation) throws SQLException;
 
     int compterMessagesParArtiste(int idArtiste) throws SQLException;
