@@ -103,7 +103,7 @@ public class Conversation {
         this.dateFin = dateFin;
     }
 
-    public Conversation_Type getTypeConversation(Conversation_Type aPrivate) {
+    public Conversation_Type getTypeConversation() {
         return typeConversation;
     }
 

@@ -12,6 +12,8 @@ public interface Interface_Conversation<T> {
 
     Conversation lireConversation(int id) throws SQLException;
 
+    Conversation lireConversationunique(int id) throws SQLException;
+
     void mettreAJourConversation(T conversation) throws SQLException;
 
     void supprimerConversation(int id) throws SQLException;

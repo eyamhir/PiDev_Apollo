@@ -56,13 +56,13 @@ public class Service_Message implements Interface_Message<Message> {
 
     @Override
     public void mettreAJourMessage(Message message) throws SQLException {
-        String query = "UPDATE message SET contenu = ?, date_envoi = ? WHERE message_id = ?";
+        String query = "UPDATE message SET contenu = ?, date_envoi = NOW() WHERE message_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1,message.getContenu() );
-        statement.setTimestamp(2, new Timestamp(message.getDateEnvoi().getDate()));
-        statement.setInt(3, message.getMessageId());
+        statement.setString(1, message.getContenu());
+        statement.setInt(2, message.getMessageId());
         statement.executeUpdate();
     }
+
 
     @Override
     public void supprimerMessage(int id) throws SQLException {

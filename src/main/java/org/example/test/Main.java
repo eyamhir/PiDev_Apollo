@@ -11,7 +11,10 @@ import org.example.services.Service_Client;
 import org.example.services.Service_Conversation;
 import org.example.services.Service_Message;
 import org.example.services.Service_Participant;
+import org.example.services.Service_Serveur_Socket_Conversation;
 import org.example.utils.MaConnexion;
+
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,13 +22,57 @@ import java.util.Date;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         MaConnexion db = MaConnexion.getInstance();
         Service_Artiste serviceArtiste = new Service_Artiste();
         Service_Client serviceClient = new Service_Client();
         Service_Message serviceMessage = new Service_Message();
         Service_Conversation serviceConversation = new Service_Conversation();
-Service_Participant serviceParticipant=new Service_Participant();
+        Service_Participant serviceParticipant = new Service_Participant();
+
+        Service_Serveur_Socket_Conversation serveur1 = new Service_Serveur_Socket_Conversation();
+/*        try {
+            // Démarrer le premier serveur
+            serveur1.demarrerServeur();
+            System.out.println("Serveur 1 démarré sur le port 9000.");
+
+            // Attendre quelques instants pour que le premier serveur soit actif
+            Thread.sleep(2000); // Attendre 2 secondes
+
+            // Deuxième serveur sur un port différent, par exemple, 9090
+            Service_Serveur_Socket_Conversation serveur2 = new Service_Serveur_Socket_Conversation();
+            // Démarrer le deuxième serveur
+            serveur2.demarrerServeur2();
+            System.out.println("Serveur 2 démarré sur le port 9090.");
+
+            // Gérer les connexions entrantes pour les deux serveurs
+            Thread threadServeur1 = new Thread(() -> {
+                try {
+                    serveur1.gererConnexions();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            threadServeur1.start();
+
+            Thread threadServeur2 = new Thread(() -> {
+                try {
+                    serveur2.gererConnexions();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+            threadServeur2.start();
+
+            // Attendre que les deux serveurs soient actifs
+            threadServeur1.join();
+            threadServeur2.join();
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+*/
         // Création d'un artiste
      /*   Artiste artiste1 = new Artiste();
         artiste1.setSpecialite_Artistique("peintre");
@@ -47,7 +94,7 @@ Service_Participant serviceParticipant=new Service_Participant();
         System.out.println("Artiste mis à jour : " + artisteLu);*/
 
         // Suppression d'un artiste
-      //  serviceArtiste.supprimerArtiste(1);
+        //  serviceArtiste.supprimerArtiste(1);
 
         // Création d'un client
      /*   Client client1 = new Client();
@@ -72,10 +119,10 @@ Service_Participant serviceParticipant=new Service_Participant();
         System.out.println("Client mis à jour : " + clientLu2);*/
 
         // Suppression d'un client
-      //  serviceClient.supprimerClient(4);
+        //  serviceClient.supprimerClient(4);
 
         // Création d'une conversation
-  /*      Conversation conversation1 = new Conversation();
+    /*    Conversation conversation1 = new Conversation();
         conversation1.setSujet("l'art et la nature");
         conversation1.setTitre("l'art et la nature ");
         conversation1.setTypeConversation(Conversation_Type.PRIVATE); // Utilisation du setter correct
@@ -92,43 +139,41 @@ Service_Participant serviceParticipant=new Service_Participant();
         }
 */
         // Lecture des données conversation
-    /* Conversation conversationLu = serviceConversation.lireConversation(1);
+   /* Conversation conversationLu = serviceConversation.lireConversation(2);
         System.out.println("Conversation lue : " + conversationLu);
 
         // Mise à jour de la conversation
         conversationLu.setVisibilite(Visibilite.PRIVATE);
+        conversationLu.setTitre("deuxiéme conversation");
         serviceConversation.mettreAJourConversation(conversationLu); // Correction du nom de la méthode
         System.out.println("Conversation mise à jour : " + conversationLu);*/
 
         // Suppression d'une conversation
-    //    serviceConversation.supprimerConversation(1);
+           serviceConversation.supprimerConversation(2);
 
         // Création d'entité participant
-        /*Participant participant = new Participant();
-        participant.setArtisteId(1);
-        participant.setClientId(2);
+       /* Participant participant = new Participant();
+        participant.setClientId(1);
         participant.setConversationId(1);
-        participant.setArtisteId(1);*/
+        participant.setArtisteId(1);
         // Création d'un participant
-        //serviceParticipant.ajouterParticipant(participant);
+        serviceParticipant.ajouterParticipant(participant);*/
 
         // Lecture des données du participant
-     /*   Participant participantLu = serviceParticipant.getParticipantParID(1);
-        System.out.println("participant lu : " + participantLu);*/
+       /* Participant participantLu = serviceParticipant.getParticipantParID(1);
+        System.out.println("participant lu : " + participantLu.getParticipantId());
 
         // Mise à jour du entité participant
-      /*  participantLu.setConversationId(2);
-        serviceParticipant.modifierStatut(participant,"active");
+        participantLu.setConversationId(2);
+        serviceParticipant.mettreAjourParticipant(participantLu);
         System.out.println("Message mis à jour : " + participantLu);*/
 
         // Suppression du participant
-       // serviceParticipant.supprimerParticipant(1);
-
-
+        // serviceParticipant.supprimerParticipant(1);
 
 
         // Création d'un Message
-      /* Message message1 = new Message();
+   /*    Message message1 = new Message();
         message1.setIdDestinataire(1);
         message1.setIdExpediteur(1);
         message1.setDateEnvoi(new Date()); // Utilisation de la date actuelle pour l'envoi
@@ -140,16 +185,16 @@ Service_Participant serviceParticipant=new Service_Participant();
             serviceMessage.creerMessage(message1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }*/
-
+        }
+*/
         // Lecture des données du message
-        /*Message messageLu = serviceMessage.lireMessage(1);
-        System.out.println("Message lu : " + messageLu);*/
+/*        Message messageLu = serviceMessage.lireMessage(1);
+       System.out.println("Message lu : " + messageLu.getContenu());*/
 
-        // Mise à jour du message
-     /*   messageLu.setContenu("Bonjour");
+       //Mise à jour du message
+  /*     messageLu.setContenu("Bonjour");
         serviceMessage.mettreAJourMessage(messageLu);
-        System.out.println("Message mis à jour : " + messageLu);*/
+        System.out.println("Message mis à jour : " + messageLu); */
 
         // Suppression du message
 //        serviceMessage.supprimerMessage(1);
@@ -161,7 +206,6 @@ Service_Participant serviceParticipant=new Service_Participant();
             System.out.println(message);
         }*/
     }
-
 
 
 }
