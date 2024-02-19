@@ -28,7 +28,7 @@ public class Interface_createacc {
     @FXML
     private PasswordField passwordTF;
     @FXML
-    private TextField roleTF;
+    private ChoiceBox<String> roleTF;
 
 
     @FXML
@@ -38,7 +38,10 @@ public class Interface_createacc {
     private CheckBox termsCheckBox;
 
     private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
-
+    void initialize() {
+        // Initialisez votre ChoiceBox avec les rôles prédéfinis
+        roleTF.getItems().addAll("Admin", "Artiste", "Client", "User");
+    }
     @FXML
     void acceptCond(ActionEvent event) {
         if (!termsCheckBox.isSelected()) {
@@ -70,7 +73,7 @@ public class Interface_createacc {
                 int numTel = Integer.parseInt(numTelTF.getText());
 
                 // Create Utilisateur object with the correct constructor
-                serviceUtilisateur.creerUtilisateur(new Utilisateur(nomTF.getText(), prenomTF.getText(), emailTF.getText(), Integer.parseInt(numTelTF.getText()), dateNaissancePicker.getValue(),dateinscriptionPicker.getValue(),roleTF.getText(),passwordTF.getText()));
+                serviceUtilisateur.creerUtilisateur(new Utilisateur(nomTF.getText(), prenomTF.getText(), emailTF.getText(), Integer.parseInt(numTelTF.getText()), dateNaissancePicker.getValue(),dateinscriptionPicker.getValue(),roleTF.getValue(),passwordTF.getText()));
                 System.out.println("Account created successfully!");
 
                 // Affichage de l'alerte de confirmation
@@ -81,10 +84,17 @@ public class Interface_createacc {
                 alert.showAndWait();
             }
         } catch (SQLException e) {
-            // Gestion des erreurs
+            // Handle SQL exception
             e.printStackTrace();
+            displayErrorDialog("Une erreur SQL s'est produite lors de la modification de l'utilisateur.");
+        } catch (NumberFormatException e) {
+            // Handle number format exception
+            e.printStackTrace();
+            displayErrorDialog("Le numéro de téléphone doit être un nombre entier.");
         } catch (IllegalArgumentException e) {
-            throw new RuntimeException(e);
+            // Handle illegal argument exception
+            e.printStackTrace();
+            displayErrorDialog("Une erreur s'est produite lors de la modification de l'utilisateur.");
         }
     }
 
@@ -97,7 +107,7 @@ public class Interface_createacc {
                 numTelTF.getText().isEmpty() ||
                 passwordTF.getText().isEmpty() ||
                 prenomTF.getText().isEmpty() ||
-                roleTF.getText().isEmpty() ||
+                roleTF.getValue() == null || // Check if a value is selected in the ChoiceBox
                 dateinscriptionPicker.getValue() == null) {
 
             // Display an error dialog indicating the required fields
@@ -118,32 +128,3 @@ public class Interface_createacc {
 
 }
 
-    /////////////////////////////////////////////////////////////
-   /* void createAccount(ActionEvent event) {
-        try {
-            dateNaissancePicker.getValue() == null
-                    emailTF.getText().isEmpty()
-                    nomTF.getText().isEmpty(
-                    numTelTF.getText().isEmpty()
-                    passwordTF.getText().isEmpty()
-                    prenomTF.getText().isEmpty
-
-            // Convertir la chaîne de date en objet Date
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); // Spécifiez le format de votre date
-            Date dateFin = dateFormat.parse(dateFinText);
-
-            // Instancier et ajouter l'enchère à votre service ou gestionnaire d'enchères (es)
-            Enchers enchers = new Enchers(minMontant, dateFin, type);
-            //  Enchers enchers = new Enchers( type_oeuvre, float min_montant, float max_montant, Date date_debut, Date date_fin, String artiste_associe_de_oeuvre));
-            es.ajouter(enchers);
-
-        }catch (SQLException  e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("error");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-
-    }}*/

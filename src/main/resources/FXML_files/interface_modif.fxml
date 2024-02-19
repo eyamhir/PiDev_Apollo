@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background"
-                        stylesheets="@../Values/style.css"
-                        xmlns="http://javafx.com/javafx/21"
-                        xmlns:fx="http://javafx.com/fxml/1"
-                        fx:controller="org.example.Controller.InterfaceModif"
-           >
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.InterfaceModif">
 
     <children>
-        <Button layoutX="103.0" layoutY="397.0" onAction="#modifAccount" styleClass="custom-button" stylesheets="@../Values/style.css" text="Créer compte" />
+        <Button layoutX="314.0" layoutY="378.0"  styleClass="custom-button" stylesheets="@../Values/style.css" text="Modifier Compte" onAction="#modifAccount" />
         <ImageView fitHeight="310.0" fitWidth="587.0" layoutX="105.0" layoutY="50.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../PiDev_images/05museum-labels-2-videoSixteenByNineJumbo1600.jpg" />
@@ -39,7 +28,7 @@
         <Label layoutX="422.0" layoutY="187.0" text="Date de naissance" />
         <Label layoutX="138.0" layoutY="294.0" text="Mot de passe" />
         <Label layoutX="423.0" layoutY="124.0" text="Numéro de téléphone" />
-        <Label layoutX="291.0" layoutY="77.0" style="-fx-font-size: 24px;" text="Créer le compte" textFill="#4c3627" underline="true">
+        <Label layoutX="278.0" layoutY="71.0" style="-fx-font-size: 24px;" text="modifier le compte" textFill="#4c3627" underline="true">
             <font>
                 <Font name="Andalus" size="24.0" />
             </font></Label>
@@ -50,9 +39,16 @@
         </ImageView>
         <Text layoutX="423.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" />
         <Text layoutX="423.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'inscription" />
-        <TextField fx:id="roleTF" layoutX="422.0" layoutY="316.0" prefHeight="26.0" prefWidth="200.0" promptText="Client,Atiste,Admin ...." />
         <DatePicker fx:id="dateinscriptionPicker" layoutX="424.0" layoutY="263.0" prefHeight="25.0" prefWidth="199.0" promptText="12-12-24" />
-
+        <ChoiceBox fx:id="roleTF" layoutX="422.0" layoutY="316.0" prefHeight="26.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Admin" />
+                    <String fx:value="Client" />
+                    <String fx:value="Artist" />
+                    <String fx:value="Simple Utilisateur" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
     </children>
 </AnchorPane>
-

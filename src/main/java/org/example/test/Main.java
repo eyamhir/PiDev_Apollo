@@ -15,8 +15,8 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        //MaConnexion cnx = MaConnexion.getInstance();
-        //Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+        MaConnexion cnx = MaConnexion.getInstance();
+        Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
         //********************************TEST CRUD UTILISATEUR************************//
         // Création d'un utilisateur
         /*Utilisateur utilisateur = new Utilisateur();
@@ -35,12 +35,12 @@ public class Main {
             throw new RuntimeException(e);
         }*/
 
-        // Lecture des données utilisateur
-         //Utilisateur utilisateurLu = serviceUtilisateur.getUtilisateurParId(2);
+         //Lecture des données utilisateur
+         //Utilisateur utilisateurLu = serviceUtilisateur.getUtilisateurParId(6);
          //System.out.println("utilisateur lu : " + utilisateurLu);
 
-        // Mise à jour de l'utilisateur
-        //utilisateurLu.setNom("eya");
+         //Mise à jour de l'utilisateur
+        //utilisateurLu.setNom("Rayan");
         //serviceUtilisateur.mettreAJourUtilisateur(utilisateurLu);
         //System.out.println("Utilisateur mis à jour : " + utilisateurLu);
 

@@ -12,7 +12,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Interface_createacc">
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="450.0" prefWidth="750.0"
+            styleClass="left-side-background"
+            stylesheets="@../Values/style.css"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.Controller.Interface_createacc">
     <children>
         <Button layoutX="103.0" layoutY="397.0" onAction="#createAccount" styleClass="custom-button" stylesheets="@../Values/style.css" text="Créer compte" />
       <ImageView fitHeight="310.0" fitWidth="587.0" layoutX="105.0" layoutY="50.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
@@ -44,8 +52,17 @@
         <CheckBox fx:id="termsCheckBox" layoutX="103.0" layoutY="372.0" onAction="#acceptCond" text="J'accepte les termes et conditions" />
       <Text layoutX="423.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" />
       <Text layoutX="423.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'inscription" />
-      <TextField fx:id="roleTF" layoutX="422.0" layoutY="316.0" prefHeight="26.0" prefWidth="200.0" promptText="Client,Atiste,Admin ...." />
-      <DatePicker fx:id="dateinscriptionPicker" layoutX="424.0" layoutY="263.0" prefHeight="25.0" prefWidth="199.0" promptText="12-12-24" />
+        <ChoiceBox fx:id="roleTF" layoutX="422.0" layoutY="316.0" prefHeight="26.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Admin" />
+                    <String fx:value="Client" />
+                    <String fx:value="Artist" />
+                    <String fx:value="Simple Utilisateur" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+        <DatePicker fx:id="dateinscriptionPicker" layoutX="424.0" layoutY="263.0" prefHeight="25.0" prefWidth="199.0" promptText="12-12-24" />
 
     </children>
 </AnchorPane>

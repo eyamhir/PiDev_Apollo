@@ -17,7 +17,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/interface_createacc.fxml"));
+        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/interface_createacc.fxml"));
         try {
             Parent root =loader.load();
             Scene scene = new Scene(root);
@@ -26,8 +26,29 @@ public class MainFX extends Application {
             primaryStage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
+        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/interface_modif.fxml"));
+        try {
+            Parent root =loader.load();
+            Scene scene = new Scene(root);
+            primaryStage.setTitle("modifier user");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }*/
+        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/interface_aff.fxml"));
+        try {
+            Parent root =loader.load();
+            Scene scene = new Scene(root);
+            primaryStage.setTitle("afficher user");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }*/
+        
     }
 }
-
