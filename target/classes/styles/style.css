@@ -1,0 +1,46 @@
+.dark-gray-background{
+/*-fx-background-color:#46474A;*/
+-fx-background-color:#A0816C;
+}
+.gray-background{
+/*-fx-background-color:#636566;*/
+-fx-background-color:E8DED1;
+}
+
+.transparent-background{
+-fx-background-color:rgba(0,0,0,0);
+}
+.radius{
+-fx-background-radius:100px;
+}
+
+.background-image {
+    -fx-background-image: url("arta.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-min-width: 600px;
+    -fx-min-height: 400px;
+    -fx-background-color: rgba(0, 0, 0, 0.5); /* 0.5 représente la transparence (50%) */
+}
+
+.light-gray-background{
+-fx-background-color:#F5ECDF;
+}
+.incomming-bubble{
+-fx-background-color:#FFFFFF;
+-fx-background-radius:20px;
+}
+.raduis_field{
+-fx-background-radius:30px;
+}
+.outgoing-bubble{
+-fx-background-color:#F0CE71;
+/*-fx-background-color:#50C984;*/
+-fx-background-radius:20px;
+}
+.conversationTitleLabel {
+    -fx-font-size: 18px; /* Taille de la police */
+    -fx-font-family: "Arial", sans-serif; /* Police de caractères */
+    -fx-font-weight: bold; /* Police en gras */
+}

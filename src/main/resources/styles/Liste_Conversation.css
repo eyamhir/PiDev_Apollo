@@ -1,0 +1,13 @@
+.light-gray-background {
+    -fx-background-color: #f2f2f2; /* Couleur de fond gris clair */
+}
+
+.list-cell {
+    -fx-text-fill: #333333; /* Couleur de texte */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+.conversationTitleLabel {
+    -fx-font-size: 18px; /* Taille de la police */
+    -fx-font-family: "Arial", sans-serif; /* Police de caractères */
+    -fx-font-weight: bold; /* Police en gras */
+}
