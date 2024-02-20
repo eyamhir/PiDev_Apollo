@@ -1,0 +1,32 @@
+.primary-background{
+    -fx-background-color: #4c3627;
+}
+
+.secondary-background{
+    -fx-background-color: #b5a595 ;
+}
+
+.card{
+    -fx-background-color: #fff;
+    -fx-background-radius: 28;
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0 , 0 , 0 ,10.0);
+}
+
+.add-remove-layout{
+    -fx-border-radius: 50;
+    -fx-border-width: 1;
+    -fx-border-color: #303030;
+}
+
+.rect-round{
+    -fx-background-radius: 20;
+}
+
+.white-border{
+    -fx-border-color: #fff;
+}
+
+.botton{
+    -fx-background-color: #303030;
+    -fx-background-radius: 20;
+}
