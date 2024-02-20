@@ -11,7 +11,7 @@ public class Main {
         EvenementService es = new EvenementService();
         try {
 
-            //es.ajouter(new evenement("test", "descrsevent", "tevent", new Date(), new Date()));
+            es.ajouter(new evenement("test", "descrsevent", "tevent", new Date(), new Date()));
 
 
           //evenement eventToUpdate = new evenement("test2", "wdescrsevent", "tevent", new Date(), new Date());
@@ -19,8 +19,8 @@ public class Main {
            // es.modifier(eventToUpdate);
 
 
-            es.supprimer(4);
-            System.out.println(es.recuperer());
+            //es.supprimer(4);
+            //System.out.println(es.recuperer());
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }

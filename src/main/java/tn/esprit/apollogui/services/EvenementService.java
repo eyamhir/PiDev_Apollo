@@ -64,7 +64,7 @@ public class EvenementService implements IService<evenement> {
     }
 
     @Override
-    public List<evenement> recuperer() throws SQLException {
+    public  List<evenement> recuperer() throws SQLException {
         List<evenement> evenements = new ArrayList<>();
         String req= "SELECT * FROM evenement";
         Statement st= connection.createStatement();
