@@ -1,9 +1,10 @@
 package tn.esprit.projet_java.services;
-
+import tn.esprit.projet_java.services.IService;
 import tn.esprit.projet_java.models.Enchers;
 import tn.esprit.projet_java.utils.MaConnecxion;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,8 +40,8 @@ public class EnchersService implements IService<Enchers>{
             es.setString(1, enchers.getType_oeuvre());
             es.setFloat(2, enchers.getMin_montant());
             es.setFloat(3, enchers.getMax_montant());
-            es.setDate(4, (Date) enchers.getDate_debut());
-            es.setDate(5, (Date) enchers.getDate_fin());
+            es.setDate(4, Date.valueOf(enchers.getDate_debut()));
+            es.setDate(5, Date.valueOf(enchers.getDate_fin()));
             es.setString(6, enchers.getArtiste_associe_de_oeuvre());
             es.setInt(7, enchers.getId_enchers());  // Ajout du paramètre id
             es.executeUpdate();
@@ -75,8 +76,9 @@ public class EnchersService implements IService<Enchers>{
                 enchers.setType_oeuvre(rs.getString("type_oeuvre"));
                 enchers.setMin_montant(rs.getFloat("min_montant"));
                 enchers.setMax_montant(rs.getFloat("max_montant"));
-                enchers.setDate_debut(rs.getDate("date_debut"));
-                enchers.setDate_fin(rs.getDate("date_fin"));
+                enchers.setDate_debut(rs.getObject("date_debut",LocalDate.class));
+
+                enchers.setDate_fin(rs.getObject("date_fin",LocalDate.class));
                 enchers.setArtiste_associe_de_oeuvre(rs.getString("artiste_associe_de_oeuvre"));
 
                 enchersList.add(enchers);

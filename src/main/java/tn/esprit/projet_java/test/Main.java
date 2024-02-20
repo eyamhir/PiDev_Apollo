@@ -37,8 +37,10 @@ public class Main {
 //////////////////////test_enchers///////////////////////////////////////////////////////
         try {
            // es.ajouter(new Enchers("peint ",10000,230000,dateDebut, dateFin,"oumayma"));
-            es.modifier(new Enchers(4,"Peinture ",10000,230000,dateDebut, dateFin,"ouma"));
-            //es.supprimer(2);
+            //es.ajouter(new Enchers("peinture ",102000,230000,dateDebut, dateFin,"imen"));
+          //  es.modifi(new Enchers("peinture ",102000,230000,dateDebut, dateFin,"imen"));
+           // es.modifier(new Enchers(5,"Peinture ",10000,230000,dateDebut, dateFin,"abir"));
+            es.supprimer(5);
             System.out.println(es.fetchenchers());
         } catch (SQLException e) {
 

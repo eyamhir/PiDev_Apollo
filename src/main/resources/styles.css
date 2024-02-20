@@ -1,0 +1,45 @@
+.form-container {
+    -fx-background-color: #b5a595;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #4c3627;
+    -fx-border-width: 2;
+    -fx-background-image: linear-gradient(#e0d9c8, #b5a595), url('texture.jpg');
+}
+.text-field {
+    -fx-font-size: 14px;
+    -fx-pref-width: 200;
+    -fx-padding: 8;
+    -fx-background-color: #e0d9c8;
+    -fx-background-radius: 20; /* Ajout d'une bordure arrondie */
+    -fx-border-color: #ffffff ;
+    -fx-border-width: 1;
+}
+.label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4c3627;
+    -fx-transition: text-fill 0.3s;
+}
+
+.label:hover {
+    -fx-text-fill: #704f3e; /* Changement de couleur au survol */
+}
+.form_container Button {
+    -fx-font-size: 14px;
+    -fx-padding: 8 16;
+    -fx-background-color: #4c3627;
+    -fx-text-fill: white;
+    -fx-background-radius: 25; /* Bordure arrondie plus prononcée */
+    -fx-border-color: #ffffff;
+    -fx-border-width: 1;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 1);
+    -fx-transition: background-color 0.3s;
+    -fx-graphic: url('icon.png'); /* Ajout d'une icône */
+}
+
+.form_container Button:hover {
+    -fx-background-color: #5e4938;
+}

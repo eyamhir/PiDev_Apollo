@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="form_container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.projet_java.controllers.ModifierEncheres">
+   <children>
+      <TextField id="id_type" fx:id="typeTF" layoutX="341.0" layoutY="78.0" />
+      <Text id="type" layoutX="296.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type d'oeuvre" wrappingWidth="86.20941162109375" />
+      <Text id="min_montant" layoutX="317.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min montant" />
+      <TextField id="id_min_montant" fx:id="min_montantTF" layoutX="351.0" layoutY="144.0" />
+      <Text id="date_fin" layoutX="295.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date fin " />
+      <Button id="boutton_ajout" layoutX="363.0" layoutY="330.0" mnemonicParsing="false" onAction="#saveChanges" text="modifier  l'encheres" />
+      <Label id="label_ajout" layoutX="371.0" layoutY="23.0" text="modifier un encheres" />
+      <DatePicker fx:id="date_finTF" layoutX="338.0" layoutY="273.0" />
+      <DatePicker fx:id="date_debutTF" layoutX="338.0" layoutY="209.0" />
+      <Text id="date_fin" layoutX="286.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date debut " />
+      <Button id="boutton_ajout" layoutX="367.0" layoutY="382.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="38.0" prefWidth="148.0" text="Annuler" />
+      <ImageView fitHeight="450.0" fitWidth="282.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image2.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

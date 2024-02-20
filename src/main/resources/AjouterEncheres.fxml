@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="naviguer" prefHeight="440.0" prefWidth="607.0" styleClass="form_container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.projet_java.controllers.AjouterEncheres">
+   <children>
+      <TextField id="id_type" fx:id="typeTF" layoutX="350.0" layoutY="95.0" />
+      <Text id="type" layoutX="330.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type d'oeuvre" wrappingWidth="86.20941162109375" />
+      <Text id="min_montant" layoutX="324.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Min montant" />
+      <TextField id="id_min_montant" fx:id="min_montantTF" layoutX="351.0" layoutY="170.0" />
+      <Text id="date_fin" layoutX="339.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date fin " />
+      <Button id="boutton_ajout" layoutX="324.0" layoutY="367.0" mnemonicParsing="false" onAction="#ajouter_enchers" text="ajouter encheres" />
+      <Label id="label_ajout" layoutX="374.0" layoutY="30.0" text="Ajouter un encheres" />
+      <ImageView fitHeight="459.0" fitWidth="337.0" layoutX="-31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image.jpg" />
+         </image>
+      </ImageView>
+      <DatePicker fx:id="date_finTF" layoutX="350.0" layoutY="303.0" />
+      <DatePicker fx:id="date_debutTF" layoutX="350.0" layoutY="241.0" />
+      <Text id="date_fin" layoutX="328.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date debut " />
+      <Button id="boutton_ajout" layoutX="482.0" layoutY="367.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="38.0" prefWidth="123.0" text="Afficher list" />
+   </children>
+</AnchorPane>
