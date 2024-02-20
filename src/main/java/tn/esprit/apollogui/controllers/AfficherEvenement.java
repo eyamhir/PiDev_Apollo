@@ -94,9 +94,9 @@ public class AfficherEvenement {
         evenement selectedUser = ListView.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmationAlert.setTitle("Confirmation de suppression");
-            confirmationAlert.setHeaderText("Supprimer l'evenement ?");
-            confirmationAlert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+            confirmationAlert.setTitle("Confirm ");
+            confirmationAlert.setHeaderText("delete event ?");
+            confirmationAlert.setContentText("Are you sure you want to delete?");
 
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -107,18 +107,18 @@ public class AfficherEvenement {
 
                     initData();
                 } catch (SQLException e) {
-                    afficherMessageErreur("Erreur lors de la suppression de l'evenement.");
+                    afficherMessageErreur("Erreur .");
                 }
             }
         } else {
 
-            afficherMessageErreur("Veuillez sélectionner un evenement à supprimer.");
+            afficherMessageErreur("Please select an event to delete.");
         }
     }
 
     private void afficherMessageErreur(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erreur");
+        alert.setTitle("Error");
         alert.setContentText(message);
         alert.showAndWait();
     }
