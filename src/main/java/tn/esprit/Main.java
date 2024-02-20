@@ -29,8 +29,18 @@ public class Main {
         //panierService.ajouter(new Panier(50));
         //panierService.modifier(new Panier(1,250));
         //panierService.supprimer(1);
-        List<Panier> paniers = panierService.recuperer();
-        System.out.println(paniers);
+        //List<Panier> paniers = panierService.recuperer();
+        //System.out.println(paniers);
         //Test Commit
+
+        CommandeService commandeService = new CommandeService();
+        LocalDateTime datetime = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
+        String time = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(datetime);
+        //commandeService.ajouter(new Commande(1111,time));
+        //commandeService.modifier(new Commande(6,999,"2024-02-12"));
+
+       //commandeService.supprimer(6);
+        List<Commande> commandes = commandeService.recuperer();
+        System.out.println(commandes);
     }
 }
