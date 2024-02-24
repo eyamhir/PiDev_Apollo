@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterPanier">
    <left>
-      <VBox prefHeight="550.0" prefWidth="561.0" spacing="20.0" styleClass="primary-background" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
+      <VBox prefHeight="656.0" prefWidth="571.0" spacing="20.0" styleClass="primary-background" stylesheets="@../values/style.css" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </padding>
@@ -31,7 +31,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="143.0" prefWidth="90.0">
                      <children>
-                        <ImageView fitHeight="82.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="90.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../IMG/appolo 1.jpg" />
                            </image>
@@ -57,21 +57,11 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="87.0" styleClass="add-remove-layout" stylesheets="@../values/style.css">
                            <children>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="-">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="31.0" text="1">
+                              <Label alignment="CENTER" prefHeight="29.0" prefWidth="88.0" text="1">
                                  <font>
                                     <Font name="Corbel" size="20.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="20.0" style="-fx-background-color: transparent;" text="+">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
                            </children>
                         </HBox>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="94.0" text="\$750">
@@ -81,7 +71,7 @@
                         </Label>
                         <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
                            <graphic>
-                              <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="remove_premier_ouevre" fitHeight="19.0" fitWidth="19.0" onDragDetected="#remove_premier_ouevre" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../IMG/croix 1.png" />
                                  </image>
@@ -99,7 +89,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="72.0">
                      <children>
-                        <ImageView fitHeight="74.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="87.0" fitWidth="97.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../IMG/ouevre dart 2.jpg" />
                            </image>
@@ -125,21 +115,11 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="87.0" styleClass="add-remove-layout" stylesheets="@../values/style.css">
                            <children>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="-">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="31.0" text="1">
+                              <Label alignment="CENTER" prefHeight="29.0" prefWidth="84.0" text="1">
                                  <font>
                                     <Font name="Corbel" size="20.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="20.0" style="-fx-background-color: transparent;" text="+">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
                            </children>
                         </HBox>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="94.0" text="\$450">
@@ -149,7 +129,7 @@
                         </Label>
                         <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
                            <graphic>
-                              <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="remove_deuxieme_ouevre" fitHeight="19.0" fitWidth="19.0" onDragDetected="#remove_deuxieme_ouevre" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../IMG/croix 1.png" />
                                  </image>
@@ -167,7 +147,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="78.0" prefWidth="72.0">
                      <children>
-                        <ImageView fitHeight="73.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="82.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../IMG/ouevre dart 3.jpg" />
                            </image>
@@ -193,21 +173,11 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="87.0" styleClass="add-remove-layout" stylesheets="@../values/style.css">
                            <children>
-                              <Button mnemonicParsing="false" style="-fx-background-color: transparent;" text="-">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
-                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="31.0" text="1">
+                              <Label alignment="CENTER" prefHeight="29.0" prefWidth="85.0" text="1">
                                  <font>
                                     <Font name="Corbel" size="20.0" />
                                  </font>
                               </Label>
-                              <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="20.0" style="-fx-background-color: transparent;" text="+">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Button>
                            </children>
                         </HBox>
                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="94.0" text="\$575">
@@ -215,9 +185,9 @@
                               <Font name="Corbel Light" size="20.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                        <Button fx:id="remove_troisieme_ouevre" mnemonicParsing="false" onAction="#remove_troisieme_ouevre" style="-fx-background-color: transparent;">
                            <graphic>
-                              <ImageView fitHeight="19.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="dec_deuxieme_ouevre" fitHeight="19.0" fitWidth="19.0" onDragDetected="#decrumenter_deuxieme_ouevre" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../IMG/croix 1.png" />
                                  </image>
@@ -333,7 +303,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" styleClass="botton" stylesheets="@../values/style.css" text="payer" textFill="WHITE">
+                        <Button fx:id="payer" mnemonicParsing="false" onAction="#valider_payer" prefHeight="30.0" prefWidth="150.0" styleClass="botton" stylesheets="@../values/style.css" text="payer" textFill="WHITE">
                            <font>
                               <Font name="Corbel Bold" size="18.0" />
                            </font>
@@ -349,7 +319,7 @@
                </padding></VBox>
             <ImageView fitHeight="169.0" fitWidth="269.0" layoutX="71.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../IMG/carte%20B.jpg" />
+                  <Image url="@../IMG/carte B.jpg" />
                </image>
             </ImageView>
          </children>
