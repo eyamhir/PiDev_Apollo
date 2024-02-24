@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.MotionBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+
+<AnchorPane
+            fx:controller="org.example.Controller.Interface_signin"
+            prefHeight="436.0" prefWidth="725.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <!-- Logo -->
+        <ImageView fitHeight="93.0" fitWidth="94.0" layoutX="8.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../PiDev_images/Capture_d_écran_2024-02-14_001547-removebg-preview.png" />
+            </image>
+        </ImageView>
+        <!-- Email Label -->
+        <Label layoutX="88.0" layoutY="182.0" text="Email" />
+        <!-- Email TextField -->
+        <TextField fx:id="emailField" layoutX="87.0" layoutY="204.0" prefHeight="25.0" prefWidth="250.0" promptText="nomprenom@domaine.com" />
+        <!-- Password Label -->
+        <Label layoutX="89.0" layoutY="243.0" text="Mot de passe" />
+        <!-- Password TextField -->
+        <PasswordField fx:id="passwordField" layoutX="87.0" layoutY="263.0" prefHeight="25.0" prefWidth="250.0" promptText="**********" />
+        <!-- Sign Up Link -->
+        <Hyperlink layoutX="251.0" layoutY="14.0" text="Vous n'avez pas de compte ? S'inscrire" />
+        <!-- Sign In Button -->
+        <Button layoutX="151.0" layoutY="311.0" mnemonicParsing="false" onAction="#signInAction" prefHeight="37.0" prefWidth="122.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Se connecter" />
+      <Label layoutX="87.0" layoutY="89.0" prefHeight="64.0" prefWidth="267.0" text="Se connecter" textFill="#4c3627">
+         <font>
+            <Font name="Andalus" size="48.0" />
+         </font>
+      </Label>
+        <ImageView fitHeight="492.0" fitWidth="256.0" layoutX="475.0" layoutY="-2.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../PiDev_images/FondDÉcranArt.jpg" />
+            </image>
+         <effect>
+            <MotionBlur angle="110.12" radius="5.55" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+        </ImageView>
+      <Hyperlink layoutX="311.0" layoutY="409.0" text="Vous avez des problèmes ?" />
+      <Hyperlink layoutX="26.0" layoutY="409.0" text="Mot de passe oublié?" />
+
+    </children>
+</AnchorPane>
