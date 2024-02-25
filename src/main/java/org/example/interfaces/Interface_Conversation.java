@@ -21,6 +21,8 @@ public interface Interface_Conversation<T> {
     // Méthodes avancées
     List<T> listerConversations() throws SQLException;
 
+    List<T> rechercherConversationsParSujet(String sujet) throws SQLException;
+
    /* List<T> listerConversationsActivesParArtiste(int idArtiste) throws SQLException;
 
     int calculerDureeTotaleConversationsClient(int idClient) throws SQLException;

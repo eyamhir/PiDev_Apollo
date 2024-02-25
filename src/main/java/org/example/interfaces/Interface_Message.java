@@ -1,6 +1,5 @@
 package org.example.interfaces;
 
-import org.example.model.Artiste;
 import org.example.model.Message;
 
 import java.sql.SQLException;
@@ -17,13 +16,11 @@ public interface Interface_Message<T> {
     void supprimerMessage(int id) throws SQLException;
 
 
-
     List<T> listerMessages() throws SQLException;
 
 
     // Methode avancées
     List<T> listerMessagesParConversation(int idConversation) throws SQLException;
 
-    int compterMessagesParArtiste(int idArtiste) throws SQLException;
 
 }
