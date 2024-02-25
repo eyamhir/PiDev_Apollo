@@ -16,14 +16,14 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        //PaymentService paymentService = new PaymentService();
+        /*PaymentService paymentService = new PaymentService();
         //LocalDateTime datetime = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
         //String time = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(datetime);
         //paymentService.ajouter(new Payment(20,"carteBancaire"));
        //paymentService.modifier(new Payment(1,18500,"carte Visa"));
         //paymentService.supprimer(1);
        //List<Payment> payments = paymentService.recuperer();
-        //System.out.println(payments);
+       //System.out.println(payments);
 
         PanierService panierService = new PanierService();
         //panierService.ajouter(new Panier(50));
@@ -36,11 +36,13 @@ public class Main {
         CommandeService commandeService = new CommandeService();
         LocalDateTime datetime = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.UTC);
         String time = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(datetime);
-        //commandeService.ajouter(new Commande(1111,time));
-        //commandeService.modifier(new Commande(6,999,"2024-02-12"));
+        //commandeService.ajouter(new Commande(180,time));
+        //commandeService.modifier(new Commande(7,999,"2024-02-12"));
 
        //commandeService.supprimer(6);
-        List<Commande> commandes = commandeService.recuperer();
-        System.out.println(commandes);
+        //List<Commande> commandes = commandeService.recuperer();
+        //System.out.println(commandes);*/
+
+
     }
 }

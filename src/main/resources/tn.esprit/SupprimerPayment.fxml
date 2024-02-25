@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="731.0" prefWidth="1030.0" styleClass="twelve-background" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SupprimerPayment">
+   <children>
+      <Label alignment="CENTER" layoutX="374.0" layoutY="5.0" prefHeight="72.0" prefWidth="313.0" styleClass="card" stylesheets="@../values/style.css" text="Supprimer Payment">
+         <font>
+            <Font name="Corbel" size="34.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Id_Payment" layoutX="88.0" layoutY="258.0" prefHeight="54.0" prefWidth="170.0" promptText="ID_Payment" styleClass="card" stylesheets="@../values/style.css" />
+      <Button alignment="CENTER" layoutX="109.0" layoutY="323.0" mnemonicParsing="false" onAction="#Supprimer_payment" prefHeight="62.0" prefWidth="128.0" stylesheets="@../values/style.css" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <styleClass>
+            <String fx:value="botton" />
+            <String fx:value="card" />
+         </styleClass>
+      </Button>
+      <Button alignment="CENTER" layoutX="26.0" layoutY="538.0" mnemonicParsing="false" onAction="#vers_page_ajouter" prefHeight="62.0" prefWidth="128.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <styleClass>
+            <String fx:value="botton" />
+            <String fx:value="card" />
+         </styleClass>
+      </Button>
+      <Button layoutX="828.0" layoutY="414.0" mnemonicParsing="false" onAction="#page_commande" prefHeight="62.0" prefWidth="151.0" stylesheets="@../values/style.css" text="Commande">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="828.0" layoutY="490.0" mnemonicParsing="false" onAction="#page_panier" prefHeight="62.0" prefWidth="151.0" stylesheets="@../values/style.css" text="Panier">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="828.0" layoutY="577.0" mnemonicParsing="false" onAction="#ListePayment" prefHeight="62.0" prefWidth="151.0" stylesheets="@../values/style.css" text="ListePayment">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="194.0" layoutY="538.0" mnemonicParsing="false" onAction="#vers_page_moodifier" prefHeight="62.0" prefWidth="128.0" stylesheets="@../values/style.css" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <styleClass>
+            <String fx:value="botton" />
+            <String fx:value="card" />
+         </styleClass>
+      </Button>
+   </children>
+</AnchorPane>

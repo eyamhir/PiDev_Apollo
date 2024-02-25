@@ -54,6 +54,26 @@
     -fx-background-position: center; /* Positionnement de l'image au centre */
 }
 
+.eleven-background{
+    -fx-background-image: url('../IMG/imj money.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+.twelve-background{
+    -fx-background-image: url('../IMG/cappay4.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+.thirteen-background{
+    -fx-background-image: url('../IMG/payy3.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
 .card{
     -fx-background-color: #fff;
     -fx-background-radius: 28;
