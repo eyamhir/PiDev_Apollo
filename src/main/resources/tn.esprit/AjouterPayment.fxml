@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1007.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterPayment">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="23.0" prefHeight="75.0" prefWidth="238.0" stylesheets="@../values/style.css" text="Payment" textFill="WHITE">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" prefHeight="75.0" prefWidth="350.0" stylesheets="@../values/style.css" text="Ajouter Payment" textFill="WHITE">
          <font>
             <Font name="Corbel" size="48.0" />
          </font>
@@ -30,7 +30,7 @@
             <String fx:value="rect-round" />
          </styleClass>
       </TextField>
-      <Button layoutX="6.0" layoutY="392.0" mnemonicParsing="false" onAction="#AjouterP" prefHeight="43.0" prefWidth="114.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
+      <Button layoutX="97.0" layoutY="362.0" mnemonicParsing="false" onAction="#AjouterP" prefHeight="56.0" prefWidth="114.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
          <styleClass>
             <String fx:value="card" />
             <String fx:value="rect-round" />
@@ -39,16 +39,7 @@
          <font>
             <Font name="Corbel" size="20.0" />
          </font></Button>
-      <Button layoutX="127.0" layoutY="392.0" mnemonicParsing="false" onAction="#ModifierP" prefHeight="43.0" prefWidth="108.0" stylesheets="@../values/style.css" text="Modifier" textFill="WHITE">
-         <font>
-            <Font name="Corbel" size="20.0" />
-         </font>
-         <styleClass>
-            <String fx:value="card" />
-            <String fx:value="botton" />
-            <String fx:value="rect-round" />
-         </styleClass></Button>
-      <Button layoutX="245.0" layoutY="392.0" mnemonicParsing="false" onAction="#SupprimerP" prefHeight="38.0" prefWidth="125.0" stylesheets="@../values/style.css" text="Supprimer" textFill="WHITE">
+      <Button layoutX="169.0" layoutY="533.0" mnemonicParsing="false" onAction="#SupprimerP" prefHeight="56.0" prefWidth="126.0" stylesheets="@../values/style.css" text="Supprimer" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -57,23 +48,26 @@
             <String fx:value="botton" />
             <String fx:value="rect-round" />
          </styleClass></Button>
-      <TextField fx:id="IDpay" layoutX="63.0" layoutY="148.0" prefHeight="38.0" prefWidth="211.0" promptText="Id de Payment" stylesheets="@../values/style.css">
-         <styleClass>
-            <String fx:value="card" />
-            <String fx:value="rect-round" />
-         </styleClass>
-      </TextField>
       <Button layoutX="808.0" layoutY="618.0" mnemonicParsing="false" onAction="#ListeP" prefHeight="65.0" prefWidth="176.0" stylesheets="@../values/style.css" text=" Liste Payment">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="672.0" layoutY="617.0" mnemonicParsing="false" onAction="#versPanier" prefHeight="66.0" prefWidth="114.0" text="Panier">
+      <Button layoutX="839.0" layoutY="521.0" mnemonicParsing="false" onAction="#versPanier" prefHeight="66.0" prefWidth="114.0" text="Panier">
          <font>
             <Font name="Corbel" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="518.0" layoutY="618.0" mnemonicParsing="false" onAction="#versCommande" prefHeight="66.0" prefWidth="126.0" text="Commande">
+      <Button layoutX="833.0" layoutY="424.0" mnemonicParsing="false" onAction="#versCommande" prefHeight="66.0" prefWidth="126.0" text="Commande">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="34.0" layoutY="533.0" mnemonicParsing="false" onAction="#vers_modifier_pay" prefHeight="56.0" prefWidth="126.0" stylesheets="@../values/style.css" text="Modifier" textFill="WHITE">
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="botton" />
+         </styleClass>
          <font>
             <Font name="Corbel" size="20.0" />
          </font>

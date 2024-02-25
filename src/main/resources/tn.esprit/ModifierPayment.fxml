@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="984.0" styleClass="thirteen-background" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierPayment">
+   <children>
+      <Label alignment="CENTER" layoutX="345.0" prefHeight="72.0" prefWidth="294.0" styleClass="card" stylesheets="@../values/style.css" text="Modifier Payment">
+         <font>
+            <Font name="Corbel" size="34.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Id_payment" layoutX="92.0" layoutY="159.0" prefHeight="52.0" prefWidth="189.0" promptText="ID_Payment" styleClass="card" stylesheets="@../values/style.css" />
+      <TextField fx:id="Montant" layoutX="92.0" layoutY="227.0" prefHeight="52.0" prefWidth="189.0" promptText="Montant" styleClass="card" stylesheets="@../values/style.css" />
+      <TextField fx:id="Type_payment" layoutX="92.0" layoutY="302.0" prefHeight="52.0" prefWidth="189.0" promptText="Type dePayment" styleClass="card" stylesheets="@../values/style.css" />
+      <Button layoutX="119.0" layoutY="388.0" mnemonicParsing="false" onAction="#Modifier_Pay" prefHeight="52.0" prefWidth="136.0" stylesheets="@../values/style.css" text="Modifier" textFill="WHITE">
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="rect-round" />
+            <String fx:value="botton" />
+         </styleClass>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="71.0" layoutY="602.0" mnemonicParsing="false" onAction="#vers_page_ajouter" prefHeight="52.0" prefWidth="136.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="rect-round" />
+            <String fx:value="botton" />
+         </styleClass>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="229.0" layoutY="602.0" mnemonicParsing="false" onAction="#vers_page_supprimer" prefHeight="52.0" prefWidth="136.0" stylesheets="@../values/style.css" text="Supprimer" textFill="WHITE">
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="rect-round" />
+            <String fx:value="botton" />
+         </styleClass>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="822.0" layoutY="335.0" mnemonicParsing="false" onAction="#page_commande" prefHeight="52.0" prefWidth="136.0" stylesheets="@../values/style.css" text="Commande">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="822.0" layoutY="414.0" mnemonicParsing="false" onAction="#page_panier" prefHeight="52.0" prefWidth="136.0" stylesheets="@../values/style.css" text="Panier">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="798.0" layoutY="497.0" mnemonicParsing="false" onAction="#page_ListePayment" prefHeight="52.0" prefWidth="160.0" stylesheets="@../values/style.css" text="ListePayment">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>

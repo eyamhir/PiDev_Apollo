@@ -11,51 +11,32 @@ import tn.esprit.test.MainFX;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class AjouterPayment {
-
+public class ModifierPayment {
     private final PaymentService paymentService = new PaymentService();
 
     @FXML
-    private TextField IDpay;
+    private TextField Id_payment;
 
     @FXML
-    private TextField TypePay;
+    private TextField Montant;
 
     @FXML
-    private TextField montant;
+    private TextField Type_payment;
 
     @FXML
-    void AjouterP(ActionEvent event) {
+    void Modifier_Pay(ActionEvent event) {
         try {
-            if (IDpay.getText().isEmpty() || montant.getText().isEmpty() || TypePay.getText().isEmpty()) {
-                showAlert("Error", "All fields are required.");
-                return;
-            }
+            int id = Integer.parseInt(Id_payment.getText());
+            float amount = Float.parseFloat(Montant.getText());
+            String type = Type_payment.getText();
 
-            int id = Integer.parseInt(IDpay.getText());
-            float amount = Float.parseFloat(montant.getText());
-            String type = TypePay.getText();
-
-            paymentService.ajouter(new Payment(id, amount, type));
-            showAlert("Success", "Payment added successfully.");
+            paymentService.modifier(new Payment(id, amount, type));
+            showAlert("Success", "Payment updated successfully.");
         } catch (NumberFormatException e) {
             showAlert("Error", "Invalid input format.");
         } catch (SQLException e) {
             showAlert("Error", e.getMessage());
         }
-    }
-
-    @FXML
-    void vers_modifier_pay(ActionEvent event) throws IOException {
-        MainFX main = new MainFX();
-        main.changeStage("/tn.esprit/ModifierPayment.fxml");
-
-    }
-
-    @FXML
-    void SupprimerP(ActionEvent event) throws IOException {
-        MainFX main = new MainFX();
-        main.changeStage("/tn.esprit/SupprimerPayment.fxml");
     }
 
     private void showAlert(String title, String message) {
@@ -65,21 +46,39 @@ public class AjouterPayment {
         alert.showAndWait();
     }
 
+
     @FXML
-    void ListeP(ActionEvent event) throws IOException {
+    void page_ListePayment(ActionEvent event) throws IOException {
         MainFX main = new MainFX();
         main.changeStage("/tn.esprit/ListePayment.fxml");
+
     }
 
     @FXML
-    void versCommande(ActionEvent event) throws IOException {
+    void page_commande(ActionEvent event) throws IOException {
         MainFX main = new MainFX();
         main.changeStage("/tn.esprit/AjouterCommande.fxml");
+
     }
 
     @FXML
-    void versPanier(ActionEvent event) throws IOException {
+    void page_panier(ActionEvent event) throws IOException {
         MainFX main = new MainFX();
         main.changeStage("/tn.esprit/AjouterPanier.fxml");
+
+    }
+
+    @FXML
+    void vers_page_ajouter(ActionEvent event) throws IOException {
+        MainFX main = new MainFX();
+        main.changeStage("/tn.esprit/AjouterPayment.fxml");
+
+    }
+
+    @FXML
+    void vers_page_supprimer(ActionEvent event) throws IOException {
+        MainFX main = new MainFX();
+        main.changeStage("/tn.esprit/SupprimerPayment.fxml");
+
     }
 }
