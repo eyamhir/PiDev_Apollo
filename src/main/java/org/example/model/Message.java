@@ -1,38 +1,37 @@
 package org.example.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Message {
     private int messageId;
-    private int idExpediteur; // Id de l'expéditeur (artiste ou client)
-    private int idDestinataire; // Id du destinataire (artiste ou client)
     private Date dateEnvoi;
     private String contenu;
     private int conversationId;
+    private int expediteur_id;
+    private int destinataire_id;
 
     // Constructeur paramétré avec identifiant
-    public Message(int messageId, int idExpediteur, int idDestinataire, Date dateEnvoi, String contenu, int conversationId) {
+    public Message(int messageId,  Date dateEnvoi, String contenu, int conversationId,int expediteur_id,int destinataire_id) {
         this.messageId = messageId;
-        this.idExpediteur = idExpediteur;
-        this.idDestinataire = idDestinataire;
         this.dateEnvoi = dateEnvoi;
         this.contenu = contenu;
         this.conversationId = conversationId;
+        this.expediteur_id=expediteur_id;
+        this.destinataire_id=destinataire_id;
     }
 
     // Constructeur paramétré sans identifiant
-    public Message(int idExpediteur, int idDestinataire, Date dateEnvoi, String contenu, int conversationId) {
-        this.idExpediteur = idExpediteur;
-        this.idDestinataire = idDestinataire;
+    public Message( Date dateEnvoi, String contenu, int conversationId,int expediteur_id,int destinataire_id) {
         this.dateEnvoi = dateEnvoi;
         this.contenu = contenu;
         this.conversationId = conversationId;
+        this.expediteur_id=expediteur_id;
+        this.destinataire_id=destinataire_id;
     }
-
 
     // Constructeur par défaut
     public Message() {
+
     }
 
     // Getters et setters
@@ -45,20 +44,22 @@ public class Message {
         this.messageId = messageId;
     }
 
-    public int getIdExpediteur() {
-        return idExpediteur;
+    public int getExpediteur_id() {
+        return expediteur_id;
     }
 
-    public void setIdExpediteur(int idExpediteur) {
-        this.idExpediteur = idExpediteur;
+    public void setExpediteur_id
+            (int expediteur_id) {
+        this.expediteur_id = expediteur_id;
     }
 
-    public int getIdDestinataire() {
-        return idDestinataire;
+    public int getDestinataire_id() {
+        return destinataire_id;
     }
 
-    public void setIdDestinataire(int idDestinataire) {
-        this.idDestinataire = idDestinataire;
+    public void setDestinataire_id
+            (int utilisateurId) {
+        this.destinataire_id = destinataire_id;
     }
 
     public Date getDateEnvoi() {
@@ -87,17 +88,13 @@ public class Message {
 
     @Override
     public String toString() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = sdf.format(dateEnvoi);
-
         return "Message{" +
                 "messageId=" + messageId +
-                ", idExpediteur=" + idExpediteur +
-                ", idDestinataire=" + idDestinataire +
-                ", dateEnvoi=" + formattedDate +
+                ", expediteur_id=" + expediteur_id +
+                ", destinataire_id"+destinataire_id+
+                ", dateEnvoi=" + dateEnvoi +
                 ", contenu='" + contenu + '\'' +
                 ", conversationId=" + conversationId +
                 '}';
     }
-
 }
