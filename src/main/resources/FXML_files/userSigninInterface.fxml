@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.control.*?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-
-<AnchorPane
-            fx:controller="org.example.Controller.Interface_signin"
-            prefHeight="436.0" prefWidth="725.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="436.0" prefWidth="725.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.userLoginController">
     <children>
         <!-- Logo -->
         <ImageView fitHeight="93.0" fitWidth="94.0" layoutX="8.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
@@ -24,15 +23,15 @@
         <!-- Email Label -->
         <Label layoutX="88.0" layoutY="182.0" text="Email" />
         <!-- Email TextField -->
-        <TextField fx:id="emailField" layoutX="87.0" layoutY="204.0" prefHeight="25.0" prefWidth="250.0" promptText="nomprenom@domaine.com" />
+        <TextField fx:id="emailFT" layoutX="87.0" layoutY="204.0" prefHeight="25.0" prefWidth="250.0" promptText="nomprenom@domaine.com" />
         <!-- Password Label -->
         <Label layoutX="89.0" layoutY="243.0" text="Mot de passe" />
         <!-- Password TextField -->
-        <PasswordField fx:id="passwordField" layoutX="87.0" layoutY="263.0" prefHeight="25.0" prefWidth="250.0" promptText="**********" />
+        <PasswordField fx:id="passwordFT" layoutX="87.0" layoutY="263.0" prefHeight="25.0" prefWidth="250.0" promptText="**********" />
         <!-- Sign Up Link -->
-        <Hyperlink layoutX="251.0" layoutY="14.0" text="Vous n'avez pas de compte ? S'inscrire" />
+        <Hyperlink layoutX="244.0" layoutY="14.0" text="Vous n'avez pas de compte ? " />
         <!-- Sign In Button -->
-        <Button layoutX="151.0" layoutY="311.0" mnemonicParsing="false" onAction="#signInAction" prefHeight="37.0" prefWidth="122.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Se connecter" />
+        <Button fx:id="LoginFT" layoutX="151.0" layoutY="311.0" mnemonicParsing="false" onAction="#LogInAction" prefHeight="37.0" prefWidth="122.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Se connecter" />
       <Label layoutX="87.0" layoutY="89.0" prefHeight="64.0" prefWidth="267.0" text="Se connecter" textFill="#4c3627">
          <font>
             <Font name="Andalus" size="48.0" />
@@ -51,6 +50,7 @@
         </ImageView>
       <Hyperlink layoutX="311.0" layoutY="409.0" text="Vous avez des problèmes ?" />
       <Hyperlink layoutX="26.0" layoutY="409.0" text="Mot de passe oublié?" />
+      <Button layoutX="407.0" layoutY="13.0" mnemonicParsing="false" onAction="#SignUp" text="S'inscrire" />
 
     </children>
 </AnchorPane>

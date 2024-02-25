@@ -18,4 +18,10 @@ public interface Interface_Utilisateur {
 
     // Supprimer
     void supprimerUtilisateur(int id) throws SQLException;
+
+    public List<Utilisateur> search(String code);
+
+    public List<Utilisateur> filterByName(String code);
+    public boolean connecter(String adresse_mail, String mot_passe);
+
 }

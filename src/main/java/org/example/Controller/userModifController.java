@@ -9,7 +9,7 @@ import org.example.Services.Service_Utilisateur;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class InterfaceModif {
+public class userModifController {
 
     @FXML
     private DatePicker dateNaissancePicker;
@@ -35,20 +35,26 @@ public class InterfaceModif {
     @FXML
     private ChoiceBox<String> roleTF;
 
-    private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
-
-    void initialize() {
-        // Initialisez votre ChoiceBox avec les rôles prédéfinis
-        roleTF.getItems().addAll("Admin", "Artiste", "Client", "User");
-    }
+    @FXML
+    private TextField specialiteTF;
 
     @FXML
-    void modifAccount (ActionEvent event) {
+    private TextField adresseLocaleTF;
+
+    private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+
+   /* @FXML
+    void initialize() {
+        // Initialisez votre ChoiceBox avec les rôles prédéfinis
+        roleTF.getItems().addAll("Admin", "Artiste", "Client");
+    }*/
+
+    @FXML
+     void modifierUtilisateur(ActionEvent event) {
         try {
             if (allFieldsFilled()) {
                 // Créer un objet Utilisateur avec le constructeur approprié
                 Utilisateur u = new Utilisateur(
-                        utilisateur.getId_utilisateur(),
                         nomTF.getText(),
                         prenomTF.getText(),
                         emailTF.getText(),
@@ -56,7 +62,9 @@ public class InterfaceModif {
                         dateNaissancePicker.getValue(),
                         dateinscriptionPicker.getValue(),
                         roleTF.getValue(),
-                        passwordTF.getText()
+                        passwordTF.getText(),
+                        specialiteTF.getText(),
+                        adresseLocaleTF.getText()
                 );
 
                 // Appeler la méthode du service pour modifier l'utilisateur
@@ -89,7 +97,9 @@ public class InterfaceModif {
                 passwordTF.getText().isEmpty() ||
                 prenomTF.getText().isEmpty() ||
                 roleTF.getValue() == null ||
-                dateinscriptionPicker.getValue() == null) {
+                dateinscriptionPicker.getValue() == null ||
+                specialiteTF.getText().isEmpty() ||
+                adresseLocaleTF.getText().isEmpty()) {
 
             // Afficher une boîte de dialogue d'erreur indiquant les champs requis
             displayErrorDialog("Veuillez remplir tous les champs obligatoires.");
@@ -106,9 +116,9 @@ public class InterfaceModif {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    private Utilisateur utilisateur;
+
     public void initData(Utilisateur utilisateur) {
-        this.utilisateur=utilisateur;
+
         if (utilisateur != null) {
             nomTF.setText(utilisateur.getNom());
             prenomTF.setText(utilisateur.getPrenom());
@@ -126,8 +136,8 @@ public class InterfaceModif {
             }
             roleTF.setValue(utilisateur.getRole()); // Assurez-vous que roleTF est initialisé avec les choix appropriés
             passwordTF.setText(utilisateur.getMot_passe());
+            specialiteTF.setText(utilisateur.getSpecialite_artistique());
+            adresseLocaleTF.setText(utilisateur.getAdresse_locale());
         }
     }
-
-
 }

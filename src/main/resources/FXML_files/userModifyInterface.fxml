@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.userModifController">
+    <children>
+        <Button layoutX="316.0" layoutY="380.0" onAction="#modifierUtilisateur" styleClass="custom-button" stylesheets="@../Values/style.css" text="Modifier compte" />
+        <ImageView fitHeight="310.0" fitWidth="587.0" layoutX="105.0" layoutY="50.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../PiDev_images/05museum-labels-2-videoSixteenByNineJumbo1600.jpg" />
+            </image>
+        </ImageView>
+        <TextField fx:id="nomTF" layoutX="138.0" layoutY="112.0" prefWidth="200.0" promptText="Nom" />
+        <TextField fx:id="prenomTF" layoutX="138.0" layoutY="164.0" prefWidth="200.0" promptText="Prénom" />
+        <Label layoutX="138.0" layoutY="91.0" text="Nom" />
+        <Label layoutX="138.0" layoutY="144.0" text="Prénom" />
+        <TextField fx:id="emailTF" layoutX="138.0" layoutY="218.0" prefWidth="200.0" promptText="nomprenom@domaine.com" />
+        <Label layoutX="139.0" layoutY="196.0" text="Adresse E-mail" />
+        <TextField fx:id="numTelTF" layoutX="423.0" layoutY="146.0" prefWidth="200.0" promptText="22222222" />
+        <DatePicker fx:id="dateNaissancePicker" layoutX="423.0" layoutY="205.0" prefWidth="200.0" promptText="12-12-24" />
+        <PasswordField fx:id="passwordTF" layoutX="138.0" layoutY="273.0" prefWidth="200.0" promptText="**********" />
+        <Label layoutX="422.0" layoutY="187.0" text="Date de naissance" />
+        <Label layoutX="138.0" layoutY="253.0" text="Mot de passe" />
+        <Label layoutX="423.0" layoutY="124.0" text="Numéro de téléphone" />
+        <Label layoutX="118.0" layoutY="48.0" style="-fx-font-size: 24px;" text="Modifier le compte" textFill="#4c3627" underline="true">
+            <font>
+                <Font name="Andalus" size="24.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="90.0" fitWidth="96.0" layoutX="7.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../PiDev_images/Capture_d_écran_2024-02-14_001547-removebg-preview.png" />
+            </image>
+        </ImageView>
+        <Text layoutX="424.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" />
+        <Text layoutX="423.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'inscription" />
+        <ChoiceBox fx:id="roleTF" layoutX="423.0" layoutY="91.0" prefHeight="26.0" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Admin" />
+                    <String fx:value="Client" />
+                    <String fx:value="Artiste" />
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+        <DatePicker fx:id="dateinscriptionPicker" layoutX="424.0" layoutY="263.0" prefHeight="25.0" prefWidth="199.0" promptText="12-12-24" />
+        <TextField fx:id="specialiteTF" layoutX="424.0" layoutY="317.0" prefHeight="25.0" prefWidth="200.0" promptText="Specialité Artistique" />
+        <Label layoutX="423.0" layoutY="294.0" text="Specialité Artistique" />
+        <Label layoutX="139.0" layoutY="306.0" text="Adresse " />
+        <TextField fx:id="adresseLocaleTF" layoutX="137.0" layoutY="326.0" prefHeight="25.0" prefWidth="199.0" promptText="Adresse" />
+
+    </children>
+</AnchorPane>

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.interfaceaff">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.userShowController">
     <children>
         <ListView fx:id="userListView" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
         <Button fx:id="modifierButton" onAction="#modifierUtilisateur" prefHeight="37.0" prefWidth="90.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Modifier" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />

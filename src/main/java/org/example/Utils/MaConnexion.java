@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class MaConnexion {
     // init
-    final String URL = "jdbc:mysql://localhost:3306/PiDev_3A14_Apollo";
+    final String URL = "jdbc:mysql://localhost:3306/Chat_Apollo";
     final String USR = "root";
     final String PWD = "";
     private static MaConnexion instance;

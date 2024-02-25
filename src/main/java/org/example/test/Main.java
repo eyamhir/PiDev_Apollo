@@ -1,17 +1,11 @@
 package org.example.test;
 
-import org.example.Models.Artiste;
-import org.example.Models.Client;
-import org.example.Models.CodePromo;
 import org.example.Models.Utilisateur;
-import org.example.Services.Service_Artiste;
-import org.example.Services.Service_Client;
-import org.example.Services.Service_CodePromo;
 import org.example.Services.Service_Utilisateur;
 import org.example.Utils.MaConnexion;
 
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -20,14 +14,18 @@ public class Main {
         //********************************TEST CRUD UTILISATEUR************************//
         // Création d'un utilisateur
         /*Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setNom("Mhir");
-        utilisateur.setPrenom("Zaineb");
-        utilisateur.setAdresse_mail("zainebmhir@gmail.com");
-        utilisateur.setNum_tel(22264665);
-        utilisateur.setDate_naissance(new Date());
-        utilisateur.setDate_inscription(new Date());
-        utilisateur.setRole("Client");
-        utilisateur.setMot_passe("zaineb123");
+        utilisateur.setNom("Riahi");
+        utilisateur.setPrenom("Ahmed");
+        utilisateur.setAdresse_mail("ahmedriahi@gmail.com");
+        utilisateur.setNum_tel(50859320);
+        utilisateur.setDate_naissance(LocalDate.of(1998, 11, 22)); // Date de naissance
+        utilisateur.setDate_inscription(LocalDate.of(2024, 1, 1)); // Date d'inscription
+        utilisateur.setSpecialite_artistique("Design");
+        utilisateur.setAdresse_locale("Tunis");
+        utilisateur.setRole("Artist");
+        utilisateur.setMot_passe("ahmed123");
+        utilisateur.setActive(true);
+
         try {
          //Création d'un utilisateur
         serviceUtilisateur.creerUtilisateur(utilisateur);
@@ -36,16 +34,20 @@ public class Main {
         }*/
 
          //Lecture des données utilisateur
-         //Utilisateur utilisateurLu = serviceUtilisateur.getUtilisateurParId(6);
+         //Utilisateur utilisateurLu = serviceUtilisateur.getUtilisateurParId(2);
          //System.out.println("utilisateur lu : " + utilisateurLu);
 
          //Mise à jour de l'utilisateur
-        //utilisateurLu.setNom("Rayan");
+        /*utilisateurLu.setNom("Rayan");
+        utilisateurLu.setPrenom("rayo");
+        utilisateurLu.setAdresse_mail("elpapi@esprit.tn");
+        utilisateurLu.setMot_passe("Rayan");*/
+
         //serviceUtilisateur.mettreAJourUtilisateur(utilisateurLu);
         //System.out.println("Utilisateur mis à jour : " + utilisateurLu);
 
         // Suppression d'un utilisateur
-        // serviceUtilisateur.supprimerUtilisateur(2);
+        //serviceUtilisateur.supprimerUtilisateur(4);
 
         //********************************TEST CRUD CLIENT************************//
         // Création d'un client

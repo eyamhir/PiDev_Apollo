@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.Controller.Interface_createacc;
+
 import java.io.IOException;
 
 public class MainFX extends Application {
@@ -17,7 +17,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/interface_createacc.fxml"));
+        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userAddInterface.fxml"));
         try {
             Parent root =loader.load();
             Scene scene = new Scene(root);
@@ -28,17 +28,8 @@ public class MainFX extends Application {
             throw new RuntimeException(e);
         }*/
 
-        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/interface_modif.fxml"));
-        try {
-            Parent root =loader.load();
-            Scene scene = new Scene(root);
-            primaryStage.setTitle("modifier user");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }*/
-        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/interface_aff.fxml"));
+
+        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userShowInterface.fxml"));
         try {
             Parent root =loader.load();
             Scene scene = new Scene(root);
@@ -48,7 +39,19 @@ public class MainFX extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
     }*/
-        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userSigninInterface.fxml"));
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            primaryStage.setTitle("SIGN IN promo");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
+
