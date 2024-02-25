@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="730.0" prefWidth="945.0" styleClass="eight-background" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCommande">
+   <children>
+      <TextField fx:id="ID_Com_Mod" layoutX="113.0" layoutY="209.0" prefHeight="47.0" prefWidth="175.0" promptText="ID_Commande" stylesheets="@../values/style.css">
+         <font>
+            <Font name="Corbel" size="15.0" />
+         </font>
+         <styleClass>
+            <String fx:value="add-remove-layout" />
+            <String fx:value="card" />
+         </styleClass>
+      </TextField>
+      <TextField fx:id="ID_Prix_Mod" layoutX="113.0" layoutY="279.0" prefHeight="47.0" prefWidth="175.0" promptText="Prix_total" stylesheets="@../values/style.css">
+         <font>
+            <Font name="Corbel" size="15.0" />
+         </font>
+         <styleClass>
+            <String fx:value="add-remove-layout" />
+            <String fx:value="card" />
+         </styleClass>
+      </TextField>
+      <DatePicker fx:id="ID_Com_Date" layoutX="113.0" layoutY="344.0" prefHeight="47.0" prefWidth="175.0" promptText="Date" stylesheets="@../values/style.css">
+         <styleClass>
+            <String fx:value="add-remove-layout" />
+            <String fx:value="card" />
+         </styleClass>
+      </DatePicker>
+      <Button layoutX="141.0" layoutY="440.0" mnemonicParsing="false" onAction="#Modifier_Com" prefHeight="57.0" prefWidth="118.0" stylesheets="@../values/style.css" text="Modifier" textFill="WHITE">
+         <styleClass>
+            <String fx:value="add-remove-layout" />
+            <String fx:value="card" />
+            <String fx:value="botton" />
+         </styleClass>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="22.0" layoutY="645.0" mnemonicParsing="false" onAction="#Page_Ajouer_Com" prefHeight="57.0" prefWidth="118.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
+         <styleClass>
+            <String fx:value="add-remove-layout" />
+            <String fx:value="card" />
+            <String fx:value="botton" />
+         </styleClass>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="169.0" layoutY="645.0" mnemonicParsing="false" onAction="#Page_Supprimer_Com" prefHeight="57.0" prefWidth="118.0" stylesheets="@../values/style.css" text="Supprimer" textFill="WHITE">
+         <styleClass>
+            <String fx:value="add-remove-layout" />
+            <String fx:value="card" />
+            <String fx:value="botton" />
+         </styleClass>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="742.0" layoutY="635.0" mnemonicParsing="false" onAction="#Page_Liste_Com" prefHeight="58.0" prefWidth="175.0" styleClass="card" stylesheets="@../values/style.css" text="Liste Commande">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" layoutX="355.0" layoutY="7.0" prefHeight="58.0" prefWidth="278.0" styleClass="secondary-background" stylesheets="@../values/style.css" text="Modifier Commande" textFill="WHITE">
+         <font>
+            <Font name="Corbel" size="30.0" />
+         </font>
+      </Label>
+      <Button layoutX="745.0" layoutY="473.0" mnemonicParsing="false" onAction="#vers_page_panier" prefHeight="66.0" prefWidth="166.0" styleClass="card" stylesheets="@../values/style.css" text="Panier">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="746.0" layoutY="550.0" mnemonicParsing="false" onAction="#vers_page_payment" prefHeight="66.0" prefWidth="166.0" styleClass="card" stylesheets="@../values/style.css" text="Payment">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
