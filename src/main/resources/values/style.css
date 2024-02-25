@@ -6,6 +6,54 @@
     -fx-background-color: #b5a595 ;
 }
 
+.third-background{
+    -fx-background-image: url('../IMG/Capture2.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+.five-background{
+    -fx-background-image: url('../IMG/hdbac1.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+.four-background{
+    -fx-background-image: url('../IMG/Cap1back.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+ .seven-background{
+     -fx-background-image: url('../IMG/capargentback.jpg');
+     -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+     -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+     -fx-background-position: center; /* Positionnement de l'image au centre */
+ }
+
+.eight-background{
+    -fx-background-image: url('../IMG/cap33.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+.nine-background{
+    -fx-background-image: url('../IMG/cap2 panier.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+.Ten-background{
+    -fx-background-image: url('../IMG/tenBackcap.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
 .card{
     -fx-background-color: #fff;
     -fx-background-radius: 28;
