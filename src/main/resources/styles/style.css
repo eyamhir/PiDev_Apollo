@@ -1,9 +1,29 @@
+/*
+Iheb Nakib css
+*/
+
+.first-background{
+    -fx-background-image: url('../images/img.png');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+.second-background{
+    -fx-background-image: url('../images/img_1.png');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+.troix-background{
+    -fx-background-image: url('../images/img_2.png');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
 .dark-gray-background{
-/*-fx-background-color:#46474A;*/
 -fx-background-color:#A0816C;
 }
 .gray-background{
-/*-fx-background-color:#636566;*/
 -fx-background-color:E8DED1;
 }
 
@@ -43,4 +63,112 @@
     -fx-font-size: 18px; /* Taille de la police */
     -fx-font-family: "Arial", sans-serif; /* Police de caractères */
     -fx-font-weight: bold; /* Police en gras */
+}
+.light-gray-background {
+    -fx-background-color: #f2f2f2; /* Couleur de fond gris clair */
+}
+
+.list-cell {
+    -fx-text-fill: #333333; /* Couleur de texte */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+.conversationTitleLabel {
+    -fx-font-size: 18px; /* Taille de la police */
+    -fx-font-family: "Arial", sans-serif; /* Police de caractères */
+    -fx-font-weight: bold; /* Police en gras */
+}
+.dark-gray-background{
+/*-fx-background-color:#46474A;*/
+-fx-background-color:#A0816C;
+}
+.gray-background{
+/*-fx-background-color:#636566;*/
+-fx-background-color:E8DED1;
+}
+
+.transparent-background{
+-fx-background-color:rgba(0,0,0,0);
+}
+.radius{
+-fx-background-radius:100px;
+}
+.light-gray-background{
+-fx-background-color:#F5ECDF;
+}
+
+/*
+* radhouane css
+*/
+.primary-background{
+    -fx-background-color: #4c3627;
+}
+
+.secondary-background{
+    -fx-background-color: #b5a595 ;
+}
+
+.third-background{
+    -fx-background-image: url('../IMG/Capture2.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+.five-background{
+    -fx-background-image: url('../IMG/hdbac1.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+.four-background{
+    -fx-background-image: url('../IMG/Cap1back.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+ .seven-background{
+     -fx-background-image: url('../IMG/capargentback.jpg');
+     -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+     -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+     -fx-background-position: center; /* Positionnement de l'image au centre */
+ }
+
+.eight-background{
+    -fx-background-image: url('../IMG/cap33.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+.nine-background{
+    -fx-background-image: url('../IMG/cap2 panier.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+.card{
+    -fx-background-color: #fff;
+    -fx-background-radius: 28;
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0 , 0 , 0 ,10.0);
+}
+
+.add-remove-layout{
+    -fx-border-radius: 50;
+    -fx-border-width: 1;
+    -fx-border-color: #303030;
+}
+
+.rect-round{
+    -fx-background-radius: 20;
+}
+
+.white-border{
+    -fx-border-color: #fff;
+}
+
+.botton{
+    -fx-background-color: #303030;
+    -fx-background-radius: 20;
 }
