@@ -4,6 +4,7 @@ import org.example.enumarate.Conversation_Type;
 import org.example.enumarate.Visibilite;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -17,13 +18,13 @@ public class Conversation {
     private Date dateFin;
     private Conversation_Type typeConversation;
     private Visibilite visibilite;
+    private int utilisateur_id;
     private List<Message> messages;
 
 
     // Constructeur paramétré avec identifiant
 
-
-    public Conversation(int conversationId, String titre, String sujet, String description, Date dateCreation, Date dateFin, Conversation_Type typeConversation, Visibilite visibilite, List<Message> messages) {
+    public Conversation(int conversationId, String titre, String sujet, String description, Date dateCreation, Date dateFin, Conversation_Type typeConversation, Visibilite visibilite, int utilisateur_id, List<Message> messages) {
         this.conversationId = conversationId;
         this.titre = titre;
         this.sujet = sujet;
@@ -32,11 +33,12 @@ public class Conversation {
         this.dateFin = dateFin;
         this.typeConversation = typeConversation;
         this.visibilite = visibilite;
+        this.utilisateur_id = utilisateur_id;
         this.messages = messages;
     }
 
     // Constructeur paramétré sans identifiant
-    public Conversation( String titre, String sujet, String description, Date dateCreation, Date dateFin, Conversation_Type typeConversation, Visibilite visibilite, List<Message> messages) {
+    public Conversation(String titre, String sujet, String description, Date dateCreation, Date dateFin, Conversation_Type typeConversation, Visibilite visibilite, int utilisateur_id, List<Message> messages) {
 
         this.titre = titre;
         this.sujet = sujet;
@@ -45,6 +47,7 @@ public class Conversation {
         this.dateFin = dateFin;
         this.typeConversation = typeConversation;
         this.visibilite = visibilite;
+        this.utilisateur_id = utilisateur_id;
         this.messages = messages;
     }
 
@@ -119,6 +122,14 @@ public class Conversation {
         this.visibilite = visibilite;
     }
 
+    public int getUtilisateur_id() {
+        return utilisateur_id;
+    }
+
+    public void setUtilisateur_id(int utilisateur_id) {
+        this.utilisateur_id = utilisateur_id;
+    }
+
     public List<Message> getMessages() {
         return messages;
     }
@@ -127,13 +138,11 @@ public class Conversation {
         this.messages = messages;
     }
 
-
-    // Autres getters et setters pour les autres attributs
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDateCreation = sdf.format(dateCreation);
-        String formattedDateFin = sdf.format(dateFin);
+        String formattedDateCreation = (dateCreation != null) ? sdf.format(dateCreation) : "N/A";
+        String formattedDateFin = (dateFin != null) ? sdf.format(dateFin) : "N/A";
 
         return "Conversation{" +
                 "conversationId=" + conversationId +
@@ -143,5 +152,4 @@ public class Conversation {
                 ", messages=" + messages +
                 '}';
     }
-
 }
