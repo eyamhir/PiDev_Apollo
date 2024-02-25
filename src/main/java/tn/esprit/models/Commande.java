@@ -1,13 +1,11 @@
 package tn.esprit.models;
 
-import java.util.Date;
-
 public class Commande {
     private int id_Commande;
     private float prix_total;
     private String date_creation_commande;
 
-    public Commande(int id_Commande, float prix_total, String date_creation_commande) {
+    public Commande(int id_Commande, Float prix_total, String date_creation_commande) {
         this.id_Commande = id_Commande;
         this.prix_total = prix_total;
         this.date_creation_commande = date_creation_commande;

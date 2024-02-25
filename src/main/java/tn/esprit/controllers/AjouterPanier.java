@@ -3,94 +3,154 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
+import tn.esprit.models.Panier;
+import tn.esprit.sevices.PanierService;
+import tn.esprit.test.MainFX;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class AjouterPanier {
 
-    @FXML
-    private ImageView dec_deuxieme_ouevre;
+
+        private final PanierService panierService = new PanierService();
+
+        @FXML
+        private TextField Id_Panier1;
+
+        @FXML
+        private TextField Nb_Commande1;
+
+        @FXML
+        private TextField Id_Panier2;
+
+        @FXML
+        private TextField Nb_Commande2;
+
+        @FXML
+        private TextField Id_Panier3;
+
+        @FXML
+        private TextField Nb_Commande3;
+
+        @FXML
+        void Ajouter_premier_ouevre(ActionEvent event) {
+            ajouterPanier(Id_Panier1, Nb_Commande1);
+        }
+
+        @FXML
+        void Ajouter_deuxieme_ouevre(ActionEvent event) {
+            ajouterPanier(Id_Panier2, Nb_Commande2);
+        }
+
+        @FXML
+        void Ajouter_troisieme_ouevre(ActionEvent event) {
+            ajouterPanier(Id_Panier3, Nb_Commande3);
+        }
+
+        @FXML
+        void Modifier_premier_ouevre(ActionEvent event) {
+            modifierPanier(Id_Panier1, Nb_Commande1);
+        }
+
+        @FXML
+        void modifier_deuxieme_ouevre(ActionEvent event) {
+            modifierPanier(Id_Panier2, Nb_Commande2);
+        }
+
+        @FXML
+        void modifier_troisieme_ouevre(ActionEvent event) {
+            modifierPanier(Id_Panier3, Nb_Commande3);
+        }
+
+        @FXML
+        void supprimer_premier_ouevre(ActionEvent event) {
+            supprimerPanier(Id_Panier1);
+        }
+
+        @FXML
+        void supprimer_deuxieme_ouevre(ActionEvent event) {
+            supprimerPanier(Id_Panier2);
+        }
+
+        @FXML
+        void supprimer_troisieme_ouevre(ActionEvent event) {
+            supprimerPanier(Id_Panier3);
+        }
+
+        private void ajouterPanier(TextField idPanierField, TextField nbCommandeField) {
+            try {
+                int idPanier = Integer.parseInt(idPanierField.getText());
+                int nbCommande = Integer.parseInt(nbCommandeField.getText());
+                panierService.ajouter(new Panier(idPanier, nbCommande));
+                showAlert("Succès", "Panier ajouté avec succès.");
+            } catch (NumberFormatException e) {
+                showAlert("Erreur", "Veuillez entrer des valeurs valides pour l'identifiant du panier et le nombre de commandes.");
+            } catch (SQLException e) {
+                showAlert("Erreur", "Une erreur s'est produite lors de l'ajout du panier : " + e.getMessage());
+            }
+        }
+
+        private void modifierPanier(TextField idPanierField, TextField nbCommandeField) {
+            try {
+                int idPanier = Integer.parseInt(idPanierField.getText());
+                int nbCommande = Integer.parseInt(nbCommandeField.getText());
+                panierService.modifier(new Panier(idPanier, nbCommande));
+                showAlert("Succès", "Panier modifié avec succès.");
+            } catch (NumberFormatException e) {
+                showAlert("Erreur", "Veuillez entrer des valeurs valides pour l'identifiant du panier et le nombre de commandes.");
+            } catch (SQLException e) {
+                showAlert("Erreur", "Une erreur s'est produite lors de la modification du panier : " + e.getMessage());
+            }
+        }
+
+        private void supprimerPanier(TextField idPanierField) {
+            try {
+                int idPanier = Integer.parseInt(idPanierField.getText());
+                panierService.supprimer(idPanier);
+                showAlert("Succès", "Panier supprimé avec succès.");
+            } catch (NumberFormatException e) {
+                showAlert("Erreur", "Veuillez entrer une valeur valide pour l'identifiant du panier.");
+            } catch (SQLException e) {
+                showAlert("Erreur", "Une erreur s'est produite lors de la suppression du panier : " + e.getMessage());
+            }
+        }
+
+        private void showAlert(String titre, String message) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(titre);
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
+
+
 
     @FXML
-    private Button dec_premier_ouevre;
-
-    @FXML
-    private Button dec_troisieme_ouevre;
-
-    @FXML
-    private Button inc_deuxieme_ouevre;
-
-    @FXML
-    private Button inc_premier_ouevre;
-
-    @FXML
-    private Button inc_troisieme_ouevre;
-
-    @FXML
-    private Button payer;
-
-    @FXML
-    private ImageView remove_deuxieme_ouevre;
-
-    @FXML
-    private ImageView remove_premier_ouevre;
-
-    @FXML
-    private Button remove_troisieme_ouevre;
-
-
-    @FXML
-    void decrumenter_deuxieme_ouevre(MouseEvent event) {
+    void versCommande(ActionEvent event) throws IOException {
+        MainFX main = new MainFX();
+        main.changeStage("/tn.esprit/AjouterCommande.fxml");
 
     }
 
     @FXML
-    void decrumenter_premier_ouevre(ActionEvent event) {
+    void versPayment(ActionEvent event) throws IOException {
+        MainFX main = new MainFX();
+        main.changeStage("/tn.esprit/AjouterPayment.fxml");
 
     }
 
     @FXML
-    void decrumenter_troisieme_ouevre(ActionEvent event) {
+    void ListePanier(ActionEvent event) throws IOException {
 
-    }
-
-    @FXML
-    void incrumenter_deuxieme_ouevre(ActionEvent event) {
-
-    }
-
-    @FXML
-    void incrumenter_premier_nombre(ActionEvent event) {
-
-    }
-
-    @FXML
-    void incrumenter_troisieme_ouevre(ActionEvent event) {
-
-    }
-
-    @FXML
-    void remove_deuxieme_ouevre(MouseEvent event) {
-
-    }
-
-    @FXML
-    void remove_premier_ouevre(MouseEvent event) {
+        MainFX main = new MainFX();
+        main.changeStage("/tn.esprit/ListePanier.fxml");
 
 
     }
 
-    @FXML
-    void remove_troisieme_ouevre(ActionEvent event) {
 
-    }
-
-    @FXML
-    void valider_payer(ActionEvent event) {
-
-
-    }
 
 
 }
