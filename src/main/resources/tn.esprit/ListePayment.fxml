@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="693.0" prefWidth="1003.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ListePayment">
+   <children>
+      <ListView fx:id="ListePayment" layoutX="16.0" layoutY="126.0" opacity="0.47" prefHeight="551.0" prefWidth="980.0" />
+      <TextField alignment="CENTER" layoutX="334.0" layoutY="67.0" prefHeight="58.0" prefWidth="218.0" stylesheets="@../values/style.css" text="Liste Payment">
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="rect-round" />
+         </styleClass>
+         <font>
+            <Font size="24.0" />
+         </font></TextField>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backPay" text="back" />
+   </children>
+   <styleClass>
+      <String fx:value="secondary-background" />
+      <String fx:value="third-background" />
+   </styleClass>
+</AnchorPane>
