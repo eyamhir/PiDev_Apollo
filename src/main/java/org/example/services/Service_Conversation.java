@@ -7,8 +7,10 @@ import org.example.model.Conversation;
 import org.example.utils.MaConnexion;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Service_Conversation implements Interface_Conversation<Conversation> {
     private Connection connection;
@@ -19,21 +21,49 @@ public class Service_Conversation implements Interface_Conversation<Conversation
 
     @Override
     public void creerConversation(Conversation conversation) throws SQLException {
-        String query = "INSERT INTO conversation (titre, sujet, description, date_creation, date_fin, conversation_type, visibilite) VALUES (?,?,?,?,?,?,?)";
-      PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1, conversation.getTitre());
-        statement.setString(2, conversation.getSujet());
-        statement.setString(3, conversation.getDescription());
-        statement.setTimestamp(4, new java.sql.Timestamp(conversation.getDateCreation().getTime()));
-        statement.setTimestamp(5, new java.sql.Timestamp(conversation.getDateFin().getTime()));
-        statement.setString(6, conversation.getTypeConversation().name());
-        statement.setString(7, conversation.getVisibilite().name());
-        statement.executeUpdate();
+        String query = "INSERT INTO conversation (titre, sujet, description, date_creation, date_fin, conversation_type, visibilite, utilisateur_id) VALUES (?,?,?,?,?,?,?,?)";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, conversation.getTitre());
+            statement.setString(2, conversation.getSujet());
+            statement.setString(3, conversation.getDescription());
+            statement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now())); // Utiliser la date actuelle
+            statement.setNull(5, Types.TIMESTAMP); // Définir la date de fin comme null
+            statement.setString(6, conversation.getTypeConversation().name());
+            statement.setString(7, conversation.getVisibilite().name());
+            statement.setInt(8, conversation.getUtilisateur_id());
+            statement.executeUpdate();
+        }
     }
+
 
     @Override
     public Conversation lireConversation(int id) throws SQLException {
         String query = "SELECT * FROM conversation WHERE conversation_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    Conversation conversation = new Conversation();
+                    conversation.setConversationId(resultSet.getInt("conversation_id"));
+                    conversation.setTitre(resultSet.getString("titre"));
+                    conversation.setSujet(resultSet.getString("sujet"));
+                    conversation.setDescription(resultSet.getString("description"));
+                    conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
+                    conversation.setDateFin(resultSet.getTimestamp("date_fin"));
+                    String typeConversation = resultSet.getString("conversation_type");
+                    String visibilite = resultSet.getString("visibilite");
+                    conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
+                    conversation.setVisibilite(Visibilite.valueOf(visibilite));
+                    return conversation;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Conversation lireConversationunique(int id) throws SQLException {
+        String query = "SELECT conversation_id,titre,sujet,description,conversation_type,visibilite FROM conversation WHERE conversation_id = ?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
@@ -46,8 +76,8 @@ public class Service_Conversation implements Interface_Conversation<Conversation
             conversation.setTitre(resultSet.getString("titre"));
             conversation.setSujet(resultSet.getString("sujet"));
             conversation.setDescription(resultSet.getString("description"));
-            conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
-            conversation.setDateFin(resultSet.getTimestamp("date_fin"));
+            // conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
+            // conversation.setDateFin(resultSet.getTimestamp("date_fin"));
             String typeConversation = resultSet.getString("conversation_type");
             String visibilite = resultSet.getString("visibilite");
             conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
@@ -56,44 +86,21 @@ public class Service_Conversation implements Interface_Conversation<Conversation
 
         return conversation;
     }
-    @Override
-    public Conversation lireConversationunique(int id) throws SQLException {
-        String query = "SELECT titre,sujet,description,conversation_type,visibilite FROM conversation WHERE conversation_id = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setInt(1, id);
-        ResultSet resultSet = statement.executeQuery();
 
-        Conversation conversation = null;
-
-        if (resultSet.next()) {
-            conversation = new Conversation();
-         //   conversation.setConversationId(resultSet.getInt("conversation_id"));
-            conversation.setTitre(resultSet.getString("titre"));
-            conversation.setSujet(resultSet.getString("sujet"));
-            conversation.setDescription(resultSet.getString("description"));
-           // conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
-           // conversation.setDateFin(resultSet.getTimestamp("date_fin"));
-            String typeConversation = resultSet.getString("conversation_type");
-            String visibilite = resultSet.getString("visibilite");
-            conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
-            conversation.setVisibilite(Visibilite.valueOf(visibilite));
-        }
-
-        return conversation;
-    }
     @Override
     public void mettreAJourConversation(Conversation conversation) throws SQLException {
-        String query = "UPDATE conversation SET titre = ?, sujet = ?, description = ?, date_creation = ?, date_fin = ?, conversation_type = ?, visibilite = ? WHERE conversation_id = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1, conversation.getTitre());
-        statement.setString(2, conversation.getSujet());
-        statement.setString(3, conversation.getDescription());
-        statement.setTimestamp(4, new java.sql.Timestamp(conversation.getDateCreation().getTime()));
-        statement.setTimestamp(5, new java.sql.Timestamp(conversation.getDateFin().getTime()));
-        statement.setString(6, conversation.getTypeConversation().name());
-        statement.setString(7, conversation.getVisibilite().name());
-        statement.setInt(8, conversation.getConversationId());
-        statement.executeUpdate();
+        String query = "UPDATE conversation SET titre = ?, sujet = ?, description = ?,  conversation_type = ?, visibilite = ? WHERE conversation_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, conversation.getTitre());
+            statement.setString(2, conversation.getSujet());
+            statement.setString(3, conversation.getDescription());
+         //   statement.setTimestamp(4, new java.sql.Timestamp(conversation.getDateCreation().getTime()));
+        //    statement.setTimestamp(5, new java.sql.Timestamp(conversation.getDateFin().getTime()));
+            statement.setString(4, conversation.getTypeConversation().name());
+            statement.setString(5, conversation.getVisibilite().name());
+            statement.setInt(8, conversation.getConversationId());
+            statement.executeUpdate();
+        }
     }
     //@Override
     public void mettreAJourConversationUI(Conversation conversation) throws SQLException {
@@ -102,8 +109,8 @@ public class Service_Conversation implements Interface_Conversation<Conversation
         statement.setString(1, conversation.getTitre());
         statement.setString(2, conversation.getSujet());
         statement.setString(3, conversation.getDescription());
-       // statement.setTimestamp(4, new java.sql.Timestamp(conversation.getDateCreation().getTime()));
-       // statement.setTimestamp(5, new java.sql.Timestamp(conversation.getDateFin().getTime()));
+        // statement.setTimestamp(4, new java.sql.Timestamp(conversation.getDateCreation().getTime()));
+        // statement.setTimestamp(5, new java.sql.Timestamp(conversation.getDateFin().getTime()));
         statement.setString(4, conversation.getTypeConversation().name());
         statement.setString(5, conversation.getVisibilite().name());
         statement.setInt(6, conversation.getConversationId());
@@ -113,53 +120,89 @@ public class Service_Conversation implements Interface_Conversation<Conversation
     @Override
     public void supprimerConversation(int id) throws SQLException {
         String query = "DELETE FROM conversation WHERE conversation_id = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setInt(1, id);
-        statement.executeUpdate();
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
     }
 
     @Override
     public List<Conversation> listerConversations() throws SQLException {
         List<Conversation> conversations = new ArrayList<>();
         String query = "SELECT * FROM conversation";
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(query);
-
-        while (resultSet.next()) {
-            Conversation conversation = new Conversation();
-            conversation.setConversationId(resultSet.getInt("conversation_id"));
-            conversation.setTitre(resultSet.getString("titre"));
-            conversation.setSujet(resultSet.getString("sujet"));
-            conversation.setDescription(resultSet.getString("description"));
-            conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
-            conversation.setDateFin(resultSet.getTimestamp("date_fin"));
-            String typeConversation = resultSet.getString("conversation_type");
-            String visibilite = resultSet.getString("visibilite");
-            conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
-            conversation.setVisibilite(Visibilite.valueOf(visibilite));
-            conversations.add(conversation);
+        try (Statement statement = connection.createStatement(); ResultSet resultSet = statement.executeQuery(query)) {
+            while (resultSet.next()) {
+                Conversation conversation = new Conversation();
+                conversation.setConversationId(resultSet.getInt("conversation_id"));
+                conversation.setTitre(resultSet.getString("titre"));
+                conversation.setSujet(resultSet.getString("sujet"));
+                conversation.setDescription(resultSet.getString("description"));
+                conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
+                conversation.setDateFin(resultSet.getTimestamp("date_fin"));
+                String typeConversation = resultSet.getString("conversation_type");
+                String visibilite = resultSet.getString("visibilite");
+                conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
+                conversation.setVisibilite(Visibilite.valueOf(visibilite));
+                conversations.add(conversation);
+            }
         }
-
         return conversations;
     }
-    public void recupererId(int id) throws SQLException {
-        // Récupération de la conversation correspondant à l'ID
-        Conversation conversation = lireConversation(id);
+    @Override
+    public List<Conversation> rechercherConversationsParSujet(String sujet) throws SQLException {
+        String query = "SELECT * FROM conversation WHERE sujet LIKE ?";
+        List<Conversation> conversations = new ArrayList<>();
 
-        // Vérification si la conversation existe
-        if (conversation != null) {
-            // Affichage des détails de la conversation récupérée
-            System.out.println("Conversation récupérée : " + conversation);
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, "%" + sujet + "%");
 
-            // Vous pouvez ajouter ici toute autre logique que vous souhaitez effectuer avec la conversation récupérée
-            // Par exemple, vous pouvez afficher les détails de la conversation dans l'interface utilisateur, etc.
-        } else {
-            // Si aucune conversation correspondant à l'ID n'est trouvée, vous pouvez afficher un message d'erreur
-            System.out.println("Aucune conversation trouvée avec l'ID : " + id);
-            // Ou lancer une exception, selon vos besoins
-            throw new IllegalArgumentException("Aucune conversation trouvée avec l'ID : " + id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Conversation conversation = new Conversation();
+                    conversation.setConversationId(resultSet.getInt("conversation_id"));
+                    conversation.setTitre(resultSet.getString("titre"));
+                    conversation.setSujet(resultSet.getString("sujet"));
+                    conversation.setDescription(resultSet.getString("description"));
+                    conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
+                    conversation.setDateFin(resultSet.getTimestamp("date_fin"));
+                    String typeConversation = resultSet.getString("conversation_type");
+                    String visibilite = resultSet.getString("visibilite");
+                    conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
+                    conversation.setVisibilite(Visibilite.valueOf(visibilite));
+                    conversations.add(conversation);
+                }
+            }
         }
-    }
 
+        // Utilisation de Stream pour filtrer les conversations par sujet
+        return conversations.stream()
+                .filter(conversation -> conversation.getSujet().contains(sujet))
+                .collect(Collectors.toList());
+    }
+    public Conversation recupererConversationEnCours() throws SQLException {
+        LocalDateTime dateActuelle = LocalDateTime.now();
+        String query = "SELECT * FROM conversation WHERE date_creation <= ? AND (date_fin IS NULL OR date_fin >= ?)";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setTimestamp(1, Timestamp.valueOf(dateActuelle));
+            statement.setTimestamp(2, Timestamp.valueOf(dateActuelle));
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    Conversation conversation = new Conversation();
+                    conversation.setConversationId(resultSet.getInt("conversation_id"));
+                    conversation.setTitre(resultSet.getString("titre"));
+                    conversation.setSujet(resultSet.getString("sujet"));
+                    conversation.setDescription(resultSet.getString("description"));
+                    conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
+                    conversation.setDateFin(resultSet.getTimestamp("date_fin"));
+                    String typeConversation = resultSet.getString("conversation_type");
+                    String visibilite = resultSet.getString("visibilite");
+                    conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
+                    conversation.setVisibilite(Visibilite.valueOf(visibilite));
+                    return conversation;
+                }
+            }
+        }
+        return null;
+    }
 
 }
