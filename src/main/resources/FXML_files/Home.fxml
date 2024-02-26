@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Home">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.Home">
     <children>
-        <Button layoutX="788.0" layoutY="39.0" mnemonicParsing="false" onAction="#LogOut" styleClass="custom-button" stylesheets="@../Values/style.css" text="Log Out" textFill="#3d0451">
+        <Button layoutX="624.0" layoutY="31.0" mnemonicParsing="false" onAction="#LogOut" styleClass="custom-button" stylesheets="@../Values/style.css" text="Log Out" textFill="#3d0451">
             <font>
                 <Font name="Andalus" size="12.0" />
             </font>

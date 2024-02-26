@@ -58,22 +58,16 @@ public class userShowController {
                         if (empty || utilisateur == null) {
                             setText(null);
                         } else {
-                            setText(", Nom: " + utilisateur.getNom() +
-                                    ", Prénom: " + utilisateur.getPrenom() +
-                                    ", Email: " + utilisateur.getAdresse_mail() +
-                                    ", Numéro de téléphone: " + utilisateur.getNum_tel() +
-                                    ", Date de Naissance: " + utilisateur.getDate_naissance() +
-                                    ", Date d'inscription: " + utilisateur.getDate_inscription() +
-                                    ", Spécialité artistique: " + utilisateur.getSpecialite_artistique() +
-                                    ", Adresse locale: " + utilisateur.getAdresse_locale() +
-                                    ", Rôle: " + utilisateur.getRole() +
-                                    ", Mot de passe: " + utilisateur.getMot_passe()
-                                    );
+                            // Set the text of the cell to display only the desired fields
+                            setText("Nom: " + utilisateur.getNom() + "\n" +
+                                    "Prenom: " + utilisateur.getPrenom() + "\n" +
+                                    "Role: " + utilisateur.getRole());
                         }
                     }
                 };
             }
         });
+
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");

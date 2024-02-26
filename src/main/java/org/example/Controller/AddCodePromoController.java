@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 import org.example.Models.CodePromo;
 import org.example.Models.Utilisateur;
 import org.example.Services.Service_CodePromo;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AddCodePromoController {
     @FXML
@@ -37,7 +39,29 @@ public class AddCodePromoController {
     private final Service_CodePromo serviceCodePromo = new Service_CodePromo();
     private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
 
-    @FXML
+    /*@FXML
+    void initialize() throws SQLException {
+        List<Utilisateur> userList = serviceUtilisateur.obtenirTousLesUtilisateurs();
+        ObservableList<Utilisateur> observableUsers = FXCollections.observableList(userList);
+
+        utilisateurChoiceBox.setItems(observableUsers);
+
+        // Définir un StringConverter pour afficher le nom et le prénom de chaque utilisateur dans le ChoiceBox
+        utilisateurChoiceBox.setConverter(new StringConverter<Utilisateur>() {
+            @Override
+            public String toString(Utilisateur utilisateur) {
+                // Retourne le nom et le prénom de l'utilisateur
+                return utilisateur.getNom() + " " + utilisateur.getPrenom();
+            }
+
+            @Override
+            public Utilisateur fromString(String string) {
+                // Cette méthode peut être ignorée pour un ChoiceBox non-éditable
+                return null;
+            }
+        });
+    }*/
+   @FXML
     void initialize() throws SQLException {
 
         List<Utilisateur> userListView = serviceUtilisateur.obtenirTousLesUtilisateurs();
@@ -95,7 +119,7 @@ public class AddCodePromoController {
     @FXML
     void back(ActionEvent event) throws IOException{
             try{
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/FXML_files/BackSignInInterface.fxml"));
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/FXML_files/AFFinterfaceCodePromo.fxml"));
             Parent root=loader.load();
             Scene scene=new Scene(root);
             Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();

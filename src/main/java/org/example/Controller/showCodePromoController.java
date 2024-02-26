@@ -1,5 +1,6 @@
 package org.example.Controller;
 
+import com.sun.javafx.charts.Legend;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,12 +23,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListCell;
 import javafx.util.Callback;
+import org.example.Services.Service_Utilisateur;
 
 public class showCodePromoController {
     private final Service_CodePromo serviceCodePromo = new Service_CodePromo();
 
     @FXML
     private ListView<CodePromo> codePromoListView;
+    private TextField searchTextField;
 
     @FXML
     void initialize() {
@@ -127,6 +130,27 @@ public class showCodePromoController {
             afficherMessageErreur("Veuillez sélectionner un code promo à modifier.");
         }
     }
+    @FXML
+    void back(ActionEvent event) throws IOException{
+        try{
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/FXML_files/BackSignInInterface.fxml"));
+            Parent root=loader.load();
+            Scene scene=new Scene(root);
+            Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+        }catch(IOException e){
+            e.printStackTrace(); // Handle the exception appropriately (e.g., log it)
+        }
+    }
+
+    @FXML
+    void search(ActionEvent event) {
+        String keyword = searchTextField.getText();
+        List<CodePromo> searchResults = serviceCodePromo.search(keyword);
+        ObservableList<CodePromo> observableSearchResults = FXCollections.observableArrayList(searchResults);
+        codePromoListView.setItems(observableSearchResults);
+    }
+
 
 }
 

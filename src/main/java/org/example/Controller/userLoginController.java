@@ -25,18 +25,18 @@ public class userLoginController {
 
     @FXML
     private void LogInAction() {
-        String email = emailFT.getText();
-        String password = passwordFT.getText();
-        boolean isAdmin = email.equals("eya@domaine.com") && password.equals("eyaeya");
-// Check if email and password fields are empty
-        if (email.isEmpty() || password.isEmpty()) {
+        String adresse_mail = emailFT.getText();
+        String mot_passe = passwordFT.getText();
+        boolean isAdmin = adresse_mail.equals("eya@domaine.com") && mot_passe.equals("eyaeya");
+
+        // Check if email and password fields are empty
+        if (adresse_mail.isEmpty() || mot_passe.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Please enter email and password.");
             return;
         }
 
         // Authenticate the user
-        boolean authenticated = serviceUtilisateur.connecter(email, password);
-        String hashedPassword = HashUtil.doHashing(password); // Hashing the entered password
+        boolean authenticated = serviceUtilisateur.connecter(adresse_mail,mot_passe);
 
         // Check if authentication was successful
         if (authenticated) {

@@ -2,6 +2,7 @@ package org.example.Services;
 
 import org.example.Interfaces.Interface_CodePromo;
 import org.example.Models.CodePromo;
+import org.example.Models.Utilisateur;
 import org.example.Utils.MaConnexion;
 
 import java.sql.*;
@@ -87,10 +88,25 @@ public class Service_CodePromo implements Interface_CodePromo {
         statement.executeUpdate();
     }
 
-    public List<CodePromo> search(String code) {
-        return null;
-    }
+    public List<CodePromo> search(String keyword) {
+        List<CodePromo> CPList = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM codepromo WHERE code LIKE ? ";
+            PreparedStatement pstmt = connection.prepareStatement(req);
+            pstmt.setString(1, "%" + keyword + "%");
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                CodePromo cp = new CodePromo();
+                cp.setId_CodePromo(rs.getInt(1));
+                cp.setCode(rs.getString(2));
 
+                CPList.add(cp);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return CPList;
+    }
 
     public List<CodePromo> filterByName(String code) {
         return null;
