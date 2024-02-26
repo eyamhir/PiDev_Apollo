@@ -26,7 +26,7 @@ public class userLoginController {
     private void LogInAction() {
         String email = emailFT.getText();
         String password = passwordFT.getText();
-        boolean isAdmin = email.equals("eya.mhir@esprit.tn") && password.equals("eya123");
+        boolean isAdmin = email.equals("eya@domaine.com") && password.equals("eyaeya");
 // Check if email and password fields are empty
         if (email.isEmpty() || password.isEmpty()) {
             showAlert(Alert.AlertType.ERROR, "Error", "Please enter email and password.");
@@ -87,4 +87,23 @@ public class userLoginController {
             }
         }
 
+    public void pwdOublier(ActionEvent actionEvent) {
+        try {
+            // Load the Adduser.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/ForgotPWDInterface.fxml"));
+            Parent root = loader.load();
+
+            // Create a new stage for the Adduser interface
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Sign Up");
+
+            // Show the Adduser stage
+            stage.show();
+        } catch (IOException e) {
+            // Handle any potential IOException
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Failed to load forgot password interface.");
+        }
     }
+}

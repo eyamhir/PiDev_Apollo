@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,6 +16,7 @@ import org.example.Services.Service_Utilisateur;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,12 +26,19 @@ public class userShowController {
 
     @FXML
     private ListView<Utilisateur> userListView;
-
     @FXML
     private Button modifierButton;
 
     @FXML
     private Button supprimerButton;
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private TextField searchTextField;
+    @FXML
+    private Button back;
+
 
     @FXML
     void initialize() {
@@ -70,6 +79,18 @@ public class userShowController {
             alert.setTitle("Error");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
+        }
+    }
+    @FXML
+    void back(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/BackSignIn.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately (e.g., log it)
         }
     }
 
@@ -135,4 +156,13 @@ public class userShowController {
             afficherMessageErreur("Erreur lors de l'initialisation des données.");
         }
     }
+
+    @FXML
+    void search(ActionEvent event) {
+        String code = searchTextField.getText();
+        List<Utilisateur> searchResults = serviceUtilisateur.search(code);
+        ObservableList<Utilisateur> observableSearchResults = FXCollections.observableArrayList(searchResults);
+        userListView.setItems(observableSearchResults);
+    }
+
 }

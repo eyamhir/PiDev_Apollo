@@ -2,10 +2,16 @@ package org.example.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.example.Models.Utilisateur;
 import org.example.Services.Service_Utilisateur;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -116,9 +122,9 @@ public class userModifController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
+    private Utilisateur utilisateur;
     public void initData(Utilisateur utilisateur) {
-
+        this.utilisateur=utilisateur;
         if (utilisateur != null) {
             nomTF.setText(utilisateur.getNom());
             prenomTF.setText(utilisateur.getPrenom());
@@ -138,6 +144,19 @@ public class userModifController {
             passwordTF.setText(utilisateur.getMot_passe());
             specialiteTF.setText(utilisateur.getSpecialite_artistique());
             adresseLocaleTF.setText(utilisateur.getAdresse_locale());
+        }
+    }
+
+    @FXML
+    void back(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userShowInterface.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately (e.g., log it)
         }
     }
 }

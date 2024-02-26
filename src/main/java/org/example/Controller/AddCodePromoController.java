@@ -1,17 +1,20 @@
 package org.example.Controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.example.Models.CodePromo;
 import org.example.Models.Utilisateur;
 import org.example.Services.Service_CodePromo;
 import org.example.Services.Service_Utilisateur;
 
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -24,6 +27,7 @@ public class AddCodePromoController {
 
     @FXML
     private ChoiceBox<Utilisateur> boxFT;
+    private Button backBT;
 
     private final Service_CodePromo serviceCodePromo = new Service_CodePromo();
     private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
@@ -81,5 +85,17 @@ public class AddCodePromoController {
             displayErrorDialog("Une erreur s'est produite lors de la création du code promo.");
         }
     }
+   /* @FXML
+    void back(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userSigninInterface.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately (e.g., log it)
+        }
+    }*/
 }
 

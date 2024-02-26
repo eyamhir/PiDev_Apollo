@@ -9,6 +9,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Random;
+
 public class Service_Utilisateur implements Interface_Utilisateur {
     private Connection connection;
 
@@ -29,7 +33,8 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.setString(7, utilisateur.getSpecialite_artistique());
         statement.setString(8, utilisateur.getAdresse_locale());
         statement.setString(9, utilisateur.getRole());
-        statement.setString(10, utilisateur.getMot_passe());
+        //statement.setString(10, utilisateur.getMot_passe());
+        statement.setString(10, HashUtil.doHashing(utilisateur.getMot_passe()));
         statement.setBoolean(11, utilisateur.getActive());
         statement.executeUpdate();
     }
@@ -46,7 +51,10 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.setString(7, utilisateur.getSpecialite_artistique());
         statement.setString(8, utilisateur.getAdresse_locale());
         statement.setString(9, utilisateur.getRole());
-        statement.setString(10, utilisateur.getMot_passe());
+        //statement.setString(10, utilisateur.getMot_passe());
+        statement.setString(10, HashUtil.doHashing(utilisateur.getMot_passe()));
+
+
         statement.executeUpdate();
     }
 
@@ -177,7 +185,7 @@ public class Service_Utilisateur implements Interface_Utilisateur {
     }
 
     public List<Utilisateur> filterByName(String keyword) {
-        List<Utilisateur> userList = new ArrayList<>();
+        List<Utilisateur> userListView = new ArrayList<>();
         try {
             String req = "SELECT * FROM `utilisateur` WHERE `nom` LIKE ? OR `prenom` LIKE ?";
             PreparedStatement pstmt = connection.prepareStatement(req);
@@ -193,11 +201,79 @@ public class Service_Utilisateur implements Interface_Utilisateur {
                 u.setAdresse_mail(rs.getString(5));
                 u.setRole(rs.getString(6));
 
-                userList.add(u);
+                userListView.add(u);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return userList;
+        return userListView;
     }
+
+    public boolean resetPWD(String email) {
+        // Implement logic to generate a temporary password
+        String temporaryPassword = generateTemporaryPassword();
+
+        // Implement logic to update the user's password in the database
+        boolean passwordUpdated = updatePasswordInDatabase(email, temporaryPassword);
+
+        if (passwordUpdated) {
+            // Implement logic to send an email with the new password
+            boolean emailSent = sendEmail(email, temporaryPassword);
+            return emailSent;
+        } else {
+            return false;
+        }
+    }
+
+    private String generateTemporaryPassword() {
+        // Générer une chaîne aléatoire pour le mot de passe temporaire
+        // Vous pouvez personnaliser la longueur ou les caractères utilisés selon vos besoins
+        int length = 10; // Longueur du mot de passe temporaire
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Caractères utilisés
+
+        StringBuilder password = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(chars.length());
+            password.append(chars.charAt(index));
+        }
+
+        return password.toString();
+    }
+
+    private boolean updatePasswordInDatabase(String adresse_mail, String newPwd) {
+        try {
+            // Établir une connexion à la base de données
+            Connection connection = MaConnexion.getInstance().getCnx();
+
+            // Construire la requête SQL pour mettre à jour le mot de passe de l'utilisateur
+            String query = "UPDATE utilisateur SET mot_passe = ? WHERE adresse_mail = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, newPwd);
+            statement.setString(2, adresse_mail);
+
+            // Exécuter la requête SQL de mise à jour
+            int rowsUpdated = statement.executeUpdate();
+
+            // Vérifier si la mise à jour a réussi
+            if (rowsUpdated > 0) {
+                // La mise à jour a réussi
+                return true;
+            } else {
+                // La mise à jour a échoué
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false; // En cas d'erreur, retourner false
+        }
+    }
+
+
+    private boolean sendEmail(String email, String newPassword) {
+        // Implement logic to send an email with the new password
+        // Use JavaMail API or any other email-sending library
+        return true; // Assuming email sending was successful
+    }
+
 }
