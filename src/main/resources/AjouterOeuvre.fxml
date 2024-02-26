@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background-portfolio" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.AjouterOeuvre">
+   <children>
+      <ComboBox fx:id="categorie" editable="true" layoutX="35.0" layoutY="120.0" prefWidth="150.0" promptText="choisir la catégorie" styleClass="formulaire" />
+      <TextField fx:id="titreid" layoutX="35.0" layoutY="180.0" prefHeight="26.0" prefWidth="150.0" promptText="Entrer le titre" styleClass="formulaire" />
+      <TextField fx:id="diametreid" layoutX="35.0" layoutY="238.0" promptText="Entrer le diamétre " />
+      <Text layoutX="35.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégories" wrappingWidth="78.0198974609375" />
+      <DatePicker fx:id="datecreationid" layoutX="35.0" layoutY="294.0" prefHeight="26.0" prefWidth="150.0" promptText="Selectionner option" />
+      <Text layoutX="38.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" wrappingWidth="36.50704574584961" />
+      <Text layoutX="38.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diamètre " />
+      <Text layoutX="31.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de creation" />
+      <Button layoutX="244.0" layoutY="119.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="26.0" prefWidth="150.0" text="selectionner l'image " />
+      <TextArea fx:id="descriptionid" layoutX="252.0" layoutY="180.0" prefHeight="88.0" prefWidth="150.0" promptText="Décriver votre oeuvre" />
+      <TextField fx:id="prixid" layoutX="252.0" layoutY="294.0" promptText="Entrer le prix en DT" />
+      <Text layoutX="253.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Déscription" />
+      <Text layoutX="253.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
+      <ImageView fitHeight="168.0" fitWidth="161.0" layoutX="426.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="butid" layoutX="431.0" layoutY="337.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0" prefWidth="121.0" text="Soumettre " />
+      <ImageView fitHeight="51.0" fitWidth="52.0" layoutX="9.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/nvlogo-removebg-preview%20(1).png" />
+         </image>
+      </ImageView>
+      <Text layoutX="64.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-style2" text="Ajouter votre oeuvre " wrappingWidth="206.60003662109375" />
+   </children>
+</AnchorPane>

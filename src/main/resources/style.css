@@ -1,0 +1,163 @@
+.white-background {
+    -fx-background-color: #FFFFFF; /* Couleur de fond blanc */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 10, 0, 0, 0); /* Ombre */
+}
+.label {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #000000; /* Couleur du texte */
+}
+
+/* Style des éléments de la souris */
+.mouse-move {
+    -fx-cursor: hand; /* Curseur de la souris */
+}
+
+/* Style des éléments sélectionnés */
+.selected {
+    -fx-background-color: #CCCCCC; /* Couleur de fond */
+}
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+.round-layout{
+    -fx-border-radius: 50;
+    -fx-border-color:#D7D7D7 ;
+}
+.oeuvre-item{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30 ;
+}
+.image-view {
+    -fx-fit-width: 50px;
+    -fx-fit-height: 70px;
+}
+/* Style pour la VBox contenant chaque œuvre */
+.vbox-oeuvre {
+    -fx-background-color:#FFFFFF; /* Couleur de fond */
+    -fx-border-color: #CCCCCC; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 5px; /* Rayon des coins de la bordure */
+    -fx-background-radius: 5px;
+    -fx-padding: 10px; /* Espacement intérieur */
+    -fx-spacing: 5px; /* Espacement entre les enfants */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 10, 0, 0, 0); /* Ombrage */
+}
+
+/* Style pour l'image de l'œuvre */
+.image-oeuvre {
+    -fx-fit-height: 200px; /* Hauteur fixe de l'image */
+    -fx-fit-width: 200px; /* Largeur fixe de l'image */
+    -fx-preserver-ratio: true; /* Conserver le ratio */
+}
+
+/* Style pour le titre de l'œuvre */
+.titre-oeuvre {
+    -fx-font-size: 18px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+}
+
+/* Style pour les labels de description de l'œuvre */
+.label-oeuvre {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #666666; /* Couleur du texte */
+}
+.scroll-pane {
+    -fx-background-color: rgba(255, 255, 255, 0.5); /* Couleur de fond avec une certaine transparence */
+
+}
+
+
+
+.hbox-style {
+    -fx-background-color: #FFFFFF; /* Couleur de fond */
+    -fx-background-radius: 10px; /* Bordures arrondies */
+    -fx-border-radius: 10px; /* Bordures arrondies */
+
+    -fx-border-width: 1px; /* Épaisseur de la bordure */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 10, 0, 0, 0); /* Ombrage */
+}
+
+/* Style de texte pour les labels */
+.label-style {
+    -fx-font-size: 13px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+.label-style2 {
+    -fx-font-size: 18px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+.button-style {
+    -fx-font-size: 12px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-text-fill: #000000; /* Couleur du texte */
+    -fx-background-color: transparent; /* Fond transparent */
+    -fx-border-color: #000000; /* Couleur de la bordure */
+    -fx-border-radius: 10px; /* Bordures arrondies */
+    -fx-background-radius: 10px; /* Bordures arrondies */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 10, 0, 0, 0); /* Ombrage */
+}
+
+/* Changement de style lorsque le bouton est survolé */
+.button-style:hover {
+    -fx-background-color: #CCCCCC; /* Couleur de fond au survol */
+}
+.shadow{
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.1),10,0,0,10);
+    -fx-background-radius: 5px;
+    -fx-border-radius:5px ;
+}
+.background-portfolio{
+    -fx-background-color: #F8F1EC;
+}
+.text-field, .date-picker {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-padding: 5px;
+}
+
+.text-field {
+    -fx-pref-width: 150px;
+}
+
+.date-picker {
+    -fx-pref-width: 150px;
+}
+
+.button {
+    -fx-background-color: #dca78c;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 150px;
+}
+
+.button:hover {
+    -fx-background-color: #dca78c;
+}
+
+#categorie {
+    -fx-pref-width: 150px;
+}
+
+#descriptionid {
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-padding: 5px;
+    -fx-pref-width: 150px;
+}
+
+#butid {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 150px;
+}
+
+#butid:hover {
+    -fx-background-color: #218838;
+}

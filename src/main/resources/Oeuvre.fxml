@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="277.0" prefWidth="176.0" styleClass="vbox-oeuvre" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.OeuvreController">
+   <children>
+      <ImageView fx:id="imagetx" fitHeight="163.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+         <VBox.margin>
+            <Insets right="5.0" />
+         </VBox.margin></ImageView>
+      <Label fx:id="titretx" prefHeight="27.0" prefWidth="130.0" styleClass="titre-oeuvre" text="Titre">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <HBox prefHeight="4.0" prefWidth="206.0">
+         <children>
+            <Label fx:id="dimensiontx" styleClass="label-oeuvre" text="Categorie " textFill="#919191" />
+            <Pane prefHeight="20.0" prefWidth="13.0" />
+            <Label styleClass="label-oeuvre" text="dimenson " textFill="#9e9e9e" />
+         </children>
+      </HBox>
+      <Label fx:id="prixTx" styleClass="label-oeuvre" text="Prix" />
+   </children>
+</VBox>

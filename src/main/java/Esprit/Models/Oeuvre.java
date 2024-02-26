@@ -7,19 +7,43 @@ import java.util.Date;
 public class Oeuvre {
     private int id_Oeuvre;
     private String titre ;
-    private Blob image_oeuvre;
+    private String image_oeuvre;
     private String description ;
     private LocalDate date_creation ;
     private float dimension ;
     private boolean disponibilite ;
+    private Categories categories;
+    private int id_portfolio ;
     private float prix ;
     private int quantite ;
 
     public Oeuvre() {
     }
 
-    public Oeuvre(int id_Oeuvre, String titre, Blob image_oeuvre, String description, LocalDate date_creation, float dimension, boolean disponibilite, float prix, int quantite) {
+    public int getId_portfolio() {
+        return id_portfolio;
+    }
+
+    public void setId_portfolio(int id_portfolio) {
+        this.id_portfolio = id_portfolio;
+    }
+
+    public Oeuvre(String titre, String  image_oeuvre, String description, LocalDate date_creation, float dimension,float prix, boolean disponibilite, int quantite, int id_portfolio, Categories categories) {
+        this.titre = titre;
+        this.image_oeuvre = image_oeuvre;
+        this.description = description;
+        this.date_creation = date_creation;
+        this.dimension = dimension;
+        this.disponibilite = disponibilite;
+        this.categories = categories;
+        this.id_portfolio = id_portfolio;
+        this.prix = prix;
+        this.quantite = quantite;
+    }
+
+    public Oeuvre(int id_Oeuvre, String titre, String image_oeuvre, String description, LocalDate date_creation, float dimension, boolean disponibilite, float prix, int quantite, Categories categories , int id_portfolio) {
         this.id_Oeuvre = id_Oeuvre;
+        this.categories=categories;
         this.titre = titre;
         this.image_oeuvre = image_oeuvre;
         this.description = description;
@@ -27,9 +51,11 @@ public class Oeuvre {
         this.dimension = dimension;
         this.disponibilite = disponibilite;
         this.prix = prix;
+        this.id_portfolio=id_portfolio;
         this.quantite = quantite;
 
     }
+
 
     public int getId_Oeuvre() {
         return id_Oeuvre;
@@ -42,16 +68,19 @@ public class Oeuvre {
     public String getTitre() {
         return titre;
     }
+    public Categories getCategories() {return categories;}
+
+    public void setCategories(Categories categories) {this.categories = categories;}
 
     public void setTitre(String titre) {
         this.titre = titre;
     }
 
-    public Blob getImage_oeuvre() {
+    public String getImage_oeuvre() {
         return image_oeuvre;
     }
 
-    public void setImage_oeuvre(Blob image_oeuvre) {
+    public void setImage_oeuvre(String image_oeuvre) {
         this.image_oeuvre = image_oeuvre;
     }
 
@@ -114,6 +143,8 @@ public class Oeuvre {
                 ", dimension=" + dimension +
                 ", disponibilite=" + disponibilite +
                 ", prix=" + prix +
+                ",catégorie="+categories+
+                ",portfolio="+id_portfolio+
                 ", quantite=" + quantite +
                 '}';
     }

@@ -10,23 +10,28 @@ public class Exposition {
     private String description ;
     private LocalDate date_debut;
     private LocalDate date_fin ;
+    private int id_portfolio;
 
     public Exposition() {
     }
 
-    public Exposition(String titre, String description, LocalDate date_debut, LocalDate date_fin) {
+    public Exposition(String titre, String description, LocalDate date_debut, LocalDate date_fin,int id_portfolio) {
         this.titre = titre;
         this.description = description;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
+        this.id_portfolio=id_portfolio;
     }
 
-    public Exposition(int id_Exposition, String titre, String description, LocalDate date_debut, LocalDate date_fin) {
+
+
+    public Exposition(int id_Exposition, String titre, String description, LocalDate date_debut, LocalDate date_fin, int id_portfolio) {
         this.id_Exposition = id_Exposition;
         this.titre = titre;
         this.description = description;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
+        this.id_portfolio=id_portfolio;
     }
 
     public int getId_Exposition() {
@@ -68,6 +73,13 @@ public class Exposition {
     public void setDate_fin(LocalDate date_fin) {
         this.date_fin = date_fin;
     }
+    public int getId_portfolio() {
+        return id_portfolio;
+    }
+
+    public void setId_portfolio(int id_portfolio) {
+        this.id_portfolio = id_portfolio;
+    }
 
     @Override
     public String toString() {
@@ -77,6 +89,7 @@ public class Exposition {
                 ", description='" + description + '\'' +
                 ", date_debut=" + date_debut +
                 ", date_fin=" + date_fin +
+                ", id_portfolio="+id_portfolio+
                 '}';
     }
 

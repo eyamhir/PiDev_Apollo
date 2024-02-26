@@ -12,6 +12,7 @@ import java.util.List;
 public class ExpositionService implements Crud<Exposition> {
     private Connection connection ;
     public ExpositionService(){
+        // Obtention de la connexion à la base de données
         connection= Database.getInstance().getConnection();
 
     }
@@ -43,12 +44,12 @@ public class ExpositionService implements Crud<Exposition> {
 
 
     @Override
-    public void supprimer(int id) throws SQLException {
+    public void supprimer(Exposition exposition) throws SQLException {
+        int idExposition = exposition.getId_Exposition();
         String req = "DELETE FROM exposition WHERE id_Exposition=?";
         PreparedStatement ps = connection.prepareStatement(req);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
+        ps.setInt(1, idExposition);
+        ps.executeUpdate();
     }
 
     @Override

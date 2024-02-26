@@ -6,25 +6,38 @@ import java.time.LocalDate;
 
 public class Portfolio {
     private int id_portfolio ;
+    private String imageurl;
+    private String nom_Artistique ;
     private String biographie ;
     private LocalDate debut_carrier ;
     private String reseau_sociaux ;
 
+
+
     public Portfolio() {
     }
 
-    public Portfolio(String biographie, LocalDate debut_carrier, String reseau_sociaux) {
+    public Portfolio(String nom_Artistique,String imageurl,String biographie, LocalDate debut_carrier, String reseau_sociaux ) {
+        this.nom_Artistique=nom_Artistique;
+        this.imageurl=imageurl;
         this.biographie = biographie;
         this.debut_carrier = debut_carrier;
         this.reseau_sociaux = reseau_sociaux;
+
     }
 
-    public Portfolio(int id_portfolio, String biographie, LocalDate debut_carrier, String reseau_sociaux) {
+    public Portfolio(String nom_Artistique,int id_portfolio, String biographie, LocalDate debut_carrier, String reseau_sociaux ) {
+        this.nom_Artistique=nom_Artistique;
         this.id_portfolio = id_portfolio;
         this.biographie = biographie;
         this.debut_carrier = debut_carrier;
         this.reseau_sociaux = reseau_sociaux;
+
     }
+
+    public String getNom_Artistique() { return nom_Artistique; }
+
+    public void setNom_Artistique(String nom_Artistique) {this.nom_Artistique = nom_Artistique;}
 
     public int getId_portfolio() {
         return id_portfolio;
@@ -53,6 +66,9 @@ public class Portfolio {
     public String getReseau_sociaux() {
         return reseau_sociaux;
     }
+    public String getImageurl() { return imageurl;}
+
+    public void setImageurl(String imageurl) {this.imageurl = imageurl;}
 
     @Override
     public String toString() {
@@ -61,6 +77,7 @@ public class Portfolio {
                 ", biographie='" + biographie + '\'' +
                 ", debut_carrier=" + debut_carrier +
                 ", reseau_sociaux='" + reseau_sociaux + '\'' +
+                ",nom_Artistique=" + nom_Artistique+
                 '}';
     }
 

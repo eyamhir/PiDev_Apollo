@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="337.0" prefWidth="546.0" styleClass="transparent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.ListeOeuvres">
+   <children>
+      <HBox alignment="CENTER" prefHeight="35.0" prefWidth="546.0" styleClass="scroll-pane">
+         <children>
+            <HBox fx:id="add" alignment="CENTER" onMouseClicked="#naviguerVersAjoutOeuvre" prefHeight="19.0" prefWidth="150.0">
+               <children>
+                  <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@images/carre-plus.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="20.0" prefWidth="106.0" text="Ajouter oeuvre" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets left="3.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="white-background" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </HBox>
+            <Pane prefHeight="49.0" prefWidth="146.0" />
+            <HBox fx:id="add1" alignment="CENTER" onMouseClicked="#naviguerVersAjoutOeuvre" prefHeight="19.0" prefWidth="215.0">
+               <children>
+                  <TextField promptText="Rechercher" styleClass="transparent" />
+                  <ImageView fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@images/search-icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <styleClass>
+                  <String fx:value="white-background" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="304.0" prefWidth="546.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ScrollPane fx:id="scrolt" prefHeight="236.0" prefWidth="507.0" stylesheets="@style.css" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="10.0" top="50.0" />
+               </HBox.margin>
+               <content>
+                  <FlowPane fx:id="gridid" prefHeight="0.0" prefWidth="0.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+   </children>
+</VBox>
