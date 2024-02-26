@@ -7,10 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.example.Services.HashUtil;
 import org.example.Services.Service_Utilisateur;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class userLoginController {
 
@@ -22,6 +23,23 @@ public class userLoginController {
     @FXML
     private Button LoginFT;
     private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+
+    // Hashage MD5
+    public static String doHashing(String password) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.update(password.getBytes());
+            byte[] resultByteArray = messageDigest.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : resultByteArray) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
     @FXML
     private void LogInAction() {
@@ -36,7 +54,7 @@ public class userLoginController {
         }
 
         // Authenticate the user
-        boolean authenticated = serviceUtilisateur.connecter(adresse_mail,mot_passe);
+        boolean authenticated = serviceUtilisateur.connecter(adresse_mail,doHashing(mot_passe));
 
         // Check if authentication was successful
         if (authenticated) {

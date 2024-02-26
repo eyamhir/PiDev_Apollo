@@ -17,6 +17,8 @@ import org.example.Services.Service_CodePromo;
 import org.example.Services.Service_Utilisateur;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -38,6 +40,23 @@ public class AddCodePromoController {
 
     private final Service_CodePromo serviceCodePromo = new Service_CodePromo();
     private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+
+    // Hashage MD5
+    public static String doHashing(String password) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.update(password.getBytes());
+            byte[] resultByteArray = messageDigest.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : resultByteArray) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
     /*@FXML
     void initialize() throws SQLException {
@@ -61,6 +80,8 @@ public class AddCodePromoController {
             }
         });
     }*/
+
+
    @FXML
     void initialize() throws SQLException {
 

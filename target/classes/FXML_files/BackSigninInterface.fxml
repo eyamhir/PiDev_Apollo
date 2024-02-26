@@ -5,20 +5,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.BackSignIn">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.BackSignIn">
 
     <children>
-        <ImageView fitHeight="600.0" fitWidth="956.0" opacity="0.3" pickOnBounds="true">
+        <ImageView fitHeight="450.0" fitWidth="750.0" opacity="0.3" pickOnBounds="true">
             <image>
                 <Image url="@../PiDev_images/05museum-labels-2-videoSixteenByNineJumbo1600.jpg" />
             </image>
         </ImageView>
-        <Button fx:id="LogOut" layoutX="817.0" layoutY="43.0" mnemonicParsing="false" onAction="#LogOut" styleClass="custom-button" stylesheets="@../Values/style.css" text="Log Out" textFill="#0d0d0d">
+        <Button fx:id="LogOut" layoutX="639.0" layoutY="27.0" mnemonicParsing="false" onAction="#LogOut" styleClass="custom-button" stylesheets="@../Values/style.css" text="Log Out" textFill="#0d0d0d">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="CodePromo" layoutX="554.0" layoutY="140.0" mnemonicParsing="false" onAction="#codePromos" prefHeight="37.0" prefWidth="150.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Codes Promos" />
-        <Button fx:id="Utilisateur" layoutX="393.0" layoutY="140.0" mnemonicParsing="false" onAction="#Utilisateurs" prefHeight="37.0" prefWidth="150.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Utilisateurs" />
+        <Button fx:id="CodePromo" layoutX="460.0" layoutY="300.0" mnemonicParsing="false" onAction="#codePromos" prefHeight="37.0" prefWidth="150.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Codes Promos" />
+        <Button fx:id="Utilisateur" layoutX="121.0" layoutY="300.0" mnemonicParsing="false" onAction="#Utilisateurs" prefHeight="37.0" prefWidth="150.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Utilisateurs" />
     </children>
 </AnchorPane>

@@ -34,7 +34,7 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.setString(8, utilisateur.getAdresse_locale());
         statement.setString(9, utilisateur.getRole());
         //statement.setString(10, utilisateur.getMot_passe());
-        statement.setString(10, HashUtil.doHashing(utilisateur.getMot_passe()));
+        statement.setString(10, utilisateur.getMot_passe());
         statement.setBoolean(11, utilisateur.getActive());
         statement.executeUpdate();
     }
@@ -52,7 +52,7 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.setString(8, utilisateur.getAdresse_locale());
         statement.setString(9, utilisateur.getRole());
         //statement.setString(10, utilisateur.getMot_passe());
-        statement.setString(10, HashUtil.doHashing(utilisateur.getMot_passe()));
+        statement.setString(10, utilisateur.getMot_passe());
 
 
         statement.executeUpdate();

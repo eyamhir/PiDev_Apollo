@@ -12,6 +12,8 @@ import org.example.Models.Utilisateur;
 import org.example.Services.Service_Utilisateur;
 
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -51,6 +53,25 @@ public class userAddController {
     private TextField adresseLocaleTF; // Ajout du champ d'adresse locale
 
     private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
+
+
+    // Hashage MD5
+    public static String doHashing(String password) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            messageDigest.update(password.getBytes());
+            byte[] resultByteArray = messageDigest.digest();
+            StringBuilder sb = new StringBuilder();
+            for (byte b : resultByteArray) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
    /* @FXML
     void initialize() {
@@ -94,7 +115,7 @@ public class userAddController {
                         SpecialiteartistiqueTF.getText(),
                         adresseLocaleTF.getText(), // Utiliser le champ d'adresse locale
                         roleTF.getValue(),
-                        passwordTF.getText()//  isActive est toujours true lors de la création d'un compte
+                        doHashing(passwordTF.getText())//  isActive est toujours true lors de la création d'un compte
                 );
 
                 // Appeler la méthode du service pour créer l'utilisateur
@@ -154,7 +175,7 @@ public class userAddController {
     @FXML
     void back(ActionEvent event) throws IOException {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userShowInterface.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userSigninInterface.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
