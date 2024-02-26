@@ -22,7 +22,7 @@ public class Service_CodePromo implements Interface_CodePromo {
 
     @Override
     public void creerCodePromo(CodePromo codePromo) throws SQLException {
-        String query = "INSERT INTO CodePromo (code, dateExpiration , id_utilisateur) VALUES (?,?,?)";
+        String query = "INSERT INTO codepromo (code, dateExpiration , id_utilisateur) VALUES (?,?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, codePromo.getCode());
         statement.setDate(2, Date.valueOf(codePromo.getDateExpiration()));

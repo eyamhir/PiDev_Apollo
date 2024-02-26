@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -59,6 +60,20 @@ public class showCodePromoController {
     }
 
     @FXML
+    void ajouterCodePromo(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/ADDinterfaceCodePromo.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately (e.g., log it)
+        }
+    }
+
+
+    @FXML
     void supprimerCodePromo(ActionEvent event) {
         CodePromo selectedCodePromo = codePromoListView.getSelectionModel().getSelectedItem();
         if (selectedCodePromo != null) {
@@ -97,7 +112,7 @@ public class showCodePromoController {
         CodePromo selectedCodePromo = codePromoListView.getSelectionModel().getSelectedItem();
         if (selectedCodePromo != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/modify_code_promo.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/UPinterfaceCodePromo.fxml"));
                 Parent root = loader.load();
                 UPCodePromoController controller = loader.getController();
                 controller.initData(selectedCodePromo); // Passer le code promo sélectionné au contrôleur de modification
@@ -114,3 +129,4 @@ public class showCodePromoController {
     }
 
 }
+

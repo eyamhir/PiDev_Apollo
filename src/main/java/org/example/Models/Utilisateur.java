@@ -79,6 +79,12 @@ public class Utilisateur {
 
     }
 
+    public Utilisateur(String nom, String prenom, String role) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.role = role;
+    }
+
     public int getId_utilisateur() {
         return id_utilisateur;
     }
@@ -176,7 +182,7 @@ public class Utilisateur {
     @Override
     public String toString() {
         return "Utilisateur{" +
-                "id_utilisateur=" + id_utilisateur +
+                  id_utilisateur +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", adresse_mail='" + adresse_mail + '\'' +

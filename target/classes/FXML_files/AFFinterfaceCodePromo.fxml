@@ -11,5 +11,8 @@
         <ListView fx:id="codePromoListView" prefHeight="300.0" prefWidth="300.0"/>
         <Button text="Supprimer Code Promo" onAction="#supprimerCodePromo"/>
         <Button text="Modifier Code Promo" onAction="#modifierCodePromo"/>
+        <Button text="Ajouter Code Promo" onAction="#ajouterCodePromo"/>
+
+
     </VBox>
 </AnchorPane>

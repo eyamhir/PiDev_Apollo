@@ -9,11 +9,12 @@ public class CodePromo {
     private LocalDate dateExpiration;
     private int id_utilisteur;
 
-    public CodePromo(String code, LocalDate dateExpiration, int idUtilisateur) {
+
+
+    public CodePromo(String code, LocalDate dateExpiration, int id_utilisteur) {
         this.code = code;
         this.dateExpiration = dateExpiration;
         this.id_utilisteur = id_utilisteur;
-
     }
 
     public int getId_utilisteur() {
@@ -75,6 +76,8 @@ public class CodePromo {
                 "id_CodePromo=" + id_CodePromo +
                 ", code='" + code + '\'' +
                 ", dateExpiration=" + dateExpiration +
+                ", id_utilisteur=" + id_utilisteur +
                 '}';
     }
 }
+

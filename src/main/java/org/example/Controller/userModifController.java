@@ -61,6 +61,7 @@ public class userModifController {
             if (allFieldsFilled()) {
                 // Créer un objet Utilisateur avec le constructeur approprié
                 Utilisateur u = new Utilisateur(
+                        utilisateur.getId_utilisateur(),
                         nomTF.getText(),
                         prenomTF.getText(),
                         emailTF.getText(),
@@ -72,6 +73,7 @@ public class userModifController {
                         specialiteTF.getText(),
                         adresseLocaleTF.getText()
                 );
+
 
                 // Appeler la méthode du service pour modifier l'utilisateur
                 serviceUtilisateur.mettreAJourUtilisateur(u);

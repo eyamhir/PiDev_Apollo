@@ -1,25 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.Controller.UPCodePromoController"
-            prefHeight="400.0" prefWidth="600.0">
-<children>
-    <Label layoutX="14.0" layoutY="14.0" text="Modifier un Code Promo" />
-    <Label layoutX="14.0" layoutY="55.0" text="Code :" />
-    <TextField fx:id="codeField" layoutX="93.0" layoutY="51.0" prefWidth="200.0" />
-    <Label layoutX="14.0" layoutY="100.0" text="Date d'expiration :" />
-    <DatePicker fx:id="expirationDateField" layoutX="139.0" layoutY="96.0" prefWidth="150.0" />
-    <HBox layoutX="154.0" layoutY="152.0" spacing="20.0">
-        <children>
-            <Button mnemonicParsing="false" onAction="#modifyCodePromo" text="Modifier" />
-            <!-- <Button mnemonicParsing="false" onAction="#cancel" text="Annuler" />-->
-        </children>
-    </HBox>
-</children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.UPCodePromoController">
+    <children>
+        <ImageView fitHeight="213.0" fitWidth="372.0" layoutX="114.0" layoutY="101.0" opacity="0.32" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../PiDev_images/capture-decran-2020-11-25-a-18.28.59web-1-964x602.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="146.0" layoutY="46.0" text="Modifier un Code Promo">
+            <font>
+                <Font name="Andalus" size="30.0" />
+            </font></Label>
+        <HBox layoutX="154.0" layoutY="152.0" spacing="20.0" />
+        <Button layoutX="215.0" layoutY="328.0" mnemonicParsing="false" onAction="#modifyCodePromo" stylesheets="@../Values/style.css" text="Modifier Code Promo">
+            <styleClass>
+                <String fx:value="left-side-background" />
+                <String fx:value="custom-button" />
+            </styleClass></Button>
+        <TextField fx:id="codeTF" layoutX="284.0" layoutY="146.0" prefHeight="25.0" prefWidth="150.0" />
+        <DatePicker fx:id="dateExpirationPicker" layoutX="284.0" layoutY="200.0" prefWidth="150.0" />
+        <Label layoutX="175.0" layoutY="150.0" text="Code :" />
+        <Label layoutX="175.0" layoutY="204.0" text="Date d'expiration :" />
+        <ChoiceBox fx:id="utilisateurChoiceBox" layoutX="214.0" layoutY="263.0" prefWidth="150.0" />
+        <Button layoutX="545.0" layoutY="364.0" mnemonicParsing="false" onAction="#back" text="Back" />
+
+    </children>
 </AnchorPane>
-

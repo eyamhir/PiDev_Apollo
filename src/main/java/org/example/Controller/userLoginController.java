@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.example.Services.HashUtil;
 import org.example.Services.Service_Utilisateur;
 
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class userLoginController {
 
         // Authenticate the user
         boolean authenticated = serviceUtilisateur.connecter(email, password);
+        String hashedPassword = HashUtil.doHashing(password); // Hashing the entered password
 
         // Check if authentication was successful
         if (authenticated) {

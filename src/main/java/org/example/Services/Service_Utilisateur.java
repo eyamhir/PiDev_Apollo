@@ -141,22 +141,31 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.executeUpdate();
     }
 
-    public boolean connecter(String adresse_mail, String mot_passe) {
-        try {
-            String req = "SELECT * FROM `utilisateur` WHERE `adresse_mail` = ? AND `mot_passe` = ?";
-            PreparedStatement pstmt = connection.prepareStatement(req);
-            pstmt.setString(1, adresse_mail);
-            pstmt.setString(2, mot_passe);
-            ResultSet rs = pstmt.executeQuery();
+    public boolean connecter(String email, String password) {
+        // Récupérer le mot de passe non hashé pour l'utilisateur correspondant à l'email
+        String storedPassword = getPasswordFromDatabase(email);
 
+        // Comparer les mots de passe hashé et non hashé
+        return storedPassword != null && storedPassword.equals(password);
+    }
 
-            // If the result set has any rows, it means the user exists with the given email and password
-            return rs.next();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+    // Méthode pour récupérer le mot de passe non hashé depuis la base de données
+    private String getPasswordFromDatabase(String email) {
+        String password = null;
+        try (Connection connection = MaConnexion.getInstance().getCnx();
+             PreparedStatement statement = connection.prepareStatement("SELECT mot_passe FROM utilisateur WHERE adresse_mail = ?")) {
+
+            statement.setString(1, email);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    password = resultSet.getString("mot_passe");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer l'exception selon vos besoins (journalisation, affichage d'un message d'erreur, etc.)
         }
-        // Return false if any exception occurs or if no user is found with the given credentials
-        return false;
+        return password;
     }
 
     public List<Utilisateur> search(String keyword) {

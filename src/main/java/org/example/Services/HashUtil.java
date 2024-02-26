@@ -1,21 +1,10 @@
 package org.example.Services;
-import org.example.Utils.MaConnexion;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 
 public class HashUtil {
 
-    private Connection connection;
-
-    public HashUtil() {
-        connection = MaConnexion.getInstance().getCnx();
-    }
     // Hashage MD5
     public static String doHashing(String mot_passe) {
         try {
@@ -33,5 +22,4 @@ public class HashUtil {
         }
         return "";
     }
-
 }

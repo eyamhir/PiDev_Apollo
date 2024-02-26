@@ -83,11 +83,11 @@ public class BackSignIn {
     @FXML
     void codePromos(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/showCodePromoController.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/AFFinterfaceCodePromo.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Promo");
+            stage.setTitle("Liste des Codes Promos");
             stage.show();
 
             // Close the current stage (Backend stage)
