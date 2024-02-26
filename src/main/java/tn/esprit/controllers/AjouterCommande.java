@@ -1,5 +1,6 @@
 package tn.esprit.controllers;
 
+import com.google.zxing.WriterException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -26,6 +27,8 @@ public class AjouterCommande {
         this.commandeStage = commandeStage;
     }
 
+    @FXML
+    private TextField ID_Commande;
 
 
     @FXML
@@ -115,6 +118,26 @@ public class AjouterCommande {
         main.changeStage("/tn.esprit/ModifierCommande.fxml");
 
     }
+
+    @FXML
+    void Afficher_CodeQR(ActionEvent event) {
+        int idCommande = Integer.parseInt(ID_Commande.getText());
+        Commande commande;
+        try {
+            commande = ps.recupererParId(idCommande);
+            if (commande != null) {
+                String commandeData = "ID: " + commande.getId_Commande() + ", Total: " + commande.getPrix_total() + ", Date: " + commande.getDate_creation_commande();
+                QRCodeGenerator.generateQRCode(commandeData, "C:/Users/LENOVO/OneDrive/Bureau/Esprit S2/QR/QRCode.png");
+                showAlert("Succès", "Le code QR a été généré avec succès.");
+            } else {
+                showAlert("Erreur", "Aucune commande trouvée avec cet ID.");
+            }
+        } catch (SQLException | WriterException | IOException e) {
+            showAlert("Erreur", "Une erreur est survenue lors de la génération du code QR.");
+            e.printStackTrace();
+        }
+    }
+
 
 
 

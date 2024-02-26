@@ -9,12 +9,12 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1105.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterCommande">
    <children>
-      <TextField fx:id="Prix_total" layoutX="202.0" layoutY="365.0" prefHeight="42.0" prefWidth="187.0" promptText="Prix_Totale" stylesheets="@../values/style.css">
+      <TextField fx:id="Prix_total" layoutX="48.0" layoutY="146.0" prefHeight="42.0" prefWidth="187.0" promptText="Prix_Totale" stylesheets="@../values/style.css">
          <styleClass>
             <String fx:value="rect-round" />
             <String fx:value="card" />
          </styleClass></TextField>
-      <Button layoutX="236.0" layoutY="525.0" mnemonicParsing="false" onAction="#AjouterC" prefHeight="42.0" prefWidth="102.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
+      <Button layoutX="278.0" layoutY="178.0" mnemonicParsing="false" onAction="#AjouterC" prefHeight="42.0" prefWidth="102.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
          <styleClass>
             <String fx:value="botton" />
             <String fx:value="card" />
@@ -24,12 +24,12 @@
             <Font name="Corbel" size="20.0" />
          </font>
       </Button>
-      <TextField alignment="CENTER" layoutX="424.0" prefHeight="51.0" prefWidth="352.0" text="Mes Commande">
+      <TextField alignment="CENTER" layoutX="404.0" prefHeight="51.0" prefWidth="352.0" text="Mes Commande">
          <font>
             <Font name="Corbel" size="24.0" />
          </font></TextField>
-      <DatePicker fx:id="date" layoutX="204.0" layoutY="437.0" prefHeight="42.0" prefWidth="182.0" promptText="Date" />
-      <Button layoutX="462.0" layoutY="682.0" mnemonicParsing="false" onAction="#supprimerc" prefHeight="42.0" prefWidth="118.0" stylesheets="@../values/style.css" text="Supprimer" textFill="WHITE">
+      <DatePicker fx:id="date" layoutX="50.0" layoutY="221.0" prefHeight="42.0" prefWidth="182.0" promptText="Date" />
+      <Button layoutX="210.0" layoutY="699.0" mnemonicParsing="false" onAction="#supprimerc" prefHeight="42.0" prefWidth="118.0" stylesheets="@../values/style.css" text="Supprimer" textFill="WHITE">
          <styleClass>
             <String fx:value="rect-round" />
             <String fx:value="botton" />
@@ -52,9 +52,18 @@
             <Font name="Corbel" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="305.0" layoutY="682.0" mnemonicParsing="false" onAction="#page_Modifier_Commande" prefHeight="42.0" prefWidth="118.0" stylesheets="@../values/style.css" text="Modifier" textFill="WHITE">
+      <Button layoutX="50.0" layoutY="699.0" mnemonicParsing="false" onAction="#page_Modifier_Commande" prefHeight="42.0" prefWidth="118.0" stylesheets="@../values/style.css" text="Modifier" textFill="WHITE">
          <styleClass>
             <String fx:value="add-remove-layout" />
+            <String fx:value="card" />
+            <String fx:value="botton" />
+         </styleClass>
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font></Button>
+      <TextField fx:id="ID_Commande" layoutX="627.0" layoutY="152.0" prefHeight="51.0" prefWidth="160.0" promptText="ID_Commande" />
+      <Button layoutX="608.0" layoutY="229.0" mnemonicParsing="false" onAction="#Afficher_CodeQR" prefHeight="42.0" prefWidth="197.0" stylesheets="@../values/style.css" text="Ajouter QRCode" textFill="WHITE">
+         <styleClass>
             <String fx:value="card" />
             <String fx:value="botton" />
          </styleClass>

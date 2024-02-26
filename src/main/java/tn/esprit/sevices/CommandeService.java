@@ -56,4 +56,18 @@ public class CommandeService implements IService<Commande>{
         }
         return commandes;
     }
+
+    public Commande recupererParId(int id) throws SQLException {
+        Commande commande = null;
+        String req = "SELECT * FROM commande WHERE id_Commande = ?";
+        PreparedStatement ps = connection.prepareStatement(req);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            commande = new Commande(rs.getInt("id_Commande"), rs.getFloat("Prix_total"), rs.getString("date_creation_commande"));
+        }
+
+        return commande;
+    }
 }
