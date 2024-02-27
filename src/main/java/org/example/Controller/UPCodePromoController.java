@@ -48,6 +48,19 @@ public class UPCodePromoController {
     void modifyCodePromo(ActionEvent event) {
         try {
             if (allFieldsFilled()) {
+                // Vérifier la longueur du code
+                if (codeTF.getText().length() < 5) {
+                    displayErrorDialog("Le code promo doit contenir au moins 5 caractères.");
+                    return;
+                }
+
+                // Vérifier la date d'expiration
+                LocalDate expirationDate = dateExpirationPicker.getValue();
+                if (expirationDate != null && expirationDate.isBefore(LocalDate.now())) {
+                    displayErrorDialog("La date d'expiration doit être aujourd'hui ou ultérieure.");
+                    return;
+                }
+
                 // Créer un objet CodePromo avec les données saisies
                 CodePromo updatedCodePromo = new CodePromo(
                         codePromo.getId_CodePromo(), // Utilisez l'identifiant existant

@@ -55,10 +55,32 @@ public class userModifController {
         roleTF.getItems().addAll("Admin", "Artiste", "Client");
     }*/
 
+
     @FXML
-     void modifierUtilisateur(ActionEvent event) {
+    void modifierUtilisateur(ActionEvent event) {
         try {
             if (allFieldsFilled()) {
+                // Vérification de l'adresse email
+                if (!emailTF.getText().contains("@")) {
+                    displayErrorDialog("L'adresse email doit contenir un @.");
+                    return;
+                }
+
+                // Vérification du numéro de téléphone (8 chiffres)
+                if (numTelTF.getText().length() != 8 || !numTelTF.getText().matches("\\d{8}")) {
+                    displayErrorDialog("Le numéro de téléphone doit contenir exactement 8 chiffres.");
+                    return;
+                }
+
+
+                // Vérification de la date d'inscription (doit être aujourd'hui)
+                if (!dateinscriptionPicker.getValue().isEqual(LocalDate.now())) {
+                    displayErrorDialog("La date d'inscription doit être la date actuelle.");
+                    return;
+                }
+
+
+
                 // Créer un objet Utilisateur avec le constructeur approprié
                 Utilisateur u = new Utilisateur(
                         utilisateur.getId_utilisateur(),
@@ -67,12 +89,13 @@ public class userModifController {
                         emailTF.getText(),
                         Integer.parseInt(numTelTF.getText()),
                         dateNaissancePicker.getValue(),
-                        dateinscriptionPicker.getValue(),
+                        LocalDate.now(), // Utiliser la date actuelle pour la date d'inscription
                         roleTF.getValue(),
-                        passwordTF.getText(),
+                        adresseLocaleTF.getText(),
                         specialiteTF.getText(),
-                        adresseLocaleTF.getText()
-                );
+                        passwordTF.getText()
+
+                        );
 
 
                 // Appeler la méthode du service pour modifier l'utilisateur
@@ -143,9 +166,10 @@ public class userModifController {
                 dateinscriptionPicker.setValue(dateInscription);
             }
             roleTF.setValue(utilisateur.getRole()); // Assurez-vous que roleTF est initialisé avec les choix appropriés
-            passwordTF.setText(utilisateur.getMot_passe());
-            specialiteTF.setText(utilisateur.getSpecialite_artistique());
             adresseLocaleTF.setText(utilisateur.getAdresse_locale());
+            specialiteTF.setText(utilisateur.getSpecialite_artistique());
+            passwordTF.setText(utilisateur.getMot_passe());
+
         }
     }
 

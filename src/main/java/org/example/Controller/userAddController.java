@@ -104,6 +104,28 @@ public class userAddController {
     void createAccount(ActionEvent event) {
         try {
             if (termsCheckBox.isSelected() && allFieldsFilled()) {
+                // Vérification de l'adresse email
+                if (!emailTF.getText().contains("@")) {
+                    displayErrorDialog("L'adresse email doit contenir un @.");
+                    return;
+                }
+
+                // Vérification du numéro de téléphone (8 chiffres)
+                if (numTelTF.getText().length() != 8 || !numTelTF.getText().matches("\\d{8}")) {
+                    displayErrorDialog("Le numéro de téléphone doit contenir exactement 8 chiffres.");
+                    return;
+                }
+
+
+                // Vérification de la date d'inscription
+                if (!dateinscriptionPicker.getValue().isEqual(LocalDate.now())) {
+                    displayErrorDialog("La date d'inscription doit être la date actuelle.");
+                    return;
+                }
+
+
+
+
                 // Créer un objet Utilisateur avec le bon constructeur
                 Utilisateur utilisateur = new Utilisateur(
                         nomTF.getText(),
@@ -111,7 +133,7 @@ public class userAddController {
                         emailTF.getText(),
                         Integer.parseInt(numTelTF.getText()),
                         dateNaissancePicker.getValue(),
-                        dateinscriptionPicker.getValue(),
+                        LocalDate.now(), // Utiliser la date actuelle pour la date d'inscription
                         SpecialiteartistiqueTF.getText(),
                         adresseLocaleTF.getText(), // Utiliser le champ d'adresse locale
                         roleTF.getValue(),
@@ -143,6 +165,7 @@ public class userAddController {
             displayErrorDialog("Une erreur s'est produite lors de la création de l'utilisateur.");
         }
     }
+
 
     // Méthode de validation pour vérifier si tous les champs sont remplis
     private boolean allFieldsFilled() {

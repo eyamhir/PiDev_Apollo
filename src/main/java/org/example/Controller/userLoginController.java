@@ -45,7 +45,7 @@ public class userLoginController {
     private void LogInAction() {
         String adresse_mail = emailFT.getText();
         String mot_passe = passwordFT.getText();
-        boolean isAdmin = adresse_mail.equals("yoyo@java.com") && mot_passe.equals("0000");
+        boolean isAdmin = adresse_mail.equals("eya@esprit.tn") && mot_passe.equals("0000");
 
         // Check if email and password fields are empty
         if (adresse_mail.isEmpty() || mot_passe.isEmpty()) {

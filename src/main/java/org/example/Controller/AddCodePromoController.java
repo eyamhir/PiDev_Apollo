@@ -109,13 +109,27 @@ public class AddCodePromoController {
         alert.showAndWait();
     }
     @FXML
-    public void createCodePromo(javafx.event.ActionEvent actionEvent) {
+    public void createCodePromo(ActionEvent actionEvent) {
         try {
             if (allFieldsFilled()) {
+                // Vérifier si la longueur du code est inférieure à 5 caractères
+                if (codeTF.getText().length() < 5) {
+                    displayErrorDialog("Le code promo doit contenir au moins 5 caractères.");
+                    return; // Sortir de la méthode si la condition n'est pas remplie
+                }
+
+                // Vérifier si la date d'expiration est aujourd'hui ou ultérieure
+                LocalDate expirationDate = dateExpirationPicker.getValue();
+                if (expirationDate.isBefore(LocalDate.now())) {
+                    displayErrorDialog("La date d'expiration doit être aujourd'hui ou ultérieure.");
+                    return; // Sortir de la méthode si la condition n'est pas remplie
+                }
+
                 System.out.println("id "+utilisateurChoiceBox.getValue().getId_utilisateur());
 
                 // Créer un nouvel objet CodePromo
-                CodePromo nouveauCodePromo = new CodePromo(codeTF.getText(), dateExpirationPicker.getValue(),utilisateurChoiceBox.getValue().getId_utilisateur());                System.out.println(nouveauCodePromo);
+                CodePromo nouveauCodePromo = new CodePromo(codeTF.getText(), expirationDate, utilisateurChoiceBox.getValue().getId_utilisateur());
+                System.out.println(nouveauCodePromo);
 
                 // Utiliser le service pour ajouter le code promo
                 serviceCodePromo.creerCodePromo(nouveauCodePromo);
@@ -136,6 +150,8 @@ public class AddCodePromoController {
             displayErrorDialog("Une erreur s'est produite lors de la création du code promo.");
         }
     }
+
+
 
     @FXML
     void back(ActionEvent event) throws IOException{
