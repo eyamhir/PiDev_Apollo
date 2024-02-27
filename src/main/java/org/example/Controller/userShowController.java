@@ -159,4 +159,26 @@ public class userShowController {
         userListView.setItems(observableSearchResults);
     }
 
+    @FXML
+    void afficherDetails(ActionEvent event) {
+        Utilisateur selectedUser = userListView.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userDetailsInterface.fxml"));
+                Parent root = loader.load();
+                userDetailsController controller = loader.getController();
+                controller.initData(selectedUser); // Passez l'utilisateur sélectionné au contrôleur des détails
+                Stage window = new Stage(); // Créez une nouvelle fenêtre pour afficher les détails
+                window.setScene(new Scene(root));
+                window.show();
+
+            } catch (IOException e) {
+                afficherMessageErreur("Erreur lors de l'ouverture de la fenêtre des détails.");
+            }
+        } else {
+            afficherMessageErreur("Veuillez sélectionner un utilisateur pour afficher les détails.");
+        }
+    }
+
+
 }

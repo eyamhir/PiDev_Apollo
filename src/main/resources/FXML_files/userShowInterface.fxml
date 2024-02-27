@@ -11,6 +11,8 @@
         <ListView fx:id="userListView" layoutY="65.0" prefHeight="335.0" prefWidth="730.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0" />
         <Button fx:id="modifierButton" onAction="#modifierUtilisateur" prefHeight="37.0" prefWidth="90.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Modifier" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
         <Button fx:id="supprimerButton" onAction="#supprimerUtilisateur" styleClass="custom-button" stylesheets="@../Values/style.css" text="Supprimer" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <Button fx:id="detailsButton" onAction="#afficherDetails" styleClass="custom-button" stylesheets="@../Values/style.css" text="Détails" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+
         <TextField fx:id="searchTextField" layoutX="421.0" layoutY="24.0" prefHeight="26.0" prefWidth="250.0" promptText="Search by name or surname" />
         <Button fx:id="searchButton" layoutX="682.0" layoutY="23.0" mnemonicParsing="false" onAction="#search" text="Search" textFill="#480a53">
             <font>
