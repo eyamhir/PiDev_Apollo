@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="693.0" prefWidth="1003.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ListePayment">
    <children>
-      <ListView fx:id="ListePayment" layoutX="16.0" layoutY="126.0" opacity="0.8" prefHeight="551.0" prefWidth="980.0" stylesheets="@../values/style.css">
+      <ListView fx:id="ListePayment" layoutX="16.0" layoutY="126.0" opacity="0.8" prefHeight="454.0" prefWidth="980.0" stylesheets="@../values/style.css">
          <styleClass>
             <String fx:value="secondary-background" />
             <String fx:value="add-remove-layout" />
@@ -24,6 +24,11 @@
             <Font size="24.0" />
          </font></TextField>
       <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backPay" prefHeight="49.0" prefWidth="74.0" text="back" />
+      <Button layoutX="60.0" layoutY="610.0" mnemonicParsing="false" onAction="#generQRCode" prefHeight="58.0" prefWidth="160.0" styleClass="card" stylesheets="@../values/style.css" text="Gener QRCode">
+         <font>
+            <Font name="Corbel" size="20.0" />
+         </font>
+      </Button>
    </children>
    <styleClass>
       <String fx:value="secondary-background" />
