@@ -9,4 +9,6 @@ public interface IService <T>{
 
     void supprimer(int id) throws SQLException;
     List<T> recuperer() throws SQLException;
+
+    T recupererParId(int id) throws SQLException; // Ajout de la méthode recupererParId
 }
