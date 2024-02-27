@@ -61,7 +61,7 @@
       <Label layoutX="423.0" layoutY="294.0" text="Specialité Artistique" />
       <Label layoutX="139.0" layoutY="306.0" text="Adresse " />
       <TextField fx:id="adresseLocaleTF" layoutX="137.0" layoutY="326.0" prefHeight="25.0" prefWidth="199.0" promptText="Adresse" />
-        <Button fx:id="backBT" layoutX="677.0" layoutY="405.0" mnemonicParsing="false" onAction="#back" text="Back" />
+        <Button fx:id="backBT" layoutX="677.0" layoutY="405.0" mnemonicParsing="false" onAction="#back" text="Retour" />
 
     </children>
 </AnchorPane>

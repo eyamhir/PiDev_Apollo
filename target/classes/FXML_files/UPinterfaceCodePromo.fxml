@@ -28,7 +28,7 @@
         <Label layoutX="224.0" layoutY="159.0" text="Code :" />
         <Label layoutX="227.0" layoutY="212.0" text="Date d'expiration :" />
         <ChoiceBox fx:id="utilisateurChoiceBox" layoutX="303.0" layoutY="283.0" prefHeight="25.0" prefWidth="144.0" />
-        <Button layoutX="675.0" layoutY="403.0" mnemonicParsing="false" onAction="#back" text="Back" />
+        <Button layoutX="675.0" layoutY="403.0" mnemonicParsing="false" onAction="#back" text="Retour" />
 
     </children>
 </AnchorPane>

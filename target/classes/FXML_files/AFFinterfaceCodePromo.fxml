@@ -11,6 +11,6 @@
     <Button layoutX="480.0" layoutY="368.0" onAction="#supprimerCodePromo" styleClass="custom-button" stylesheets="@../Values/style.css" text="Supprimer Code Promo" />
     <Button layoutX="281.0" layoutY="368.0" onAction="#modifierCodePromo" styleClass="custom-button" stylesheets="@../Values/style.css" text="Modifier Code Promo" />
     <Button layoutX="86.0" layoutY="368.0" onAction="#ajouterCodePromo" styleClass="custom-button" stylesheets="@../Values/style.css" text="Ajouter Code Promo" />
-    <Button layoutX="688.0" layoutY="404.0" mnemonicParsing="false" onAction="#back" text="Back" />
+    <Button layoutX="688.0" layoutY="404.0" mnemonicParsing="false" onAction="#back" text="Retour" />
 
 </AnchorPane>
