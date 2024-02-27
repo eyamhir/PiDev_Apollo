@@ -53,4 +53,18 @@ public class PanierService implements IService <Panier> {
         }
         return paniers;
     }
+
+    @Override
+    public Panier recupererParId(int id) throws SQLException {
+        Panier panier = null;
+        String req = "SELECT * FROM panier WHERE id_Panier = ?";
+        PreparedStatement ps = connection.prepareStatement(req);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            panier = new Panier(rs.getInt("id_Panier"), rs.getInt("Nbr_Commande"));
+        }
+        return panier;
+    }
 }

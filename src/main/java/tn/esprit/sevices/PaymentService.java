@@ -56,4 +56,19 @@ public class PaymentService implements IService<Payment> {
         }
         return payments;
     }
+
+    @Override
+    public Payment recupererParId(int id) throws SQLException {
+        Payment payment = null;
+        String req = "SELECT * FROM payment WHERE id_Payment = ?";
+        PreparedStatement ps = connection.prepareStatement(req);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            payment = new Payment(rs.getInt("id_Payment"), rs.getFloat("Montant"), rs.getString("type_Payment"));
+        }
+
+        return payment;
+    }
 }
