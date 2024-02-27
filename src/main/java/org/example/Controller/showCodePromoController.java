@@ -30,6 +30,7 @@ public class showCodePromoController {
 
     @FXML
     private ListView<CodePromo> codePromoListView;
+    @FXML
     private TextField searchTextField;
 
     @FXML

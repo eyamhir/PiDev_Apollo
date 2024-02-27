@@ -35,7 +35,7 @@
         <Label layoutX="224.0" layoutY="163.0" text="Code :" />
         <Label layoutX="224.0" layoutY="225.0" text="Date d'expiration :" />
       <ChoiceBox fx:id="utilisateurChoiceBox" layoutX="300.0" layoutY="287.0" prefWidth="150.0" />
-        <Button layoutX="688.0" layoutY="404.0" mnemonicParsing="false" onAction="#back" text="Back" />
+        <Button layoutX="688.0" layoutY="404.0" mnemonicParsing="false" onAction="#back" text="Retour" />
       <Accordion />
 
     </children>
