@@ -10,9 +10,10 @@
       <ListView fx:id="ListView" layoutX="4.0" layoutY="14.0" prefHeight="278.0" prefWidth="809.0" styleClass="form-container" stylesheets="@styles.css" />
       <ButtonBar layoutX="70.0" layoutY="322.0" prefHeight="40.0" prefWidth="200.0">
          <buttons>
-            <Button mnemonicParsing="false" onAction="#modifier" prefHeight="38.0" prefWidth="166.0" text="modifier" />
+            <Button mnemonicParsing="false" onAction="#participer" prefHeight="38.0" prefWidth="166.0" text="participer" />
          </buttons>
       </ButtonBar>
       <Button layoutX="461.0" layoutY="323.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="38.0" prefWidth="194.0" text="supprimer" />
+      <Button layoutX="276.0" layoutY="323.0" mnemonicParsing="false" onAction="#modifier" prefHeight="38.0" prefWidth="166.0" text="modifier" />
    </children>
 </AnchorPane>

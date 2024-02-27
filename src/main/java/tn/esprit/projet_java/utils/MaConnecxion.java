@@ -6,7 +6,8 @@ import java.sql.SQLException;
 
 public class MaConnecxion {
     //DB PARAM
-    private final String URL ="jdbc:mysql://localhost:3306/projet_3A";
+   private final String URL ="jdbc:mysql://localhost:3306/Chat_Apollo";
+   // private final String URL ="jdbc:mysql://localhost:3306/pidev";
     private final String USER ="root";
     private  final String PASSWORD ="";
 

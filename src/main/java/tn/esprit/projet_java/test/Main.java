@@ -1,14 +1,14 @@
 package tn.esprit.projet_java.test;
-import tn.esprit.projet_java.models.Client;
-import tn.esprit.projet_java.services.ClientService;
 import tn.esprit.projet_java.models.Enchers;
+import tn.esprit.projet_java.models.Mise;
 import tn.esprit.projet_java.services.EnchersService;
-import tn.esprit.projet_java.utils.MaConnecxion;
+import tn.esprit.projet_java.services.MiseService;
 
 import java.sql.SQLException;
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
+
 public class Main {
     public static void main(String[] args) throws SQLException, ParseException {
        // MaConnecxion db = MaConnecxion.getInstance();
@@ -17,45 +17,41 @@ public class Main {
         //System.out.println(db2);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateDebut = new Date(sdf.parse("2024-02-11").getTime());
-        Date dateFin = new Date(sdf.parse("2024-02-10").getTime());
+       // Date dateDebut = new Date(sdf.parse("2024-02-11").getTime());
+        //Date dateFin = new Date(sdf.parse("2024-02-10").getTime());
+        java.util.Date dateDebut = sdf.parse("2024-02-13");
+        java.util.Date dateFin = sdf.parse("2024-02-12");
+        int id_utilisateur=3;
+        int id_enchers=1;
+
+
+
         EnchersService  es = new EnchersService();
-        ClientService cs = new ClientService();
-        /*try {
-            es.ajouter(new Enchers("Peinture ",10000,230000,dateDebut, dateFin,"ouma"));
-        } catch (SQLException e) {
-           // throw new RuntimeException(e);
-            System.err.println(e.getMessage());
-        }*/
-       /* try {
-        es.modifier(new Enchers(1,"Peinture ",10000,230000,dateDebut, dateFin,"ouma"));
-        } catch (SQLException e) {
-           // throw new RuntimeException(e);
-            System.err.println(e.getMessage());
-    }*/
+        //ClientService cs = new ClientService();
+        MiseService ms = new MiseService();
 
-//////////////////////test_enchers///////////////////////////////////////////////////////
-        try {
-           // es.ajouter(new Enchers("peint ",10000,230000,dateDebut, dateFin,"oumayma"));
-            //es.ajouter(new Enchers("peinture ",102000,230000,dateDebut, dateFin,"imen"));
-          //  es.modifi(new Enchers("peinture ",102000,230000,dateDebut, dateFin,"imen"));
-           // es.modifier(new Enchers(5,"Peinture ",10000,230000,dateDebut, dateFin,"abir"));
-            es.supprimer(5);
-            System.out.println(es.fetchenchers());
-        } catch (SQLException e) {
 
+
+//////////////test_enchere///////////////////////////
+
+      //  try {
+
+
+             // es.ajouter(new Enchers(123.56,dateDebut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), dateFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), "peinture","oumayma",id_utilisateur));
+            //es.modifier(new Enchers(15,"Peint",1284.50,dateDebut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), dateFin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),"ouma"));
+           // es.supprimer(57);
+           //System.out.println(es.fetchenchers());
+      //  } catch (SQLException e) {
+          //  System.err.println(e.getMessage());
+       // }
+///////////////////////test_mise////////////////////////////////
+       try {
+            // ms.ajouter(new Mise(1500,id_enchers,id_utilisateur));
+          //  ms.modifier(new Mise(18,1800.50,77,77));
+           // ms.supprimer(3);
+            System.out.println(ms.fetchmise());
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
-
-//////////////test_client///////////////////////////
-       /* try {
-             cs.ajouter(new Client(10000,"ouma"));
-           // cs.modifier(new Client(12,"oumayma"));
-            //cs.supprimer(12);
-            //System.out.println(cs.fetchclient());
-        } catch (SQLException e) {
-
-            System.err.println(e.getMessage());
-        }*/
 }}
-// test commit et push
+

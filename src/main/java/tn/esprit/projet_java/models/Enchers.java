@@ -6,12 +6,12 @@ import java.util.Date;
 public class Enchers {
     private int id_enchers;
     private  String type_oeuvre;
-    private float min_montant;
-    private float max_montant;
+    private double min_montant;
+   // private float max_montant;
     private LocalDate date_debut;
     private LocalDate date_fin;
-    private String artiste_associe_de_oeuvre;
-
+    private String image;
+    private int id_utilisateur;
    // private LocalDate dateDebut;
     //private LocalDate dateFin;
     public Enchers() {
@@ -22,36 +22,66 @@ public class Enchers {
         this.dateFin = dateFin;
 
     }*/
-    public Enchers(float min_montant, LocalDate date_debut, LocalDate date_fin, String type_oeuvre) {
+
+    public Enchers(String type_oeuvre, double min_montant, LocalDate date_debut, LocalDate date_fin,String image) {
+        this.type_oeuvre = type_oeuvre;
+        this.min_montant = min_montant;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+       this.image = image;
+    }
+
+    public Enchers(double min_montant, LocalDate date_debut, LocalDate date_fin, String type_oeuvre, String image, int id_utilisateur) {
         //this.id_enchers = id_enchers;
         this.type_oeuvre = type_oeuvre;
         this.min_montant = min_montant;
        // this.max_montant = max_montant;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
-       // this.artiste_associe_de_oeuvre = artiste_associe_de_oeuvre;
+        this.image = image;
+        this.id_utilisateur = id_utilisateur;
     }
-    public Enchers(int id_enchers, String type_oeuvre, float min_montant, float max_montant, LocalDate date_debut, LocalDate date_fin, String artiste_associe_de_oeuvre) {
+    public Enchers(double min_montant, LocalDate date_debut, LocalDate date_fin, String type_oeuvre,String image) {
+        //this.id_enchers = id_enchers;
+        this.type_oeuvre = type_oeuvre;
+        this.min_montant = min_montant;
+        // this.max_montant = max_montant;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.image = image;
+
+    }
+
+
+    public Enchers(int id_enchers, String type_oeuvre, double min_montant,  LocalDate date_debut, LocalDate date_fin, String image,int id_utilisateur) {
         this.id_enchers = id_enchers;
         this.type_oeuvre = type_oeuvre;
         this.min_montant = min_montant;
-        this.max_montant = max_montant;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
-        this.artiste_associe_de_oeuvre = artiste_associe_de_oeuvre;
+        this.image = image;
+        this.id_utilisateur=id_utilisateur;
     }
-
-    public Enchers(String type_oeuvre, float min_montant, float max_montant, LocalDate date_debut, LocalDate date_fin, String artiste_associe_de_oeuvre) {
+    public Enchers(int id_enchers, String type_oeuvre, double min_montant,  LocalDate date_debut, LocalDate date_fin, String image) {
+        this.id_enchers = id_enchers;
         this.type_oeuvre = type_oeuvre;
         this.min_montant = min_montant;
-        this.max_montant = max_montant;
         this.date_debut = date_debut;
         this.date_fin = date_fin;
-        this.artiste_associe_de_oeuvre = artiste_associe_de_oeuvre;
+        this.image = image;
+
     }
 
-    public Enchers(int idEnchers, float parseFloat, LocalDate vadate_debut, LocalDate date_fin, String type_oeuvre) {
+    public Enchers(String type_oeuvre, double min_montant, LocalDate date_debut, LocalDate date_fin, String image,int id_utilisateur) {
+        this.type_oeuvre = type_oeuvre;
+        this.min_montant = min_montant;
+       // this.max_montant = max_montant;
+        this.date_debut = date_debut;
+        this.date_fin = date_fin;
+        this.image = image;
+        this.id_utilisateur = id_utilisateur;
     }
+
 
 
     public int getId_enchers() {
@@ -70,21 +100,14 @@ public class Enchers {
         this.type_oeuvre = type_oeuvre;
     }
 
-    public  float getMin_montant() {
+    public  double getMin_montant() {
         return min_montant;
     }
 
-    public void setMin_montant(float min_montant) {
+    public void setMin_montant(double min_montant) {
         this.min_montant = min_montant;
     }
 
-    public float getMax_montant() {
-        return max_montant;
-    }
-
-    public void setMax_montant(float max_montant) {
-        this.max_montant = max_montant;
-    }
 
     public LocalDate getDate_debut() {
         return date_debut;
@@ -102,12 +125,21 @@ public class Enchers {
         this.date_fin = date_fin;
     }
 
-    public String getArtiste_associe_de_oeuvre() {
-        return artiste_associe_de_oeuvre;
+
+    public int getId_utilisateur() {
+        return id_utilisateur;
     }
 
-    public void setArtiste_associe_de_oeuvre(String artiste_associe_de_oeuvre) {
-        this.artiste_associe_de_oeuvre = artiste_associe_de_oeuvre;
+    public void setId_utilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
 
@@ -117,12 +149,10 @@ public class Enchers {
                 "id_enchers=" + id_enchers +
                 ", type_oeuvre='" + type_oeuvre + '\'' +
                 ", min_montant=" + min_montant +
-                ", max_montant=" + max_montant +
                 ", date_debut=" + date_debut +
                 ", date_fin=" + date_fin +
-                ", artiste_associe_de_oeuvre='" + artiste_associe_de_oeuvre + '\'' +
+                ", image='" + image + '\'' +
+                ", id_utilisateur=" + id_utilisateur +
                 '}';
     }
-
-
 }

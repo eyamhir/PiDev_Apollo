@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
-import javafx.util.Callback;
 import tn.esprit.projet_java.models.Enchers;
 import tn.esprit.projet_java.services.EnchersService;
 
@@ -38,12 +37,6 @@ public class AfficherEncheres {
 
             ListView.getItems().addAll(encheresList);
 
-           /* ListView.setCellFactory(new Callback<ListView<Enchers>, CustomListCell>() {
-                @Override
-                public CustomListCell call(ListView<Enchers> param) {
-                    return new CustomListCell();
-                }
-            });*/
 
         } catch (SQLException e) {
             showErrorAlert("Error", e.getMessage());
@@ -69,7 +62,9 @@ public class AfficherEncheres {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierEncheres.fxml"));
                 Parent root = loader.load();
                 ModifierEncheres controller = loader.getController();
-                controller.initData(selectedEncher); // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
+                controller.initData(selectedEncher);
+                controller.setEncher(selectedEncher);
+                // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
                 Stage window = (Stage) ListView.getScene().getWindow();
                 window.setScene(new Scene(root));
                 window.show();
@@ -78,7 +73,7 @@ public class AfficherEncheres {
             }
         } else {
             // Aucun utilisateur sélectionné, affichez un message d'erreur
-            afficherMessageErreur("Veuillez sélectionner un utilisateur à modifier.");
+            afficherMessageErreur("Veuillez sélectionner un encher à modifier.");
         }
     }
 
@@ -87,18 +82,18 @@ public class AfficherEncheres {
 
    @FXML
    void supprimer(ActionEvent event) {
-       Enchers selectedUser = ListView.getSelectionModel().getSelectedItem();
-       if (selectedUser != null) {
+       Enchers selectedEncher = ListView.getSelectionModel().getSelectedItem();
+       if (selectedEncher != null) {
            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
            confirmationAlert.setTitle("Confirmation de suppression");
-           confirmationAlert.setHeaderText("Supprimer l'utilisateur ?");
-           confirmationAlert.setContentText("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+           confirmationAlert.setHeaderText("Supprimer l'encher ?");
+           confirmationAlert.setContentText("Êtes-vous sûr de vouloir supprimer cet encher ?");
 
            Optional<ButtonType> result = confirmationAlert.showAndWait();
            if (result.isPresent() && result.get() == ButtonType.OK) {
                try {
                    // Implementer la logique pour supprimer l'encher sélectionné
-                   enchersService.supprimer(selectedUser.getId_enchers());
+                   enchersService.supprimer(selectedEncher.getId_enchers());
                    // Rafraîchir les données après la suppression
                    initData();
                } catch (SQLException e) {
@@ -119,9 +114,10 @@ public class AfficherEncheres {
     }
 
 
-    // Method to initialize data
+
     private void initData() {
         try {
+            System.out.println("Refreshing data...");
             List<Enchers> encheresList = enchersService.fetchenchers();
             ObservableList<Enchers> observableList = FXCollections.observableArrayList(encheresList);
             ListView.setItems(observableList);
@@ -131,5 +127,28 @@ public class AfficherEncheres {
     }
 
 
+
+    public void participer(ActionEvent actionEvent) {
+
+        Enchers selectedEncher = ListView.getSelectionModel().getSelectedItem();
+        if (selectedEncher != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterMise.fxml"));
+                Parent root = loader.load();
+               // ModifierEncheres controller = loader.getController();
+               //// controller.initData(selectedEncher);
+               // controller.setEncher(selectedEncher);
+                // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
+                Stage window = (Stage) ListView.getScene().getWindow();
+                window.setScene(new Scene(root));
+                window.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // Aucun utilisateur sélectionné, affichez un message d'erreur
+            afficherMessageErreur("Veuillez sélectionner un encher pour participer.");
+        }
+    }
 
 }
