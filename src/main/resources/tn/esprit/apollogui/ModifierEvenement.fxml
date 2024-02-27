@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="tn.esprit.apollogui.ModifierEvenement"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.ModifierEvenement">
+   <children>
+      <ImageView fitHeight="401.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="/images/backg.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="96.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../Downloads/looogoo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="261.0" layoutY="31.0" text="Update">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="219.0" layoutY="84.0" promptText="Name" />
+      <TextField layoutX="219.0" layoutY="129.0" promptText="Type" />
+      <DatePicker layoutX="219.0" layoutY="175.0" prefHeight="25.0" prefWidth="149.0" promptText="Starts at" />
+      <DatePicker layoutX="219.0" layoutY="222.0" prefHeight="25.0" prefWidth="149.0" promptText="Ends at" />
+      <TextField layoutX="219.0" layoutY="263.0" prefHeight="76.0" prefWidth="149.0" promptText="Description" />
+      <Button fx:id="Modifier" layoutX="466.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" style="-fx-background-color: Violet;" text="Update" />
+      <Button layoutX="14.0" layoutY="339.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="110.0" style="-fx-background-color: violet;" text="Go back" />
+   </children>
 </AnchorPane>

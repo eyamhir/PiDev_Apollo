@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../Downloads/backg.jpg" />
+            <Image url="/images/backg.jpg" />
          </image>
       </ImageView>
       <ListView fx:id="ListView" layoutX="97.0" layoutY="115.0" prefHeight="200.0" prefWidth="426.0" />
@@ -29,7 +29,7 @@
       <ImageView fitHeight="114.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="114.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../Downloads/loogo.png" />
+            <Image url="/images/loogo.png" />
          </image>
       </ImageView>
       <Label layoutX="250.0" layoutY="40.0" prefHeight="35.0" prefWidth="120.0" text="Event List" textAlignment="CENTER" textFill="#e4ba13">
