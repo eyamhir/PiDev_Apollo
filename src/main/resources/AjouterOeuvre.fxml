@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background-portfolio" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.AjouterOeuvre">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="hello" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.AjouterOeuvre">
    <children>
       <ComboBox fx:id="categorie" editable="true" layoutX="35.0" layoutY="120.0" prefWidth="150.0" promptText="choisir la catégorie" styleClass="formulaire" />
       <TextField fx:id="titreid" layoutX="35.0" layoutY="180.0" prefHeight="26.0" prefWidth="150.0" promptText="Entrer le titre" styleClass="formulaire" />

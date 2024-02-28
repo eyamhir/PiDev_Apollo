@@ -3,6 +3,8 @@ package Esprit.Controller;
 import Esprit.Models.Categories;
 import Esprit.Models.Oeuvre;
 import Esprit.Service.OeuvreSevice;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -48,6 +50,12 @@ public class ModifierOeuvre {
     private Button butid ;
 
     private Oeuvre oeuvre;
+    public void initialize() {
+        // Initialiser le ComboBox avec des valeurs
+        ObservableList<String> categories = FXCollections.observableArrayList(
+                "PEINTURE","EDITION", "PHOTOGRAPHIES", "SCULPTURE", "DESSIN", "DESIGN");
+        categorie.setItems(categories);
+    }
     public void init(Oeuvre oeuvre) {
         this.oeuvre = oeuvre;
         titreid.setText(oeuvre.getTitre());

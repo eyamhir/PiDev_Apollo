@@ -2,6 +2,8 @@ package Esprit.Controller;
 
 import Esprit.Models.Portfolio;
 import Esprit.Service.PortfolioService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -36,6 +38,8 @@ public class ModifierPortfolio {
     private ImageView imgid ;
     private Portfolio portfolio;
     private String imagePath ;
+
+
 
     public void init(Portfolio portfolio) {
         this.portfolio= portfolio;

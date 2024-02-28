@@ -2,6 +2,9 @@
     -fx-background-color: #FFFFFF; /* Couleur de fond blanc */
     -fx-effect: dropshadow(three-pass-box, #AAAAAA, 10, 0, 0, 0); /* Ombre */
 }
+.white-background2{
+    -fx-background-color: #FFFFFF;
+}
 .label {
     -fx-font-size: 14px; /* Taille de la police */
     -fx-text-fill: #000000; /* Couleur du texte */
@@ -160,4 +163,43 @@
 
 #butid:hover {
     -fx-background-color: #218838;
+}
+.label-style3 {
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+}
+
+.vbox-style3 {
+    -fx-background-color: white;
+    -fx-border-color:white ;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+}
+.image{
+    -fx-border-radius: 10;
+}
+.hello {
+    -fx-background-image: url('images/galerie-art.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.nom-artistique {
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+    -fx-fill-color: #dca78c;
+}
+
+.biographie {
+    -fx-font-size: 10px;
+    -fx-font-style: italic;
+}
+
+.rs-line {
+    -fx-font-size: 12px; /* Taille de la police */
+    -fx-font-style: italic; /* Style de la police */
+    -fx-border-style: solid; /* Style de la bordure */
+    -fx-border-width: 0 0 1 0; /* Épaisseur de la bordure (seulement en bas) */
+    -fx-padding: 0 0 2 0; /* Espacement intérieur (sous la ligne) */
 }

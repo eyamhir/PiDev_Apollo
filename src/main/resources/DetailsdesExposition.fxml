@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="539.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.DetailsdesExposition">
+   <children>
+      <ImageView fx:id="idimg" fitHeight="183.0" fitWidth="247.0" layoutX="14.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="titre" layoutX="272.0" layoutY="66.0" prefHeight="18.0" prefWidth="90.0" text="Titre " />
+      <Label fx:id="datedebut" layoutX="272.0" layoutY="104.0" prefHeight="18.0" prefWidth="90.0" text="Date debut " />
+      <Label fx:id="datefin" layoutX="415.0" layoutY="104.0" prefHeight="18.0" prefWidth="75.0" text="Date fin" />
+      <Label fx:id="type" layoutX="272.0" layoutY="168.0" prefHeight="18.0" prefWidth="75.0" text="Type " />
+      <Label fx:id="local" layoutX="272.0" layoutY="219.0" prefHeight="18.0" prefWidth="106.0" text="Localisation" />
+      <Button layoutX="352.0" layoutY="338.0" mnemonicParsing="false" onAction="#modifierExpose" text="modifier" />
+      <Button fx:id="supid" layoutX="453.0" layoutY="338.0" mnemonicParsing="false" onAction="#supprimerExpo" text="Supprimer" />
+   </children>
+</AnchorPane>

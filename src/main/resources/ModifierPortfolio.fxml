@@ -21,7 +21,7 @@
       <TextField fx:id="reseauid" layoutX="244.0" layoutY="214.0" />
       <Label layoutX="241.0" layoutY="191.0" prefHeight="13.0" prefWidth="118.0" text="reseau scociaux " />
       <Button layoutX="244.0" layoutY="293.0" mnemonicParsing="false" onAction="#choisirImage" text="choisir une image " />
-      <ImageView fx:id="imgid" fitHeight="136.0" fitWidth="169.0" layoutX="417.0" layoutY="123.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imgid" fitHeight="163.0" fitWidth="135.0" layoutX="417.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="450.0" layoutY="337.0" mnemonicParsing="false" onAction="#modif" prefHeight="34.0" prefWidth="98.0" text="Soumettre" />
    </children>
 </AnchorPane>

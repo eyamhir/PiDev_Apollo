@@ -5,17 +5,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.Detaildesoeuvres">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.Detaildesoeuvres">
    <children>
       <ImageView fx:id="imageid" fitHeight="220.0" fitWidth="258.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="titreid" layoutX="315.0" layoutY="23.0" text="TITRE " />
-      <Label fx:id="desid" layoutX="317.0" layoutY="65.0" text="Description " />
-      <Label fx:id="prixid" layoutX="317.0" layoutY="116.0" text="Prix" />
-      <Label fx:id="dimid" layoutX="317.0" layoutY="159.0" text="Dimension " />
-      <Label fx:id="catid" layoutX="313.0" layoutY="200.0" text="categorie" />
-      <Label fx:id="date" layoutX="317.0" layoutY="234.0" text="Date de cretaion " />
-      <Button fx:id="modifid" layoutX="382.0" layoutY="340.0" mnemonicParsing="false" onAction="#modifierOeuvre" text="Modifier" />
-      <Button fx:id="supid" layoutX="460.0" layoutY="340.0" mnemonicParsing="false" onAction="#supprimerOeuvre" text="Supprimer " />
+      <Label fx:id="titreid" layoutX="303.0" layoutY="23.0" prefHeight="18.0" prefWidth="226.0" text="TITRE " />
+      <Label fx:id="desid" alignment="TOP_LEFT" layoutX="302.0" layoutY="57.0" prefHeight="98.0" prefWidth="232.0" text="Description " />
+      <Label fx:id="prixid" layoutX="307.0" layoutY="168.0" text="Prix" />
+      <Label fx:id="dimid" layoutX="307.0" layoutY="200.0" prefHeight="18.0" prefWidth="274.0" text="Dimension " />
+      <Label fx:id="catid" layoutX="308.0" layoutY="243.0" prefHeight="18.0" prefWidth="220.0" text="categorie" />
+      <Label fx:id="date" layoutX="310.0" layoutY="279.0" text="Date de cretaion " />
+      <Button fx:id="modifid" layoutX="243.0" layoutY="340.0" mnemonicParsing="false" onAction="#modifierOeuvre" text="Modifier" />
+      <Button fx:id="supid" layoutX="418.0" layoutY="340.0" mnemonicParsing="false" onAction="#supprimerOeuvre" text="Supprimer " />
    </children>
 </AnchorPane>

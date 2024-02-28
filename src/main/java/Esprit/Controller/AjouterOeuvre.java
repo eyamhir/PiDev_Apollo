@@ -82,7 +82,7 @@ public void choisirImage(ActionEvent event) {
                 Float.parseFloat(prixid.getText()),
                 true,
                 15,
-                14,
+                10,
                 categorieEnum
         );
 

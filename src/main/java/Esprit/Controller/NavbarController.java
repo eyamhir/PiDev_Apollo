@@ -34,7 +34,7 @@ public class NavbarController implements Initializable {
 
     @FXML
     void exposition(MouseEvent event) {
-        loadPage("/afficherexpo.fxml");
+        loadPage("/ListeExposition.fxml");
     }
 
     @FXML

@@ -1,4 +1,3 @@
 package Esprit.Models;
 
-public class Type_Expose {
-}
+public enum Type_Expose {EN_LIGNE,PRESENTIEL}

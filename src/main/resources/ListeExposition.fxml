@@ -12,11 +12,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="337.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.ListeOeuvres">
+<VBox prefHeight="337.0" prefWidth="546.0" styleClass="transparent" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.ListeExposition">
    <children>
       <HBox alignment="CENTER" prefHeight="35.0" prefWidth="546.0" styleClass="scroll-pane">
          <children>
-            <HBox fx:id="add" alignment="CENTER" onMouseClicked="#naviguerVersAjoutOeuvre" prefHeight="19.0" prefWidth="150.0">
+            <HBox fx:id="add" alignment="CENTER" onMouseClicked="#naviguerVersAjoutExpo" prefHeight="19.0" prefWidth="150.0">
                <children>
                   <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
@@ -26,7 +26,7 @@
                         <Image url="@images/carre-plus.png" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="20.0" prefWidth="106.0" text="Ajouter oeuvre" textAlignment="CENTER">
+                  <Label prefHeight="20.0" prefWidth="122.0" text="Ajouter Exposition" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets left="3.0" />
                      </HBox.margin>
@@ -38,7 +38,7 @@
                </styleClass>
             </HBox>
             <Pane prefHeight="49.0" prefWidth="146.0" />
-            <HBox fx:id="add1" alignment="CENTER" onMouseClicked="#naviguerVersAjoutOeuvre" prefHeight="19.0" prefWidth="215.0">
+            <HBox fx:id="add1" alignment="CENTER" onMouseClicked="#naviguerVersAjoutExpo" prefHeight="19.0" prefWidth="215.0">
                <children>
                   <TextField promptText="Rechercher" styleClass="transparent" />
                   <ImageView fitHeight="22.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -57,21 +57,17 @@
             </HBox>
          </children>
       </HBox>
-      <HBox prefHeight="304.0" prefWidth="546.0" VBox.vgrow="ALWAYS">
+      <HBox prefHeight="371.0" prefWidth="583.0" VBox.vgrow="ALWAYS">
          <children>
-            <ScrollPane fx:id="scrolt" prefHeight="236.0" prefWidth="507.0" stylesheets="@style.css" HBox.hgrow="ALWAYS">
+            <ScrollPane fx:id="pane" prefHeight="236.0" prefWidth="507.0" stylesheets="@style.css" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets left="10.0" top="50.0" />
                </HBox.margin>
                <content>
-                  <FlowPane fx:id="gridid" prefHeight="0.0" prefWidth="0.0" />
+                  <FlowPane fx:id="flow" prefHeight="0.0" prefWidth="0.0" />
                </content>
             </ScrollPane>
          </children>
       </HBox>
    </children>
-   <styleClass>
-      <String fx:value="transparent" />
-      <String fx:value="white-background2" />
-   </styleClass>
 </VBox>

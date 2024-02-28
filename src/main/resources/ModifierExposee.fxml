@@ -6,9 +6,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.AjouterExpo">
+<AnchorPane prefHeight="400.0" prefWidth="662.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.ModifierExposee">
    <children>
       <TextField fx:id="titreid" layoutX="50.0" layoutY="102.0" />
       <TextArea fx:id="descriptionid" layoutX="49.0" layoutY="152.0" prefHeight="112.0" prefWidth="150.0" />
@@ -18,9 +19,10 @@
       <Label layoutX="51.0" layoutY="134.0" text="Description" />
       <Label layoutX="256.0" layoutY="79.0" text="Date de début " />
       <Label layoutX="257.0" layoutY="134.0" text="Date de fin" />
-      <Button fx:id="ajoutid" layoutX="380.0" layoutY="344.0" mnemonicParsing="false" onAction="#Ajouterexpo" prefHeight="26.0" prefWidth="80.0" text="Ajouter" />
+      <Button fx:id="ajoutid" layoutX="380.0" layoutY="344.0" mnemonicParsing="false" onAction="#modif" prefHeight="26.0" prefWidth="80.0" text="Soumetter" />
       <Button fx:id="select" layoutX="261.0" layoutY="288.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="26.0" prefWidth="108.0" text="select Affiche " />
       <ComboBox fx:id="typeexpo" editable="true" layoutX="49.0" layoutY="289.0" prefWidth="150.0" promptText="type exposition" />
       <TextField fx:id="localisation" layoutX="261.0" layoutY="208.0" />
+      <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="448.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

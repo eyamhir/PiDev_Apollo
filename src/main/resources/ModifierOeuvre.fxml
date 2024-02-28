@@ -10,26 +10,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.ModifierOeuvre">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="hello" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Esprit.Controller.ModifierOeuvre">
    <children>
       <ComboBox fx:id="categorie" editable="true" layoutX="35.0" layoutY="96.0" prefWidth="150.0" promptText="choisir categorie" />
-      <TextField fx:id="titreid" layoutX="35.0" layoutY="156.0" prefHeight="26.0" prefWidth="150.0" />
-      <TextField fx:id="diametreid" layoutX="38.0" layoutY="214.0" />
+      <TextField fx:id="titreid" layoutX="35.0" layoutY="156.0" prefHeight="26.0" prefWidth="150.0" promptText="Entrer le titre " />
+      <TextField fx:id="diametreid" layoutX="38.0" layoutY="214.0" promptText="Entrer diamétre" />
       <Text layoutX="35.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégories" wrappingWidth="78.0198974609375" />
-      <DatePicker fx:id="datecreationid" layoutX="38.0" layoutY="270.0" prefHeight="26.0" prefWidth="150.0" />
+      <DatePicker fx:id="datecreationid" layoutX="38.0" layoutY="270.0" prefHeight="26.0" prefWidth="150.0" promptText="Selectionner la date " />
       <Text layoutX="38.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titre" wrappingWidth="36.50704574584961" />
       <Text layoutX="38.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diamètre " />
       <Text layoutX="31.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de creation" />
       <Button layoutX="244.0" layoutY="95.0" mnemonicParsing="false" onAction="#choisirImage" prefHeight="26.0" prefWidth="150.0" text="selectionner l'image " />
-      <TextArea fx:id="descriptionid" layoutX="252.0" layoutY="156.0" prefHeight="88.0" prefWidth="150.0" />
-      <TextField fx:id="prixid" layoutX="252.0" layoutY="270.0" />
+      <TextArea fx:id="descriptionid" layoutX="252.0" layoutY="156.0" prefHeight="88.0" prefWidth="150.0" promptText="Decriver l'oeuvre" />
+      <TextField fx:id="prixid" layoutX="252.0" layoutY="270.0" promptText="Enter le prix en DT" />
       <Text layoutX="253.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Déscription" />
       <Text layoutX="253.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix" />
       <ImageView fx:id="imageid" fitHeight="128.0" fitWidth="161.0" layoutX="426.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="butid" layoutX="283.0" layoutY="318.0" mnemonicParsing="false" onAction="#modif" prefHeight="26.0" prefWidth="94.0" text="Soumettre " />
+      <Button fx:id="butid" layoutX="402.0" layoutY="320.0" mnemonicParsing="false" onAction="#modif" prefHeight="26.0" prefWidth="94.0" text="Soumettre " />
       <ImageView fitHeight="56.0" fitWidth="52.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Dropbox/PC/Desktop/nvlogo.png" />
+            <Image url="@images/nvlogo-removebg-preview%20(1).png" />
          </image>
       </ImageView>
    </children>
