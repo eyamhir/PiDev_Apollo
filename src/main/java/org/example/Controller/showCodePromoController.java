@@ -46,8 +46,8 @@ public class showCodePromoController {
                         if (empty || codePromo == null) {
                             setText(null);
                         } else {
-                            setText("Code: " + codePromo.getCode() +
-                                    ", Date d'expiration: " + codePromo.getDateExpiration());
+                            setText("Code : " + codePromo.getCode() +"\n" +
+                                    "Date d'expiration : " + codePromo.getDateExpiration());
                         }
                     }
                 };

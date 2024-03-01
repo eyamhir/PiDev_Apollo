@@ -65,7 +65,9 @@ public class UPCodePromoController {
                 CodePromo updatedCodePromo = new CodePromo(
                         codePromo.getId_CodePromo(), // Utilisez l'identifiant existant
                         codeTF.getText(),
-                        dateExpirationPicker.getValue()
+                        dateExpirationPicker.getValue(),
+                        utilisateurChoiceBox.getValue().getId_utilisateur()
+
                 );
 
                 // Appeler la méthode du service pour modifier le code promo
@@ -87,7 +89,7 @@ public class UPCodePromoController {
 
     // Méthode de validation pour vérifier si tous les champs sont remplis
     private boolean allFieldsFilled() {
-        if (codeTF.getText().isEmpty() || dateExpirationPicker.getValue() == null) {
+        if (codeTF.getText().isEmpty() || dateExpirationPicker.getValue() == null ) {
             // Afficher une boîte de dialogue d'erreur indiquant les champs requis
             displayErrorDialog("Veuillez remplir tous les champs obligatoires.");
             return false;
@@ -105,7 +107,6 @@ public class UPCodePromoController {
     }
 
     // Méthode pour initialiser les données du code promo dans l'interface
-    private CodePromo codepromo;
 
     public void initData(CodePromo codePromo) {
         this.codePromo = codePromo;
@@ -120,7 +121,7 @@ public class UPCodePromoController {
             try {
                 List<Utilisateur> utilisateurs = serviceUtilisateur.obtenirTousLesUtilisateurs();
                 utilisateurChoiceBox.setItems(FXCollections.observableArrayList(utilisateurs));
-                utilisateurChoiceBox.getSelectionModel().select(codePromo.getId_utilisteur());
+                utilisateurChoiceBox.getSelectionModel().select(codePromo.getId_utilisateur());
             } catch (SQLException e) {
                 e.printStackTrace(); // Gérer l'exception de manière appropriée (par exemple, la journalisation)
             }
@@ -129,7 +130,7 @@ public class UPCodePromoController {
 
     @FXML
     void back(ActionEvent event) throws IOException {
-        try {
+        try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/AFFinterfaceCodePromo.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);

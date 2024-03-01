@@ -2,34 +2,35 @@ package org.example.Models;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class CodePromo {
     private int id_CodePromo;
     private String code;
     private LocalDate dateExpiration;
-    private int id_utilisteur;
+    private int id_utilisateur;
 
 
 
-    public CodePromo(String code, LocalDate dateExpiration, int id_utilisteur) {
+    public CodePromo(String code, LocalDate dateExpiration, int id_utilisateur) {
         this.code = code;
         this.dateExpiration = dateExpiration;
-        this.id_utilisteur = id_utilisteur;
+        this.id_utilisateur = id_utilisateur;
     }
 
-    public int getId_utilisteur() {
-        return id_utilisteur;
+    public int getId_utilisateur() {
+        return id_utilisateur;
     }
 
-    public void setId_utilisteur(int id_utilisteur) {
-        this.id_utilisteur = id_utilisteur;
+    public void setId_utilisateur(int id_utilisateur) {
+        this.id_utilisateur = id_utilisateur;
     }
 
     public CodePromo(int id_CodePromo, String code, LocalDate dateExpiration, int id_utilisteur) {
         this.id_CodePromo = id_CodePromo;
         this.code = code;
         this.dateExpiration = dateExpiration;
-        this.id_utilisteur = id_utilisteur;
+        this.id_utilisateur = id_utilisteur;
     }
 
     public CodePromo() {
@@ -76,7 +77,7 @@ public class CodePromo {
                 "id_CodePromo=" + id_CodePromo +
                 ", code='" + code + '\'' +
                 ", dateExpiration=" + dateExpiration +
-                ", id_utilisteur=" + id_utilisteur +
+                ", id_utilisateur=" + id_utilisateur +
                 '}';
     }
 }

@@ -64,8 +64,6 @@ public class Utilisateur {
         this.date_inscription = date_inscription;
         this.role = role;
         this.mot_passe = mot_passe;
-        //this.specialite_artistique = specialite_artistique;
-        //this.adresse_locale = adresse_locale;
     }
 
     public Utilisateur(int id_utilisateur, String nom, String prenom, String adresse_mail, int num_tel, LocalDate date_naissance, LocalDate date_inscription,  String specialite_artistique, String adresse_locale, String role, String mot_passe) {
@@ -207,20 +205,9 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-        return "Utilisateur{" +
-                "id_utilisateur=" + id_utilisateur +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", adresse_mail='" + adresse_mail + '\'' +
-                ", num_tel=" + num_tel +
-                ", date_naissance=" + date_naissance +
-                ", date_inscription=" + date_inscription +
-                ", specialite_artistique='" + specialite_artistique + '\'' +
-                ", adresse_locale='" + adresse_locale + '\'' +
-                ", role='" + role + '\'' +
-                ", mot_passe='" + mot_passe + '\'' +
-                ", isActive=" + isActive +
-                ", isBanned=" + isBanned +
-                '}';
+        return
+                "Nom='" + nom  +
+                "Prenom='" + prenom  +
+                "Role='" + role ;
     }
 }

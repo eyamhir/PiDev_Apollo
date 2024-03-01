@@ -27,7 +27,7 @@ public class Service_CodePromo implements Interface_CodePromo {
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, codePromo.getCode());
         statement.setDate(2, Date.valueOf(codePromo.getDateExpiration()));
-        statement.setInt(3, codePromo.getId_utilisteur());
+        statement.setInt(3, codePromo.getId_utilisateur());
 
         statement.executeUpdate();
     }
@@ -72,14 +72,25 @@ public class Service_CodePromo implements Interface_CodePromo {
 
     @Override
     public void mettreAJourCodePromo(CodePromo codePromo) throws SQLException {
-        String query = "UPDATE CodePromo SET code = ?, dateExpiration = ? WHERE id_CodePromo = ?";
+        String query = "UPDATE CodePromo SET code = ?, dateExpiration = ? , id_utilisateur = ? WHERE id_CodePromo = ?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, codePromo.getCode());
         statement.setDate(2, Date.valueOf(codePromo.getDateExpiration()));
-        statement.setInt(3, codePromo.getId_CodePromo());
+        statement.setInt(3, codePromo.getId_utilisateur());
+        statement.setInt(4, codePromo.getId_CodePromo());
         statement.executeUpdate();
     }
 
+
+   /* public void updateCodePromo(CodePromo codePromo) throws SQLException {
+        String updateQuery = "UPDATE CodePromo SET code = ?, dateExpiration = ? , id_utilisateur = ? WHERE id_CodePromo = ? AND id_utilisateur = ?";
+        PreparedStatement statement = connection.prepareStatement(updateQuery);
+        statement.setString(1, codePromo.getCode());
+        statement.setDate(2, Date.valueOf(codePromo.getDateExpiration()));
+        statement.setInt(3, codePromo.getId_utilisateur());
+        statement.setInt(4, codePromo.getId_CodePromo());
+        statement.executeUpdate();
+    }*/
     @Override
     public void supprimerCodePromo(int id) throws SQLException {
         String query = "DELETE FROM CodePromo WHERE id_CodePromo = ?";

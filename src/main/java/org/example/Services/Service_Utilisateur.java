@@ -190,7 +190,6 @@ public class Service_Utilisateur implements Interface_Utilisateur {
     }
 
 
-
     public List<Utilisateur> search(String keyword) {
         List<Utilisateur> userListView = new ArrayList<>();
         try {
@@ -254,6 +253,7 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         }
         return false;
     }
+
     public boolean emailExists(String adresse_mail) {
         try {
             String query = "SELECT COUNT(*) FROM `utilisateur` WHERE `adresse_mail` = ?";
@@ -268,6 +268,7 @@ public class Service_Utilisateur implements Interface_Utilisateur {
             return false;
         }
     }
+
     public boolean userExists(String nom, String prenom) {
         try {
             String query = "SELECT COUNT(*) FROM `utilisateur` WHERE `nom` = ? AND `prenom` = ?";
@@ -286,7 +287,8 @@ public class Service_Utilisateur implements Interface_Utilisateur {
 
 
     public void updatePassword(int id_utilisateur, String newPassword) throws SQLException {
-        try { String req = "UPDATE `utilisateur` SET `mot_passe`=? WHERE `id_utilisateur`=?";
+        try {
+            String req = "UPDATE `utilisateur` SET `mot_passe`=? WHERE `id_utilisateur`=?";
             PreparedStatement pstmt = connection.prepareStatement(req);
             pstmt.setString(1, newPassword);
             pstmt.setInt(2, id_utilisateur);
@@ -297,9 +299,6 @@ public class Service_Utilisateur implements Interface_Utilisateur {
             ex.printStackTrace();
         }
     }
-
-
-    // Method to retrieve the user's ID by email
 
     public Utilisateur getUserByEmail(String adresse_mail) throws SQLException {
         Utilisateur utilisateur = null;
@@ -329,10 +328,10 @@ public class Service_Utilisateur implements Interface_Utilisateur {
 
 
     public int getUserIdByEmail(String adresse_mail) throws SQLException {
-        int id_utilisateur = -1; // Initialize with a default value
+        int id_utilisateur = -1;
         PreparedStatement pstmt = null;
         try {
-            String query = "SELECT id_utilisateur FROM utilisateur WHERE adresse_mail = ?";
+            String query = "SELECT id_utilisateur FROM utilisateur WHERE adresse_mail  = ?";
             pstmt = connection.prepareStatement(query);
             pstmt.setString(1, adresse_mail);
             ResultSet rs = pstmt.executeQuery();
