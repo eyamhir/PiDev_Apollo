@@ -205,9 +205,6 @@ public class Utilisateur {
 
     @Override
     public String toString() {
-        return
-                "Nom='" + nom  +
-                "Prenom='" + prenom  +
-                "Role='" + role ;
+        return nom + " " + prenom + " : " + role;
     }
 }
