@@ -180,5 +180,29 @@ public class userShowController {
         }
     }
 
+    @FXML
+    void toggleBannissement(ActionEvent event) {
+        Utilisateur selectedUser = userListView.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            try {
+                if (selectedUser.getIsBanned()) {
+                    serviceUtilisateur.debanUtilisateur(selectedUser.getId_utilisateur());
+                    selectedUser.setIsBanned(false);
+                    afficherMessageErreur("L'utilisateur a été débanni avec succès.");
+                } else {
+                    serviceUtilisateur.banUtilisateur(selectedUser.getId_utilisateur());
+                    selectedUser.setIsBanned(true);
+                    afficherMessageErreur("L'utilisateur a été banni avec succès.");
+                }
+            } catch (SQLException e) {
+                afficherMessageErreur("Erreur lors de la modification du statut de l'utilisateur.");
+            }
+        } else {
+            afficherMessageErreur("Veuillez sélectionner un utilisateur.");
+        }
+    }
+
+
+
 
 }

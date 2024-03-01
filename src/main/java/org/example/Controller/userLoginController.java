@@ -110,7 +110,7 @@ public class userLoginController {
     public void pwdOublier(ActionEvent actionEvent) {
         try {
             // Load the Adduser.fxml file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/ForgotPWDInterface.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/CheckMailInterface.fxml"));
             Parent root = loader.load();
 
             // Create a new stage for the Adduser interface

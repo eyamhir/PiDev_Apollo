@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.showCodePromoController">
     <ListView fx:id="codePromoListView" layoutX="73.0" layoutY="95.0" prefHeight="245.0" prefWidth="586.0" />
-    <TextField fx:id="searchTextField" layoutX="421.0" layoutY="24.0" prefHeight="26.0" prefWidth="250.0" promptText="Search by name or surname" />
+    <TextField fx:id="searchTextField" layoutX="421.0" layoutY="24.0" prefHeight="26.0" prefWidth="250.0" promptText="Search by code" />
     <Button fx:id="searchButton" layoutX="682.0" layoutY="23.0" mnemonicParsing="false" onAction="#search" text="Search" textFill="#480a53"/>
     <Button layoutX="480.0" layoutY="368.0" onAction="#supprimerCodePromo" styleClass="custom-button" stylesheets="@../Values/style.css" text="Supprimer Code Promo" />
     <Button layoutX="281.0" layoutY="368.0" onAction="#modifierCodePromo" styleClass="custom-button" stylesheets="@../Values/style.css" text="Modifier Code Promo" />

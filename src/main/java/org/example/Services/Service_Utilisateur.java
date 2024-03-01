@@ -1,17 +1,13 @@
 package org.example.Services;
 
+import javafx.scene.control.Alert;
 import org.example.Interfaces.Interface_Utilisateur;
 import org.example.Models.Utilisateur;
 import org.example.Utils.MaConnexion;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Random;
 
 public class Service_Utilisateur implements Interface_Utilisateur {
     private Connection connection;
@@ -22,7 +18,7 @@ public class Service_Utilisateur implements Interface_Utilisateur {
 
     @Override
     public void creerUtilisateur(Utilisateur utilisateur) throws SQLException {
-        String query = "INSERT INTO utilisateur (nom, prenom, adresse_mail, num_tel, date_naissance, date_inscription, specialite_artistique, adresse_locale, role, mot_passe, isActive) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO utilisateur (nom, prenom, adresse_mail, num_tel, date_naissance, date_inscription, specialite_artistique, adresse_locale, role, mot_passe, isActive ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setString(1, utilisateur.getNom());
         statement.setString(2, utilisateur.getPrenom());
@@ -141,7 +137,7 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.executeUpdate();
     }
 
-    public boolean connecter(String adresse_mail, String mot_passe) {
+    /*public boolean connecter(String adresse_mail, String mot_passe) {
         try {
             String req = "SELECT * FROM `utilisateur` WHERE `adresse_mail` = ? AND `mot_passe` = ?";
             PreparedStatement pstmt = connection.prepareStatement(req);
@@ -156,6 +152,40 @@ public class Service_Utilisateur implements Interface_Utilisateur {
             ex.printStackTrace();
         }
         // Return false if any exception occurs or if no user is found with the given credentials
+        return false;
+    }*/
+    public boolean connecter(String adresse_mail, String mot_passe) {
+        try {
+            String req = "SELECT * FROM `utilisateur` WHERE `adresse_mail` = ? AND `mot_passe` = ?";
+            PreparedStatement pstmt = connection.prepareStatement(req);
+            pstmt.setString(1, adresse_mail);
+            pstmt.setString(2, mot_passe);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                boolean isActive = rs.getBoolean("isActive");
+                boolean isBanned = rs.getBoolean("isBanned");
+
+                if (isBanned) {
+                    // Utilisateur banni, afficher une alerte
+                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    alert.setTitle("Avertissement");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Vous avez été banni. Veuillez contacter l'administrateur pour plus d'informations.");
+                    alert.showAndWait();
+
+                    // Retourner false pour indiquer que la connexion a échoué en raison du bannissement
+                    return false;
+                }
+
+                // Si l'utilisateur n'est pas banni et est actif, retourner true pour indiquer une connexion réussie
+                return isActive;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        // Si aucune ligne n'est retournée, cela signifie que la connexion a échoué
         return false;
     }
 
@@ -211,71 +241,132 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         return userListView;
     }
 
-    public boolean resetPWD(String email) {
-        // Implement logic to generate a temporary password
-        String temporaryPassword = generateTemporaryPassword();
-
-        // Implement logic to update the user's password in the database
-        boolean passwordUpdated = updatePasswordInDatabase(email, temporaryPassword);
-
-        if (passwordUpdated) {
-            // Implement logic to send an email with the new password
-            boolean emailSent = sendEmail(email, temporaryPassword);
-            return emailSent;
-        } else {
+    public boolean isAdmin(String adresse_mail) {
+        try {
+            String req = "SELECT * FROM `utilisateur` WHERE `adresse_mail` = ? AND `role` = 'Admin'";
+            PreparedStatement pstmt = connection.prepareStatement(req);
+            pstmt.setString(1, adresse_mail);
+            ResultSet rs = pstmt.executeQuery();
+            // result of user checked and Admin
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean emailExists(String adresse_mail) {
+        try {
+            String query = "SELECT COUNT(*) FROM `utilisateur` WHERE `adresse_mail` = ?";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, adresse_mail);
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean userExists(String nom, String prenom) {
+        try {
+            String query = "SELECT COUNT(*) FROM `utilisateur` WHERE `nom` = ? AND `prenom` = ?";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, nom);
+            pstmt.setString(2, prenom);
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
+            return count > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
     }
 
-    private String generateTemporaryPassword() {
-        // Générer une chaîne aléatoire pour le mot de passe temporaire
-        // Vous pouvez personnaliser la longueur ou les caractères utilisés selon vos besoins
-        int length = 10; // Longueur du mot de passe temporaire
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; // Caractères utilisés
 
-        StringBuilder password = new StringBuilder();
-        Random random = new Random();
-        for (int i = 0; i < length; i++) {
-            int index = random.nextInt(chars.length());
-            password.append(chars.charAt(index));
+    public void updatePassword(int id_utilisateur, String newPassword) throws SQLException {
+        try { String req = "UPDATE `utilisateur` SET `mot_passe`=? WHERE `id_utilisateur`=?";
+            PreparedStatement pstmt = connection.prepareStatement(req);
+            pstmt.setString(1, newPassword);
+            pstmt.setInt(2, id_utilisateur);
+            pstmt.executeUpdate();
+            System.out.println("Password updated successfully!");
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
-
-        return password.toString();
     }
 
-    private boolean updatePasswordInDatabase(String adresse_mail, String newPwd) {
+
+    // Method to retrieve the user's ID by email
+
+    public Utilisateur getUserByEmail(String adresse_mail) throws SQLException {
+        Utilisateur utilisateur = null;
+        PreparedStatement pstmt = null;
         try {
-            // Établir une connexion à la base de données
-            Connection connection = MaConnexion.getInstance().getCnx();
-
-            // Construire la requête SQL pour mettre à jour le mot de passe de l'utilisateur
-            String query = "UPDATE utilisateur SET mot_passe = ? WHERE adresse_mail = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, newPwd);
-            statement.setString(2, adresse_mail);
-
-            // Exécuter la requête SQL de mise à jour
-            int rowsUpdated = statement.executeUpdate();
-
-            // Vérifier si la mise à jour a réussi
-            if (rowsUpdated > 0) {
-                // La mise à jour a réussi
-                return true;
-            } else {
-                // La mise à jour a échoué
-                return false;
+            String query = "SELECT * FROM utilisateur WHERE adresse_mail = ?";
+            pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, adresse_mail);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                utilisateur = new Utilisateur();
+                utilisateur.setId_utilisateur(rs.getInt("id_utilisateur"));
+                utilisateur.setAdresse_mail(rs.getString("adresse_mail"));
+                // Définir les autres attributs de l'objet Utilisateur au besoin
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-            return false; // En cas d'erreur, retourner false
+            throw ex;
+        } finally {
+            if (pstmt != null) {
+                pstmt.close();
+            }
         }
+        return utilisateur;
     }
 
 
-    private boolean sendEmail(String email, String newPassword) {
-        // Implement logic to send an email with the new password
-        // Use JavaMail API or any other email-sending library
-        return true; // Assuming email sending was successful
+
+    public int getUserIdByEmail(String adresse_mail) throws SQLException {
+        int id_utilisateur = -1; // Initialize with a default value
+        PreparedStatement pstmt = null;
+        try {
+            String query = "SELECT id_utilisateur FROM utilisateur WHERE adresse_mail = ?";
+            pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, adresse_mail);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                id_utilisateur = rs.getInt("id_utilisateur");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        } finally {
+            if (pstmt != null) {
+                pstmt.close();
+            }
+        }
+        return id_utilisateur;
     }
+
+    public boolean findEmail(String adresse_mail) throws SQLException {
+        return getUserIdByEmail(adresse_mail) != -1;
+    }
+
+    public void banUtilisateur(int id_utilisateur) throws SQLException {
+        String query = "UPDATE utilisateur SET isBanned = true WHERE id_utilisateur = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, id_utilisateur);
+        statement.executeUpdate();
+    }
+
+    public void debanUtilisateur(int id_utilisateur) throws SQLException {
+        String query = "UPDATE utilisateur SET isBanned = false WHERE id_utilisateur = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1, id_utilisateur);
+        statement.executeUpdate();
+    }
+
 
 }

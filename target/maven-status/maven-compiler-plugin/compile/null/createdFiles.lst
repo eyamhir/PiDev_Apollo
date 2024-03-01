@@ -2,6 +2,8 @@ org\example\Services\Service_Utilisateur.class
 org\example\Models\CodePromo.class
 org\example\Controller\showCodePromoController$1$1.class
 org\example\Models\Utilisateur.class
+org\example\Controller\VerifCode.class
+org\example\Controller\newPassword.class
 org\example\Controller\showCodePromoController$1.class
 org\example\Interfaces\Interface_CodePromo.class
 org\example\test\MainFX.class
@@ -18,9 +20,10 @@ org\example\Controller\userShowController$1.class
 org\example\Controller\AddCodePromoController.class
 org\example\Services\Service_CodePromo.class
 org\example\Controller\userShowController.class
-org\example\Controller\ForgotPWDController.class
+org\example\Controller\CheckMailController.class
 org\example\Controller\Home.class
 org\example\Controller\userAddController.class
 org\example\Utils\MaConnexion.class
 org\example\Controller\UPCodePromoController.class
+org\example\Controller\UPCodePromoController$1.class
 org\example\Models\EmailSender$1.class
