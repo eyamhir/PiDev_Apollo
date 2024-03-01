@@ -8,7 +8,7 @@
 }
 
 .third-background{
-    -fx-background-image: url('../IMG/Capture2.jpg');
+    -fx-background-image: url('/Images/backg.jpg');
     -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
     -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
     -fx-background-position: center; /* Positionnement de l'image au centre */

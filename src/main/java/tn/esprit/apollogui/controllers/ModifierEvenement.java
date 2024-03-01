@@ -1,4 +1,4 @@
-/*package tn.esprit.apollogui.controllers;
+package tn.esprit.apollogui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -23,10 +23,9 @@ public class ModifierEvenement {
     private TextField NomTF;
 
     @FXML
-    private TextField TypeTF;
+    private TextField TypeTF;}
 
-
-    EvenementService es = new EvenementService();
+    /* EvenementService es = new EvenementService();
 
         evenement eventToUpdate = new evenement(NomTF, DescriptionTF, TypeTF, new Date(), new Date());
         eventToUpdate.setId(4);
@@ -37,5 +36,5 @@ public class ModifierEvenement {
 
 }
 
-/*
+
  */

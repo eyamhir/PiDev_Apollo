@@ -17,7 +17,7 @@ public class EvenementService implements IService<evenement> {
     }
 
     public void ajouter(evenement evenement) throws SQLException {
-        String dateFormatPattern = "yyyy-MM-dd"; // Define the desired date format
+        String dateFormatPattern = "yyyy-MM-dd";
         SimpleDateFormat dateFormat = new SimpleDateFormat(dateFormatPattern);
 
         String req = "INSERT INTO evenement(Nom, Date_debut, Date_fin, Description, Type) VALUES('"
@@ -26,9 +26,9 @@ public class EvenementService implements IService<evenement> {
                 + evenement.getType() + "')";
         try (Statement st = connection.createStatement()) {
             st.executeUpdate(req);
-            System.out.println("Evenement ajouté avec succès !");
+            System.out.println("Event added!");
         } catch (SQLException ex) {
-            System.out.println("Erreur lors de l'ajout de l'événement: " + ex.getMessage());
+            System.out.println("Error" + ex.getMessage());
             throw ex;
         }
     }
@@ -46,9 +46,9 @@ public class EvenementService implements IService<evenement> {
             ps.setInt(6, evenement.getId());
 
             ps.executeUpdate();
-            System.out.println("Evenement modifié avec succès !");
+            System.out.println("Event Updated !");
         } catch (SQLException ex) {
-            System.out.println("Erreur lors de la modification de l'événement: " + ex.getMessage());
+            System.out.println("Error " + ex.getMessage());
             throw ex;
         }
     }
