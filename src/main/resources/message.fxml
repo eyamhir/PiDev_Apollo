@@ -16,8 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.message">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.message_expediteur">
    <left>
       <VBox prefHeight="599.0" prefWidth="272.0" styleClass="dark-gray-background" stylesheets="@styles/style.css" BorderPane.alignment="CENTER">
          <children>
@@ -39,7 +40,7 @@
                   <Insets left="30.0" right="10.0" top="10.0" />
                </VBox.margin>
                <image>
-                  <Image url="@images/icons8-chat-48%20(1).png" />
+                  <Image url="@images/icons8-chat-48 (1).png" />
                </image>
             </ImageView>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
@@ -47,7 +48,7 @@
                   <Insets left="30.0" right="10.0" top="10.0" />
                </VBox.margin>
                <image>
-                  <Image url="@images/icons8-group-48%20(1).png" />
+                  <Image url="@images/icons8-group-48 (1).png" />
                </image>
             </ImageView>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
@@ -55,7 +56,7 @@
                   <Insets left="30.0" right="10.0" top="10.0" />
                </VBox.margin>
                <image>
-                  <Image url="@images/icons8-user-48%20(1).png" />
+                  <Image url="@images/icons8-user-48 (1).png" />
                </image>
             </ImageView>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
@@ -63,18 +64,22 @@
                   <Insets left="30.0" right="10.0" top="10.0" />
                </VBox.margin>
                <image>
-                  <Image url="@images/icons8-settings-48%20(1).png" />
+                  <Image url="@images/icons8-settings-48 (1).png" />
                </image>
             </ImageView>
             <Pane prefHeight="137.0" prefWidth="272.0" />
-            <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+            <Button mnemonicParsing="false" onAction="#closeServer" styleClass="dark-gray-background" stylesheets="@styles/style.css">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/icons8-exit-48 (1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <VBox.margin>
-                  <Insets left="30.0" top="10.0" />
+                  <Insets left="25.0" />
                </VBox.margin>
-               <image>
-                  <Image url="@images/icons8-exit-48%20(1).png" />
-               </image>
-            </ImageView>
+            </Button>
          </children>
       </VBox>
    </left>
@@ -85,7 +90,7 @@
                <children>
                   <HBox prefHeight="85.0" prefWidth="334.0" stylesheets="@styles/style.css">
                      <children>
-                        <Button mnemonicParsing="false" styleClass="dark-gray-background" stylesheets="@styles/style.css">
+                        <Button mnemonicParsing="false" onAction="#Chercher_Destinataire" styleClass="dark-gray-background" stylesheets="@styles/style.css">
                            <padding>
                               <Insets top="10.0" />
                            </padding>
@@ -100,7 +105,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <TextField promptText="Search" styleClass="transparent-background" stylesheets="@styles/style.css">
+                        <TextField fx:id="SearchId" promptText="Search" styleClass="transparent-background" stylesheets="@styles/style.css">
                            <HBox.margin>
                               <Insets left="30.0" top="30.0" />
                            </HBox.margin>
@@ -131,11 +136,11 @@
             <Pane prefHeight="101.0" prefWidth="147.0" />
             <HBox alignment="CENTER_LEFT" prefHeight="101.0" prefWidth="627.0">
                <children>
-                  <Label fx:id="participantId" alignment="CENTER" prefHeight="34.0" prefWidth="148.0" text="Iheb Nakib">
+                  <Text fx:id="textId" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
                      <font>
                         <Font name="Ebrima Bold" size="20.0" />
                      </font>
-                  </Label>
+                  </Text>
                   <Circle fill="#f0ce71" radius="5.0" stroke="BLACK" strokeType="INSIDE">
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -160,7 +165,21 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="0.0" />
-            <Pane prefHeight="100.0" prefWidth="38.0" />
+            <Pane prefHeight="100.0" prefWidth="38.0">
+               <children>
+                  <Button fx:id="emojiButton" layoutX="25.0" layoutY="40.0" mnemonicParsing="false" styleClass="light-gray-background" stylesheets="@styles/style.css">
+                     <padding>
+                        <Insets right="10.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons8-smile-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></Pane>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="661.0" stylesheets="@styles/style.css">
                <HBox.margin>
                   <Insets />
@@ -180,20 +199,17 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#attachedButtonOnAction" styleClass="light-gray-background" stylesheets="@styles/style.css">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons8-importer-le-fichier-32.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </HBox>
-            <Button fx:id="emojibtn" mnemonicParsing="false" onAction="#passer_emoji" styleClass="light-gray-background" stylesheets="@styles/style.css">
-               <HBox.margin>
-                  <Insets top="30.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="37.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8-smile-48.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
          </children>
       </HBox>
    </bottom>
@@ -202,7 +218,7 @@
          <children>
             <ScrollPane fx:id="sp_main" prefHeight="643.0" prefWidth="618.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="584.0" prefWidth="600.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="601.0" />
               </content>
             </ScrollPane>
          </children></VBox>

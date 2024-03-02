@@ -40,21 +40,23 @@
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Label>
-        <MenuButton fx:id="VisibiliteTF" layoutX="366.0" layoutY="139.0" lineSpacing="3.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="154.0" styleClass="incomming-bubble" stylesheets="@styles/style.css">
-        <items>
-            <MenuItem fx:id="PUBLIC" mnemonicParsing="true" text="PUBLIC" userData="PUBLIC" />
-            <MenuItem fx:id="PRIVATE" mnemonicParsing="true" text="PRIVATE" userData="PRIVATE" />
-        </items>
-         <padding>
-            <Insets right="10.0" />
-         </padding>
-      </MenuButton>
+
+           <MenuButton fx:id="VisibiliteTF" layoutX="366.0" layoutY="139.0" lineSpacing="3.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="154.0" styleClass="incomming-bubble" stylesheets="@styles/style.css" text="Vesibilite">
+           <items>
+               <MenuItem fx:id="PUBLIC" mnemonicParsing="true" text="PUBLIC" userData="PUBLIC" />
+               <MenuItem fx:id="PRIVATE" mnemonicParsing="true" text="PRIVATE" userData="PRIVATE" />
+           </items>
+            <padding>
+               <Insets right="10.0" />
+            </padding>
+         </MenuButton>
       <ImageView fitHeight="69.0" fitWidth="56.0" layoutX="-4.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="images/apollo.png" />
          </image>
       </ImageView>
-      <MenuButton fx:id="TypeTF" layoutX="366.0" layoutY="93.0" lineSpacing="3.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="154.0" styleClass="incomming-bubble" stylesheets="@styles/style.css">
+
+      <MenuButton fx:id="TypeTF" layoutX="366.0" layoutY="93.0" lineSpacing="3.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="154.0" styleClass="incomming-bubble" stylesheets="@styles/style.css" text="Type">
          <items>
             <MenuItem fx:id="GROUP" mnemonicParsing="true" text="GROUP" userData="DUO" />
             <MenuItem fx:id="DUO" mnemonicParsing="true" text="DUO" userData="GROUP" />
