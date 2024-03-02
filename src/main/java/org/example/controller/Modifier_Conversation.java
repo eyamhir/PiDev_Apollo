@@ -10,7 +10,6 @@ import org.example.enumarate.Conversation_Type;
 import org.example.enumarate.Visibilite;
 import org.example.model.Conversation;
 import org.example.services.Service_Conversation;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -45,12 +44,12 @@ public class Modifier_Conversation implements Initializable {
     public void initData(int conversationId) {
         try {
             conversation = serviceConversation.lireConversationunique(conversationId);
-            conversation.getConversationId();
             if (conversation != null) {
-
                 titreTF.setText(conversation.getTitre());
                 sujetTF.setText(conversation.getSujet());
                 descriptionTA.setText(conversation.getDescription());
+
+                // Setting the selected item for TypeTF and VisibiliteTF
                 TypeTF.setText(conversation.getTypeConversation().toString());
                 VisibiliteTF.setText(conversation.getVisibilite().toString());
             } else {
@@ -62,6 +61,7 @@ public class Modifier_Conversation implements Initializable {
         }
     }
 
+
     @FXML
     public void ModifierConversation(javafx.event.ActionEvent actionEvent) {
         try {
@@ -72,19 +72,15 @@ public class Modifier_Conversation implements Initializable {
                 // Récupération des valeurs des champs et conversion en types énumérés
                 Conversation_Type conversationType = Conversation_Type.valueOf(TypeTF.getText());
                 Visibilite visibilite = Visibilite.valueOf(VisibiliteTF.getText());
-
                 // Mise à jour des informations de la conversation
-
                 conversation.setTitre(titreTF.getText());
                 conversation.setSujet(sujetTF.getText());
                 conversation.setDescription(descriptionTA.getText());
                 conversation.setTypeConversation(conversationType);
                 conversation.setVisibilite(visibilite);
-
                 // Appel de la méthode de service pour mettre à jour la conversation dans la base de données
                 try {
                     serviceConversation.mettreAJourConversationUI(conversation);
-
                     // Affichage d'une alerte de confirmation
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Confirmation");
