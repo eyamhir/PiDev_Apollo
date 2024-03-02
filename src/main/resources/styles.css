@@ -43,3 +43,12 @@
 .form_container Button:hover {
     -fx-background-color: #5e4938;
 }
+
+.hbox-style {
+    -fx-background-color: #FFFFFF; /* Couleur de fond */
+    -fx-background-radius: 10px; /* Bordures arrondies */
+    -fx-border-radius: 10px; /* Bordures arrondies */
+
+    -fx-border-width: 1px; /* Épaisseur de la bordure */
+    -fx-effect: dropshadow(three-pass-box, #AAAAAA, 10, 0, 0, 0); /* Ombrage */
+}

@@ -8,11 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import tn.esprit.projet_java.models.Mise;
-import tn.esprit.projet_java.models.Enchers;
+import tn.esprit.projet_java.models.*;
 import javafx.scene.control.Alert;
 import tn.esprit.projet_java.services.EnchersService;
 import tn.esprit.projet_java.services.MiseService;
+import tn.esprit.projet_java.models.GMailer;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -24,7 +24,8 @@ public class AjouterMise {
     @FXML
     private TextField max_montantTF;
     private final MiseService ms = new MiseService();
-
+   // private final GMailer gMailer;
+   private final GMailer gMailer;
 
 
     // Méthode pour afficher les messages d'erreur
@@ -35,9 +36,16 @@ public class AjouterMise {
         alert.showAndWait();
     }
 
+
+
+    public AjouterMise() {
+        try {
+            gMailer = new GMailer();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     @FXML
-
-
     public void ajouter_mise(ActionEvent actionEvent) {
         try {
             // Vérifier si le champ max_montantTF est rempli
@@ -63,17 +71,24 @@ public class AjouterMise {
                 Mise mise = new Mise(maxMontant, 2, 2);
                 // Afficher un message de succès ou autre si nécessaire
                 ms.ajouter(mise);
+                // Envoyer un e-mail après l'ajout avec succès
+                String subject = "Nouvelle Mise Ajoutée";
+                String message = "Une nouvelle mise a été ajoutée avec succès. Montant : " + maxMontant;
+                gMailer.sendMail(subject, message);
             } else {
                 // Afficher un message d'erreur si le montant est négatif
                 afficherErreur("Veuillez saisir un montant valide positif.");
             }
-
+           // Mail mail = new Mail();
+           // mail.validermise(max_montantTF.getTypeSelector());
         } catch (NumberFormatException e) {
             // Gérer les erreurs de conversion de texte en nombre
             afficherErreur("Veuillez saisir un montant valide.");
         } catch (SQLException e) {
             // Gérer les erreurs SQL
             afficherErreur("Erreur SQL : " + e.getMessage());
+
+
         } catch (Exception e) {
             // Gérer les autres exceptions
             afficherErreur("Une erreur s'est produite. Détails : " + e.getMessage());
@@ -93,7 +108,7 @@ public class AjouterMise {
 
     public void annuler_mise(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherEncheres.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficheEnchere.fxml"));
             // Stage window =(Stage)list.getScene().getWindow();
             // window.setScene(new Scene(root));
             max_montantTF.getScene().setRoot(root);

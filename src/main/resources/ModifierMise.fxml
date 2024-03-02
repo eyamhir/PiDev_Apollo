@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="484.0" prefWidth="610.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.projet_java.controllers.ModifierMise">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="form-container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.projet_java.controllers.ModifierMise">
    <children>
-      <Text layoutX="276.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Merci d'avoir participé à l'enchère ! Votre participation a été enregistrée avec succès" wrappingWidth="333.800094795227" />
-      <ListView fx:id="listview" layoutX="285.0" layoutY="83.0" prefHeight="202.0" prefWidth="314.0" />
-      <Button layoutX="276.0" layoutY="308.0" mnemonicParsing="false" onAction="#modifier_mise" prefHeight="28.0" prefWidth="122.0" text="Modifier" />
-      <Button layoutX="434.0" layoutY="308.0" mnemonicParsing="false" onAction="#supprimer_mise" prefHeight="30.0" prefWidth="122.0" text="supprimer" />
-      <ImageView fitHeight="491.0" fitWidth="287.0" layoutX="-16.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@image2.jpg" />
-         </image>
-      </ImageView>
+      <Text fill="#8c581d" layoutX="53.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Merci d'avoir participé à l'enchère ! Votre participation a été enregistrée avec succès" textAlignment="CENTER" wrappingWidth="593.8001062393188">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font></Text>
+      <ListView fx:id="listview" layoutX="180.0" layoutY="81.0" prefHeight="202.0" prefWidth="314.0" />
+      <Button layoutX="164.0" layoutY="302.0" mnemonicParsing="false" onAction="#modifier_mise" prefHeight="28.0" prefWidth="122.0" text="Modifier" />
+      <Button layoutX="365.0" layoutY="302.0" mnemonicParsing="false" onAction="#supprimer_mise" prefHeight="30.0" prefWidth="122.0" text="supprimer" />
+      <Label layoutX="106.0" layoutY="61.0" text="voici votre Historique des misess" />
    </children>
-   <styleClass>
-      <String fx:value="form_container" />
-      <String fx:value="form-container" />
-      <String fx:value="label" />
-   </styleClass>
 </AnchorPane>

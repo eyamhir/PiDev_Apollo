@@ -146,7 +146,7 @@ public class ModifierPage {
 
     public void annuler_mise(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/AfficherEncheres.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/AfficheEnchere.fxml"));
             // Stage window =(Stage)list.getScene().getWindow();
             // window.setScene(new Scene(root));
             max_montantTF.getScene().setRoot(root);

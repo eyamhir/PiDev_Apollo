@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.stage.FileChooser;
 import tn.esprit.projet_java.models.Enchers;
 import tn.esprit.projet_java.services.EnchersService;
 import javafx.scene.control.DatePicker;
@@ -51,13 +52,18 @@ public class ModifierEncheres {
         // This method is called to initialize the modification interface with the selected Enchers data
         // this.Encher = selectedEncher;
         // Populate UI elements with the data from the selected Enchers
+
         typeTF.setText(Encher.getType_oeuvre());
         min_montantTF.setText(String.valueOf(Encher.getMin_montant()));
         date_debutTF.setValue(Encher.getDate_debut());
         date_finTF.setValue(Encher.getDate_fin());
         txtimageTF.setText(Encher.getImage());
 
-
+// Set the image path only if it's not null or empty
+        String imagePath = Encher.getImage();
+        if (imagePath != null && !imagePath.isEmpty()) {
+            txtimageTF.setText(imagePath);
+        }
         // Populate other UI elements as needed...
     }
     @FXML
@@ -74,64 +80,12 @@ public class ModifierEncheres {
 
 
     }
-/*
-    @FXML
-    void saveChanges(ActionEvent event) {
 
-
-
-
-        try {
-            if (allFieldsFilled()) {
-                // Créer un objet Utilisateur avec le constructeur approprié
-                Date date_debut = java.sql.Date.valueOf(date_debutTF.getValue());
-                Date date_fin = java.sql.Date.valueOf(date_finTF.getValue());
-                String type = typeTF.getText();
-                double minMontant = Double.parseDouble(min_montantTF.getText());
-                String image =txtimageTF.getText();
-
-
-
-
-                Enchers en = new Enchers(
-                        Encher.getId_enchers(),
-                        typeTF.getText(),
-                        Double.parseDouble(min_montantTF.getText()),
-                        date_debutTF.getValue(),
-                        date_finTF.getValue(),
-                        txtimageTF.getText()
-
-                );
-
-
-                // Appeler la méthode du service pour modifier l'utilisateur
-             //  enchersService.modifierUI(en);
-                enchersService.modifier(en);
-                System.out.println(en);
-
-
-                // Afficher une boîte de dialogue de confirmation
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Confirmation");
-                alert.setHeaderText(null);
-                alert.setContentText("L'encher a été modifié avec succès.");
-                alert.showAndWait();
-            }
-        } catch (SQLException e) {
-            // Gérer les erreurs de connexion à la base de données ou autres erreurs SQL
-            e.printStackTrace();
-            displayErrorDialog("Une erreur s'est produite lors de la modification de l'encher.");
-        } catch (NumberFormatException e) {
-            // Gérer les erreurs de format de nombre
-            e.printStackTrace();
-            displayErrorDialog("Le numéro de téléphone doit être un nombre entier.");
-        }
-
-    }*/
 @FXML
 void saveChanges(ActionEvent event) {
     try {
         if (allFieldsFilled()) {
+            if (Encher != null) {
             // Récupération des valeurs depuis les champs de saisie
             Date date_debut = java.sql.Date.valueOf(date_debutTF.getValue());
             Date date_fin = java.sql.Date.valueOf(date_finTF.getValue());
@@ -148,6 +102,7 @@ void saveChanges(ActionEvent event) {
                         // Ajouter une condition pour s'assurer que la date de début est aujourd'hui ou ultérieure
                        // if (date_debut.toLocalDate().isEqual(LocalDate.now()) || date_debut.toLocalDate().isAfter(LocalDate.now())) {
                         if (((java.sql.Date) date_debut).toLocalDate().isEqual(LocalDate.now()) || ((java.sql.Date) date_debut).toLocalDate().isAfter(LocalDate.now())) {
+                       // if (date_debutTF.getValue().isEqual(LocalDate.now()) || date_debutTF.getValue().isAfter(LocalDate.now())) {
                             // Créer un objet Enchers avec les données saisies
                             Enchers en = new Enchers(
                                     Encher.getId_enchers(),
@@ -183,6 +138,10 @@ void saveChanges(ActionEvent event) {
                 // Afficher un message d'erreur si le type contient des chiffres, des symboles ou est vide
                 displayErrorDialog("Veuillez saisir un type valide contenant uniquement des lettres.");
             }
+            } else {
+                // Display an error dialog if Encher object is null
+                displayErrorDialog("L'objet Encher est nul. Impossible de sauvegarder les modifications.");
+            }
         }
     } catch (SQLException e) {
         // Gérer les erreurs SQL
@@ -197,6 +156,7 @@ void saveChanges(ActionEvent event) {
 
 
 
+/*
     @FXML
     void inserer_image(ActionEvent event) {
         JFileChooser fc = new JFileChooser();
@@ -219,13 +179,38 @@ void saveChanges(ActionEvent event) {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
+@FXML
+void inserer_image(ActionEvent event) {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Choisir une image");
+    fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("Fichiers d'images", "*.png", "*.jpg", "*.jpeg", "*.gif")
+    );
+
+    File selectedFile = fileChooser.showOpenDialog(null);
+
+    if (selectedFile != null) {
+        String imagePath = selectedFile.getAbsolutePath();
+        txtimageTF.setText(imagePath);
+
+        try {
+            BufferedImage img = ImageIO.read(selectedFile);
+            // Process the image as needed...
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+}
 
 
 
 
 
-                private void displayErrorDialog(String message) {
+
+
+
+    private void displayErrorDialog(String message) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Erreur");
                     alert.setHeaderText(null);

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import tn.esprit.projet_java.models.Enchers;
@@ -18,6 +19,7 @@ import tn.esprit.projet_java.services.MiseService;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.EventObject;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +29,8 @@ public class ModifierMise {
     @FXML
     private ListView<Mise> listview;
     private EventObject actionEvent;
+
+
 
     @FXML
     void initialize() {
@@ -39,12 +43,6 @@ public class ModifierMise {
 
             listview.getItems().addAll(miseList);
 
-           /* ListView.setCellFactory(new Callback<ListView<Enchers>, CustomListCell>() {
-                @Override
-                public CustomListCell call(ListView<Enchers> param) {
-                    return new CustomListCell();
-                }
-            });*/
 
         } catch (SQLException e) {
             showErrorAlert("Error", e.getMessage());
@@ -52,6 +50,8 @@ public class ModifierMise {
             showErrorAlert("Error", e.getMessage());
         }
     }
+
+
 
     private void showErrorAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -65,7 +65,7 @@ public class ModifierMise {
         alert.setContentText(message);
         alert.showAndWait();
     }
-    private void initData() {
+    /*private void initData() {
         try {
             System.out.println("Refreshing data...");
             List<Mise> miseList = miseService.fetchmise();
@@ -74,7 +74,22 @@ public class ModifierMise {
         } catch (SQLException e) {
             afficherMessageErreur("Erreur lors de l'initialisation des données.");
         }
+    }*/
+    private void initData() {
+        try {
+            System.out.println("Refreshing data...");
+            List<Mise> miseList = miseService.fetchmise();
+
+            // Trier la liste selon le montant maximal (maxMontant) de manière décroissante
+            miseList.sort(Comparator.comparingDouble(Mise::getMax_montant).reversed());
+
+            ObservableList<Mise> observableList = FXCollections.observableArrayList(miseList);
+            listview.setItems(observableList);
+        } catch (SQLException e) {
+            afficherMessageErreur("Erreur lors de l'initialisation des données.");
+        }
     }
+
 
     @FXML
     void afficher_mise(ActionEvent event) {
@@ -82,16 +97,7 @@ public class ModifierMise {
     }
     @FXML
     void modifier_mise(ActionEvent event) {
-       /* try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierpageMise.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
 
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace(); // Gérer l'exception de manière appropriée (par exemple, la journaliser)
-        }*/
         Mise selectedMise = listview.getSelectionModel().getSelectedItem();
         if (selectedMise != null) {
             try {
@@ -113,16 +119,7 @@ public class ModifierMise {
             afficherMessageErreur("Veuillez sélectionner un mise à modifier.");
         }
     }
-   /* private void initData() {
-        try {
-            System.out.println("Refreshing data...");
-            List<Mise> miseList = miseService.fetchmise();
-            ObservableList<Mise> observableList = FXCollections.observableArrayList(miseList);
-            listview.setItems(observableList);
-        } catch (SQLException e) {
-            afficherMessageErreur("Erreur lors de l'initialisation des données.");
-        }
-    }*/
+
     @FXML
     void supprimer_mise(ActionEvent event) {
         Mise selectedMise = listview.getSelectionModel().getSelectedItem();
