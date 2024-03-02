@@ -115,7 +115,7 @@ public class Service_Message implements Interface_Message<Message> {
         String query = "SELECT DISTINCT CONCAT(u.nom, ' ', u.prenom) AS nom_complet FROM utilisateur u " +
                 "JOIN message m ON u.utilisateur_id = m.destinataire_id " +
                 "JOIN conversation c ON m.conversation_id = c.conversation_id " +
-                "WHERE c.conversation_id = ?";
+                "WHERE c.conversation_id = ? ";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, idConversation);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -143,5 +143,34 @@ public class Service_Message implements Interface_Message<Message> {
         }
         return nomExpediteur;
     }
-
+    public List<String> chercherDestinataireParNomPrenom(String nomPrenom) throws SQLException {
+        List<String> nomsPrenomsDestinataires = new ArrayList<>();
+        String query = "SELECT CONCAT(nom, ' ', prenom) AS nom_complet FROM utilisateur " +
+                "WHERE nom LIKE ? OR prenom LIKE ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, "%" + nomPrenom + "%");
+            statement.setString(2, "%" + nomPrenom + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String nomPrenomDestinataire = resultSet.getString("nom_complet");
+                nomsPrenomsDestinataires.add(nomPrenomDestinataire);
+            }
+        }
+        return nomsPrenomsDestinataires;
+    }
+    public List<String> recupererContenusMessagesParExpediteurEtDestinataire(int idExpediteur, int idDestinataire) throws SQLException {
+        List<String> contenusMessages = new ArrayList<>();
+        String query = "SELECT contenu FROM message WHERE expediteur_id = ? AND destinataire_id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, idExpediteur);
+            statement.setInt(2, idDestinataire);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    String contenuMessage = resultSet.getString("contenu");
+                    contenusMessages.add(contenuMessage);
+                }
+            }
+        }
+        return contenusMessages;
+    }
 }

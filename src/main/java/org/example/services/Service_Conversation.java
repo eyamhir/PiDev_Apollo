@@ -19,6 +19,7 @@ public class Service_Conversation implements Interface_Conversation<Conversation
         connection = MaConnexion.getInstance().getCnx();
     }
 
+
     @Override
     public void creerConversation(Conversation conversation) throws SQLException {
         String query = "INSERT INTO conversation (titre, sujet, description, date_creation, date_fin, conversation_type, visibilite, utilisateur_id) VALUES (?,?,?,?,?,?,?,?)";
@@ -27,14 +28,13 @@ public class Service_Conversation implements Interface_Conversation<Conversation
             statement.setString(2, conversation.getSujet());
             statement.setString(3, conversation.getDescription());
             statement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now())); // Utiliser la date actuelle
-            statement.setNull(5, Types.TIMESTAMP); // Définir la date de fin comme null
+            statement.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now())); // Définir la date de fin comme '9999-12-31'
             statement.setString(6, conversation.getTypeConversation().name());
             statement.setString(7, conversation.getVisibilite().name());
             statement.setInt(8, conversation.getUtilisateur_id());
             statement.executeUpdate();
         }
     }
-
 
     @Override
     public Conversation lireConversation(int id) throws SQLException {
@@ -111,8 +111,8 @@ public class Service_Conversation implements Interface_Conversation<Conversation
         statement.setString(3, conversation.getDescription());
         // statement.setTimestamp(4, new java.sql.Timestamp(conversation.getDateCreation().getTime()));
         // statement.setTimestamp(5, new java.sql.Timestamp(conversation.getDateFin().getTime()));
-        statement.setString(4, conversation.getTypeConversation().name());
-        statement.setString(5, conversation.getVisibilite().name());
+        statement.setString(4, conversation.getTypeConversation().toString());
+        statement.setString(5, conversation.getVisibilite().toString());
         statement.setInt(6, conversation.getConversationId());
         statement.executeUpdate();
     }
@@ -165,26 +165,35 @@ public class Service_Conversation implements Interface_Conversation<Conversation
                     conversation.setDescription(resultSet.getString("description"));
                     conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
                     conversation.setDateFin(resultSet.getTimestamp("date_fin"));
+
+                    // Assurez-vous que les valeurs récupérées pour les énumérations sont non null avant de les convertir
                     String typeConversation = resultSet.getString("conversation_type");
+                    if (typeConversation != null) {
+                        conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
+                    }
+
                     String visibilite = resultSet.getString("visibilite");
-                    conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
-                    conversation.setVisibilite(Visibilite.valueOf(visibilite));
+                    if (visibilite != null) {
+                        conversation.setVisibilite(Visibilite.valueOf(visibilite));
+                    }
+
                     conversations.add(conversation);
                 }
             }
         }
 
-        // Utilisation de Stream pour filtrer les conversations par sujet
-        return conversations.stream()
-                .filter(conversation -> conversation.getSujet().contains(sujet))
-                .collect(Collectors.toList());
+        return conversations;
     }
+
+
     public Conversation recupererConversationEnCours() throws SQLException {
         LocalDateTime dateActuelle = LocalDateTime.now();
         String query = "SELECT * FROM conversation WHERE date_creation <= ? AND (date_fin IS NULL OR date_fin >= ?)";
+
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setTimestamp(1, Timestamp.valueOf(dateActuelle));
             statement.setTimestamp(2, Timestamp.valueOf(dateActuelle));
+
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     Conversation conversation = new Conversation();
@@ -193,7 +202,7 @@ public class Service_Conversation implements Interface_Conversation<Conversation
                     conversation.setSujet(resultSet.getString("sujet"));
                     conversation.setDescription(resultSet.getString("description"));
                     conversation.setDateCreation(resultSet.getTimestamp("date_creation"));
-                    conversation.setDateFin(resultSet.getTimestamp("date_fin"));
+                    conversation.setDateFin(resultSet.getTimestamp("date_fin")); // Assurez-vous de récupérer la date de fin
                     String typeConversation = resultSet.getString("conversation_type");
                     String visibilite = resultSet.getString("visibilite");
                     conversation.setTypeConversation(Conversation_Type.valueOf(typeConversation));
@@ -203,6 +212,21 @@ public class Service_Conversation implements Interface_Conversation<Conversation
             }
         }
         return null;
+    }
+
+    public void mettreAJourDateFinConversationEnCours(Date dateFin) throws SQLException {
+        Conversation conversationEnCours = recupererConversationEnCours(); // Récupérer la conversation en cours
+
+        if (conversationEnCours != null) { // Vérifier si une conversation est en cours
+            String query = "UPDATE conversation SET date_fin = ? WHERE conversation_id = ?";
+            try (PreparedStatement statement = connection.prepareStatement(query)) {
+                statement.setTimestamp(1, new java.sql.Timestamp(conversationEnCours.getDateFin().getTime()));
+                 statement.setInt(2, conversationEnCours.getConversationId());
+                statement.executeUpdate();
+            }
+        } else {
+            System.out.println("Aucune conversation en cours."); // Gérer le cas où aucune conversation n'est en cours
+        }
     }
 
 }
