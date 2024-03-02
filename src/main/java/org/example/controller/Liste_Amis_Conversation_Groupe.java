@@ -1,15 +1,18 @@
 package org.example.controller;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.example.model.Utilisateur;
 import org.example.services.Service_Amies;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,8 +46,15 @@ public class Liste_Amis_Conversation_Groupe implements Initializable {
                             if (empty || utilisateur == null) {
                                 setText(null);
                             } else {
-                                setText( ", Nom: " + utilisateur.getNom() + " Prenom " + utilisateur.getPrenom() + " Role " + utilisateur.getRole());
+                                String roleText = "";
+                                if (utilisateur.getRole().equals(("Artiste"))) {
+                                    roleText = "Artiste";
+                                } else if (utilisateur.getRole().equals("Client")) {
+                                    roleText = "Client";
+                                }
+                                setText("Nom: " + utilisateur.getNom() + "\nPrénom: " + utilisateur.getPrenom() + "\nRôle: " + roleText);
                             }
+
                         }
                     };
                 }
@@ -58,8 +68,8 @@ public class Liste_Amis_Conversation_Groupe implements Initializable {
         }
     }
 
-    @FXML
-    public void Démarrer_Chat(ActionEvent event) {
+
+    public void Demarrer_Chat_Groupe() throws IOException {
         List<Utilisateur> utilisateursSelectionnes = AmiesListView.getSelectionModel().getSelectedItems(); // Obtenir les utilisateurs sélectionnés
 
         if (!utilisateursSelectionnes.isEmpty()) {
@@ -76,8 +86,22 @@ public class Liste_Amis_Conversation_Groupe implements Initializable {
             alert.setContentText("Attention aucun amies a été sélectionnée");
             alert.showAndWait();
         }
-    }
-  public void Demarrer_Chat_Groupe(){
+        Utilisateur utilisateurSelectionne = AmiesListView.getSelectionModel().getSelectedItem();
 
-  }
+        if (utilisateurSelectionne != null) {
+            int utilisateurSelectionneId = utilisateurSelectionne.getId_utilisateur();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/message.fxml"));
+            Parent root = loader.load();
+            message_expediteur messagecontroller = loader.getController();
+         //   messagecontroller.initialize(utilisateurSelectionneId);
+           /* message messageController = new message(utilisateurSelectionneId);
+           loader.setController(messageController);*/
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+
+        }
+    }
 }
