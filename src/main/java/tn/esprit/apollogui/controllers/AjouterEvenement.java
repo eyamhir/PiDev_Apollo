@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+import tn.esprit.apollogui.models.GMailer;
 import tn.esprit.apollogui.models.evenement;
 import tn.esprit.apollogui.services.EvenementService;
 
@@ -34,6 +35,16 @@ public class AjouterEvenement {
     private TextField TypeTF;
 
 
+    private final GMailer gMailer;
+
+    public AjouterEvenement() {
+        try {
+            gMailer = new GMailer();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     @FXML
     void AjouterEvenement(ActionEvent event) {
@@ -47,18 +58,33 @@ public class AjouterEvenement {
 
         try {
             evenementService.ajouter(ae);
-            Alert alert= new Alert((Alert.AlertType.CONFIRMATION));
+            String subject = "New event added";
+            String message = "Event added with success, Event Name: " + NomTF.getText();
+            gMailer.sendMail(subject, message);
+
+            // Show success alert
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Success");
             alert.setContentText("Event added");
             alert.showAndWait();
         } catch (SQLException e) {
-            Alert alert= new Alert((Alert.AlertType.ERROR));
+            // Show error alert for SQL exception
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
+        } catch (Exception ex) {
+            // Show error alert for other exceptions
+            afficherErreur("Error");
         }
+    }
 
 
+    private void afficherErreur(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
 
