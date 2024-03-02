@@ -168,10 +168,15 @@ public class Afficher_Conversation implements Initializable {
                     if (empty || conversation == null) {
                         setText(null);
                     } else {
-                        setText(conversation.getConversationId() + " | " + conversation.getTitre() + " | " +
-                                conversation.getSujet() + " | " + conversation.getDescription() + " | " +
-                                conversation.getDateCreation() + " | " + conversation.getDateFin() + " | " +
-                                conversation.getTypeConversation() + " | " + conversation.getVisibilite());
+                        // Affichage de chaque attribut sur une ligne différente
+                        setText(
+                                "Titre: " + conversation.getTitre() + "\n" +
+                                "Sujet: " + conversation.getSujet() + "\n" +
+                                "Description: " + conversation.getDescription() + "\n" +
+                                "Date de création: " + conversation.getDateCreation() + "\n" +
+                                "Date de fin: " + conversation.getDateFin() + "\n" +
+                                "Type de conversation: " + conversation.getTypeConversation() + "\n" +
+                                "Visibilité: " + conversation.getVisibilite());
                     }
                 }
             });
@@ -179,6 +184,7 @@ public class Afficher_Conversation implements Initializable {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     private void Supprimer_Conversation(ActionEvent event) {
@@ -226,30 +232,70 @@ public class Afficher_Conversation implements Initializable {
             }
         }
     }
+    /*@FXML
+    private void Chercher_Conversation(ActionEvent event) {
+        if (event.getButton() == MouseButton.PRIMARY) { // Vérifie que le clic est le clic principal (gauche)
+            String sujet = searchField.getText().trim();
 
+            try {
+                List<Conversation> conversations = serviceConversation.rechercherConversationsParSujet(sujet);
+                conversationListView.getItems().clear();
+
+                if (!conversations.isEmpty()) {
+                    conversationListView.getItems().addAll(conversations);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Aucune Conversation Trouvée");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Aucune conversation trouvée avec le sujet : " + sujet);
+                    alert.showAndWait();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Affichage d'une boîte de dialogue d'erreur en cas d'erreur SQL
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur dans la recherche ");
+                alert.setHeaderText(null);
+                alert.setContentText("Une erreur s'est produite lors de la recherche de conversations.");
+                alert.showAndWait();
+            }
+        }
+    }*/
 
     @FXML
     private void Chercher_Conversation(ActionEvent event) {
-        String sujet = searchField.getText().trim();
+        // Vérifie si l'événement provient du bouton
+        if (event.getSource() instanceof Button) {
+            String sujet = searchField.getText().trim();
 
-        try {
-            List<Conversation> conversations = serviceConversation.rechercherConversationsParSujet(sujet);
-            conversationListView.getItems().clear();
+            try {
+                List<Conversation> conversations = serviceConversation.rechercherConversationsParSujet(sujet);
+                conversationListView.getItems().clear();
 
-            if (!conversations.isEmpty()) {
-                conversationListView.getItems().addAll(conversations);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Aucune Conversation Trouvée");
+                if (!conversations.isEmpty()) {
+                    conversationListView.getItems().addAll(conversations);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Aucune Conversation Trouvée");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Aucune conversation trouvée avec le sujet : " + sujet);
+                    alert.showAndWait();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Affichage d'une boîte de dialogue d'erreur en cas d'erreur SQL
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur dans la recherche ");
                 alert.setHeaderText(null);
-                alert.setContentText("Aucune conversation trouvée avec le sujet: " + sujet);
+                alert.setContentText("Une erreur s'est produite lors de la recherche de conversations.");
                 alert.showAndWait();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
+
+
 }
+
 
 
 

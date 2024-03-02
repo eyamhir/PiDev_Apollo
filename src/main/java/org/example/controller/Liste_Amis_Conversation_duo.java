@@ -24,7 +24,7 @@ public class Liste_Amis_Conversation_duo implements Initializable {
 
     @FXML
     private ListView<Utilisateur> AmiesListView;
-
+    private static int id_utilisateur_selectionnee;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Initialise la ListView avec les données des participants
@@ -51,12 +51,12 @@ public class Liste_Amis_Conversation_duo implements Initializable {
                                 } else if (utilisateur.getRole().equals("Client")) {
                                     roleText = "Client";
                                 }
-                                setText(", Nom: " + utilisateur.getNom() + " Prénom: " + utilisateur.getPrenom() +" Role "+ roleText);
-
+                                setText("Nom: " + utilisateur.getNom() + "\nPrénom: " + utilisateur.getPrenom() + "\nRôle: " + roleText);
                             }
                         }
                     };
                 }
+
             });
 
         } catch (SQLException e) {
@@ -69,11 +69,12 @@ public class Liste_Amis_Conversation_duo implements Initializable {
 
         if (utilisateurSelectionne != null) {
             int utilisateurSelectionneId = utilisateurSelectionne.getId_utilisateur();
+           id_utilisateur_selectionnee = utilisateurSelectionneId;
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/message.fxml"));
             Parent root = loader.load();
-            message messagecontroller=loader.getController();
-            messagecontroller.initialize(utilisateurSelectionneId);
+            message_expediteur messagecontroller=loader.getController();
+           // messagecontroller.initialize(utilisateurSelectionneId);
            /* message messageController = new message(utilisateurSelectionneId);
            loader.setController(messageController);*/
            Scene scene = new Scene(root);
@@ -90,5 +91,8 @@ public class Liste_Amis_Conversation_duo implements Initializable {
             alert.setContentText("Attention, aucun ami n'a été sélectionné");
             alert.showAndWait();
         }
+    }
+    public static  int getId_utilisateur_selectionnee(){
+        return id_utilisateur_selectionnee;
     }
 }

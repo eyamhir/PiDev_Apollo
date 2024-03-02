@@ -1,28 +1,24 @@
 package org.example.controller;
 
-import com.mysql.cj.xdevapi.JsonArray;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import org.example.model.Conversation;
 import org.example.enumarate.Conversation_Type;
 import org.example.enumarate.Visibilite;
-import org.example.model.Utilisateur;
 import org.example.services.Service_Conversation;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import org.example.services.Service_Utilisateur;
 
 public class Conversation_Controller {
@@ -41,7 +37,8 @@ public class Conversation_Controller {
 
     private Service_Conversation serviceConversation = new Service_Conversation();
     private Service_Utilisateur service_utilisateur = new Service_Utilisateur();
-    private int idUtilisateur = 2; // Identifiant de l'utilisateur
+    private int idUtilisateur =3; // Identifiant de l'utilisateur
+
 
     @FXML
     void addConversation(ActionEvent event) {
@@ -57,26 +54,28 @@ public class Conversation_Controller {
 
         try {
             // Récupérer la visibilité sélectionnée
-            String visibiliteString = (String) VisibiliteTF.getItems().get(1).getUserData();
-            Visibilite visibilite = Visibilite.valueOf(visibiliteString);
+
+                String visibiliteString = (String) VisibiliteTF.getItems().get(0).getUserData();
+                Visibilite visibilite = Visibilite.valueOf(visibiliteString);
+
 
             // Récupérer le type sélectionné
-          /*  String typeString = (String) TypeTF.getItems().get(0).getUserData();
-            Conversation_Type type = Conversation_Type.valueOf(typeString);
-*/
+
+                String typeString = (String) TypeTF.getItems().get(1).getUserData();
+                Conversation_Type type = Conversation_Type.valueOf(typeString);
+            // Récupérer la visibilité sélectionnée
             // Créer la conversation avec les données saisies
             Conversation conversation = new Conversation(
                     titreTF.getText(),
                     sujetTF.getText(),
                     descriptionTA.getText(),
-                    new Date(),
-                    new Date(),
-                    Conversation_Type.GROUP,
+                    new Timestamp(new Date().getTime()),
+                    new Timestamp(new Date().getTime()),
+                    type,
                     visibilite,
                     idUtilisateur, // Utiliser l'identifiant de l'utilisateur
                     new ArrayList<>()
             );
-
             try {
                 serviceConversation.creerConversation(conversation);
 
@@ -92,7 +91,7 @@ public class Conversation_Controller {
                 stage.close();
 
                 // Charger la nouvelle page
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Liste_Conversation.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Liste_Participant_groupe.fxml"));
                 Parent root = loader.load();
                 Stage newStage = new Stage();
                 newStage.setScene(new Scene(root));

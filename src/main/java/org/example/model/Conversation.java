@@ -3,6 +3,8 @@ package org.example.model;
 import org.example.enumarate.Conversation_Type;
 import org.example.enumarate.Visibilite;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -14,8 +16,8 @@ public class Conversation {
     private String titre;
     private String sujet;
     private String description;
-    private Date dateCreation;
-    private Date dateFin;
+    private Timestamp dateCreation;
+    private Timestamp dateFin;
     private Conversation_Type typeConversation;
     private Visibilite visibilite;
     private int utilisateur_id;
@@ -24,7 +26,7 @@ public class Conversation {
 
     // Constructeur paramétré avec identifiant
 
-    public Conversation(int conversationId, String titre, String sujet, String description, Date dateCreation, Date dateFin, Conversation_Type typeConversation, Visibilite visibilite, int utilisateur_id, List<Message> messages) {
+    public Conversation(int conversationId, String titre, String sujet, String description, Timestamp dateCreation, Timestamp dateFin, Conversation_Type typeConversation, Visibilite visibilite, int utilisateur_id, List<Message> messages) {
         this.conversationId = conversationId;
         this.titre = titre;
         this.sujet = sujet;
@@ -38,7 +40,7 @@ public class Conversation {
     }
 
     // Constructeur paramétré sans identifiant
-    public Conversation(String titre, String sujet, String description, Date dateCreation, Date dateFin, Conversation_Type typeConversation, Visibilite visibilite, int utilisateur_id, List<Message> messages) {
+    public Conversation(String titre, String sujet, String description, Timestamp dateCreation, Timestamp dateFin, Conversation_Type typeConversation, Visibilite visibilite, int utilisateur_id, List<Message> messages) {
 
         this.titre = titre;
         this.sujet = sujet;
@@ -94,7 +96,7 @@ public class Conversation {
         return dateCreation;
     }
 
-    public void setDateCreation(Date dateCreation) {
+    public void setDateCreation(Timestamp dateCreation) {
         this.dateCreation = dateCreation;
     }
 
@@ -102,7 +104,7 @@ public class Conversation {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(Timestamp dateFin) {
         this.dateFin = dateFin;
     }
 
