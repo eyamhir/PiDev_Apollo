@@ -1,6 +1,7 @@
 package tn.esprit.apollogui.controllers;
 
 
+import com.google.zxing.WriterException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -173,6 +174,42 @@ public class AfficherEvenement {
             // Aucun utilisateur sélectionné, affichez un message d'erreur
             afficherMessageErreur("Veuillez sélectionner un encher à modifier.");
         }
+    }
+
+    @FXML
+    void generQRCodeE(ActionEvent event) {
+        EvenementService evenementService = new EvenementService(); // Create an instance
+        ObservableList<evenement> evenementList;
+
+        try {
+            evenementList = FXCollections.observableArrayList(evenementService.recuperer()); // Call the instance method
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+            afficherMessageErreur("Error retrieving evenements.");
+            return; // Exit the method if an error occurs
+        }
+
+        for (evenement currentEvenement : evenementList) {
+            String qrContent = "evenement ID: " + currentEvenement.getId() +
+                    ", Nom: " + currentEvenement.getNom() +
+                    ", Type: " + currentEvenement.getType() +
+                    ", Description: " + currentEvenement.getDescription() +
+                    ", Date début: " + currentEvenement.getDate_debut() +
+                    ", Date fin: " + currentEvenement.getDate_fin();
+
+            try {
+                String filePath = "C:/Users/elyes/OneDrive/Bureau/Qrcode" +
+                        currentEvenement.getId() + ".png";
+                QRCodeGeneratorE.generateQRCode(qrContent, filePath);
+                System.out.println("Code QR généré pour le panier avec l'ID : " + currentEvenement.getId());
+            } catch (WriterException | IOException e) {
+                System.err.println("Erreur lors de la génération du code QR pour le panier avec l'ID : " +
+                        currentEvenement.getId());
+                e.printStackTrace();
+            }
+        }
+
+        afficherMessageErreur("QRCode generated with success!.");
     }
 
    /* public void goModifier(ActionEvent event) {

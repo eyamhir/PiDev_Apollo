@@ -12,12 +12,7 @@
    <children>
 
       <ListView fx:id="ListView" layoutX="66.0" layoutY="119.0" prefHeight="333.0" prefWidth="619.0" />
-      <Button layoutX="322.0" layoutY="484.0" mnemonicParsing="false" onAction="#goModifier" prefHeight="39.0" prefWidth="107.0" text="Update">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Button layoutX="566.0" layoutY="484.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="39.0" prefWidth="107.0" text="Delete">
+      <Button layoutX="500.0" layoutY="491.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="179.0" text="View participants">
          <font>
             <Font size="18.0" />
          </font>
@@ -28,7 +23,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="99.0" layoutY="484.0" mnemonicParsing="false" onAction="#goback" prefHeight="39.0" prefWidth="107.0" text="Add">
+      <Button layoutX="66.0" layoutY="491.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Join Event">
          <font>
             <Font size="18.0" />
          </font>
@@ -38,10 +33,5 @@
             <Image url="@../../../../../../../../Downloads/looogoo.png" />
          </image>
       </ImageView>
-      <Button layoutX="322.0" layoutY="553.0" mnemonicParsing="false" onAction="#generQRCodeE" prefHeight="46.0" prefWidth="107.0" text="QRCode">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

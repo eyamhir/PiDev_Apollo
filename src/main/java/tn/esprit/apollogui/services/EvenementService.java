@@ -115,6 +115,7 @@ public class EvenementService implements IService<evenement> {
         while (rs.next()){
             evenement evenement= new evenement();
             evenement.setId(rs.getInt("Id"));
+            evenement.setNom(rs.getString("Nom"));
             evenement.setDate_debut(rs.getObject("Date_debut", LocalDate.class));
             evenement.setDate_fin(rs.getObject("Date_fin", LocalDate.class));
             evenement.setDescription(rs.getString("Description"));
