@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.userShowController">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.userShowController">
     <children>
         <ListView fx:id="userListView" layoutY="65.0" prefHeight="335.0" prefWidth="730.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0" />
-        <Button fx:id="modifierButton" layoutX="21.0" layoutY="403.0" onAction="#modifierUtilisateur" prefHeight="37.0" prefWidth="90.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Modifier" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="21.0" />
+        <!--<Button fx:id="modifierButton" layoutX="21.0" layoutY="403.0" onAction="#modifierUtilisateur" prefHeight="37.0" prefWidth="90.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Modifier" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="21.0" />-->
         <Button fx:id="supprimerButton" layoutX="124.0" layoutY="403.0" onAction="#supprimerUtilisateur" styleClass="custom-button" stylesheets="@../Values/style.css" text="Supprimer" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="530.0" />
-        <Button fx:id="banUnbanButton" layoutX="330.0" layoutY="403.0" onAction="#toggleBannissement" prefHeight="37.0" prefWidth="140.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Bannir / Débannir" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="330.0" />
-        <Button fx:id="detailsButton" layoutX="639.0" layoutY="403.0" onAction="#afficherDetails" prefHeight="37.0" prefWidth="90.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Détails" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="21.0" />
+        <Button fx:id="banUnbanButton" layoutX="585.0" layoutY="403.0" onAction="#toggleBannissement" prefHeight="37.0" prefWidth="140.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Bannir / Débannir" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="585.0" />
+        <Button fx:id="detailsButton" layoutX="21.0" layoutY="403.0" onAction="#afficherDetails" prefHeight="37.0" prefWidth="90.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Détails" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="639.0" />
 
         <TextField fx:id="searchTextField" layoutX="421.0" layoutY="24.0" prefHeight="26.0" prefWidth="250.0" promptText="Search by name or surname" />
-        <Button fx:id="searchButton" layoutX="682.0" layoutY="23.0" mnemonicParsing="false" onAction="#search" text="Search" textFill="#480a53">
+        <Button fx:id="searchButton" layoutX="682.0" layoutY="23.0" mnemonicParsing="false" onAction="#search" text="Search">
             <font>
                 <Font name="System Bold" size="12.0" />
             </font>

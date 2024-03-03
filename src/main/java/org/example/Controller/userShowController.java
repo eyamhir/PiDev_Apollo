@@ -88,7 +88,7 @@ public class userShowController {
         }
     }
 
-    @FXML
+    /*@FXML
     void modifierUtilisateur(ActionEvent event) {
         Utilisateur selectedUser = userListView.getSelectionModel().getSelectedItem();
         if (selectedUser != null) {
@@ -107,7 +107,7 @@ public class userShowController {
         } else {
             afficherMessageErreur("Veuillez sélectionner un utilisateur à modifier.");
         }
-    }
+    }*/
 
     @FXML
     void supprimerUtilisateur(ActionEvent event) {
