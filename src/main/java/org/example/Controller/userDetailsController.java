@@ -51,10 +51,9 @@ public class userDetailsController {
         numTelLabel.setText(String.valueOf(utilisateur.getNum_tel()));
         dateNaissanceLabel.setText(utilisateur.getDate_naissance().toString());
         dateInscriptionLabel.setText(utilisateur.getDate_inscription().toString());
-        specialiteArtistiqueLabel.setText(utilisateur.getSpecialite_artistique());
         adresseLocaleLabel.setText(utilisateur.getAdresse_locale());
         roleLabel.setText(utilisateur.getRole());
-        motPasseLabel.setText(utilisateur.getMot_passe());
+
     }
 
 }
