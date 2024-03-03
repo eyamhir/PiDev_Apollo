@@ -18,6 +18,12 @@
             <String fx:value="botton" />
          </styleClass>
       </Label>
+      <TextField fx:id="IDpay" layoutX="63.0" layoutY="140.0" prefHeight="38.0" prefWidth="211.0" promptText="ID Payment" stylesheets="@../values/style.css">
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="rect-round" />
+         </styleClass>
+      </TextField>
       <TextField fx:id="montant" layoutX="63.0" layoutY="215.0" prefHeight="38.0" prefWidth="211.0" promptText="Montant" stylesheets="@../values/style.css">
          <styleClass>
             <String fx:value="card" />
@@ -30,7 +36,13 @@
             <String fx:value="rect-round" />
          </styleClass>
       </TextField>
-      <Button layoutX="97.0" layoutY="362.0" mnemonicParsing="false" onAction="#AjouterP" prefHeight="56.0" prefWidth="114.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
+      <TextField fx:id="email" layoutX="63.0" layoutY="369.0" prefHeight="38.0" prefWidth="211.0" promptText="Email de réception" stylesheets="@../values/style.css">
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="rect-round" />
+         </styleClass>
+      </TextField>
+      <Button layoutX="103.0" layoutY="429.0" mnemonicParsing="false" onAction="#AjouterP" prefHeight="56.0" prefWidth="114.0" stylesheets="@../values/style.css" text="Ajouter" textFill="WHITE">
          <styleClass>
             <String fx:value="card" />
             <String fx:value="rect-round" />

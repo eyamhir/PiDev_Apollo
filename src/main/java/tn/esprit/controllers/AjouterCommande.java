@@ -138,6 +138,15 @@ public class AjouterCommande {
         }
     }
 
+    @FXML
+    void dachbord(ActionEvent event) throws IOException {
+        MainFX main = new MainFX();
+        main.changeStage("/tn.esprit/MenuCommande.fxml");
+
+    }
+
+
+
 
 
 

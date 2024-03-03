@@ -1,11 +1,14 @@
 package tn.esprit.sevices;
 
+import com.sun.javafx.collections.MappingChange;
 import tn.esprit.models.Commande;
 import tn.esprit.utils.Mydatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CommandeService implements IService<Commande>{
 
@@ -70,4 +73,22 @@ public class CommandeService implements IService<Commande>{
 
         return commande;
     }
+
+
+    // Méthode pour récupérer le nombre de commandes par mois
+    public Map<String, Integer> countCommandsByMonth() throws SQLException {
+        Map<String, Integer> commandsByMonth = new HashMap<>();
+        String req = "SELECT DATE_FORMAT(Date_Creation_Commande, '%Y-%m') AS Month, COUNT(*) AS Total FROM commande GROUP BY Month";
+        PreparedStatement ps = connection.prepareStatement(req);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String month = rs.getString("Month");
+            int total = rs.getInt("Total");
+            commandsByMonth.put(month, total);
+        }
+        return commandsByMonth;
+    }
 }
+
+
+

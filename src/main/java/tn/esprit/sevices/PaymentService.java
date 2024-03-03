@@ -1,6 +1,7 @@
 package tn.esprit.sevices;
 
 import tn.esprit.models.Commande;
+import tn.esprit.models.EmailSender;
 import tn.esprit.models.Payment;
 import tn.esprit.utils.Mydatabase;
 
@@ -11,16 +12,45 @@ import java.util.List;
 public class PaymentService implements IService<Payment> {
 
     private Connection connection;
+    private EmailSender emailSender;
 
     public PaymentService(){
         connection = Mydatabase.getInstance().getConnection();
+        // Initialisez l'objet EmailSender avec vos informations d'identification
+        emailSender = new EmailSender("radhouanegrami329@gmail.com","cjsp gjjs czcc ktvl");
     }
+
     @Override
     public void ajouter(Payment payment) throws SQLException {
-        String req ="INSERT INTO payment (Montant,type_Payment) VALUES ('"+payment.getMontant()+"','"+payment.getType_Payment()+"')";
-        Statement st = connection.createStatement();
-        st.executeUpdate(req);
+        String req ="INSERT INTO payment (Montant,type_Payment) VALUES (?, ?)";
+        PreparedStatement ps = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+        ps.setFloat(1, payment.getMontant());
+        ps.setString(2, payment.getType_Payment());
+        ps.executeUpdate();
+
+        // Récupérer l'adresse e-mail du destinataire depuis votre interface utilisateur ou d'autres sources
+        String recipient = obtenirAdresseDestinataire(); // À remplacer par votre méthode ou source de données
+
+        // Envoyer l'e-mail de facture après l'ajout du paiement
+        envoyerFacture(payment, recipient);
     }
+
+    // Méthode pour obtenir l'adresse e-mail du destinataire (à implémenter selon votre logique métier)
+    private String obtenirAdresseDestinataire() {
+        // Implémentez cette méthode pour obtenir dynamiquement l'adresse e-mail du destinataire
+        // Vous pouvez obtenir cette adresse à partir d'un champ de texte dans votre interface utilisateur (FXML), d'une méthode de service, etc.
+        return "adresse_destinataire@example.com";
+    }
+
+    // Méthode pour envoyer l'e-mail de facture
+    private void envoyerFacture(Payment payment, String recipient) {
+        String subject = "Facture de paiement";
+        String body = "Montant : " + payment.getMontant() + "\nType de paiement : " + payment.getType_Payment();
+
+        // Envoyer l'e-mail
+        emailSender.sendEmail(recipient, subject, body);
+    }
+
 
     @Override
     public void modifier(Payment payment) throws SQLException {
@@ -70,5 +100,9 @@ public class PaymentService implements IService<Payment> {
         }
 
         return payment;
+    }
+
+
+    public void ajouter(Payment payment, String recipient) {
     }
 }

@@ -6,13 +6,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 import tn.esprit.models.Panier;
-import tn.esprit.models.Payment;
 import tn.esprit.sevices.PanierService;
-import tn.esprit.sevices.PaymentService;
+
 import tn.esprit.test.MainFX;
 
 import java.io.IOException;
@@ -36,6 +33,13 @@ public class ListePanier {
     void backPanier(ActionEvent event) throws IOException {
         MainFX main = new MainFX();
         main.changeStage("/tn.esprit/AjouterPanier.fxml");
+
+    }
+
+    @FXML
+    void VersMessagerie(ActionEvent event) throws IOException {
+        MainFX main = new MainFX();
+        main.changeStage("/tn.esprit/MessengerController.fxml");
 
     }
 

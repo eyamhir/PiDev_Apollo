@@ -98,3 +98,18 @@
     -fx-background-color: #303030;
     -fx-background-radius: 20;
 }
+
+.commande-background{
+    -fx-background-image: url('../IMG/Cap back bleu.jpg');
+    -fx-background-repeat: no-repeat; /* Pour éviter la répétition de l'image */
+    -fx-background-size: cover; /* Pour redimensionner l'image pour remplir le conteneur */
+    -fx-background-position: center; /* Positionnement de l'image au centre */
+}
+
+.hello {
+    -fx-background-image: url('../IMG/Cap back bleu.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+

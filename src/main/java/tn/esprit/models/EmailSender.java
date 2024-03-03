@@ -1,8 +1,7 @@
-package tn.esprit.utils;
+package tn.esprit.models;
 
 import javax.mail.*;
 import javax.mail.internet.*;
-import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 public class EmailSender {
@@ -46,12 +45,16 @@ public class EmailSender {
         }
     }
 
+    public void sendInvoice(String recipient, String subject, String body) {
+        sendEmail(recipient, subject, body);
+    }
+
     public static void main(String[] args) {
         String username = "radhouanegrami329@gmail.com";
         String password = "cjsp gjjs czcc ktvl";
 
         EmailSender emailSender = new EmailSender(username, password);
 
-        emailSender.sendEmail("radhouanegrami329@gmail.com", "Test Email", "Ceci est un e-mail de test.");
+        emailSender.sendEmail("Exempleemail@gmail.com", "Test Email", "Ceci est un e-mail de test.");
     }
 }
