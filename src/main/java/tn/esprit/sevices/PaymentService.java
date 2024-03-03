@@ -7,7 +7,9 @@ import tn.esprit.utils.Mydatabase;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PaymentService implements IService<Payment> {
 
@@ -119,5 +121,45 @@ public class PaymentService implements IService<Payment> {
             e.printStackTrace();
         }
     }
+
+    public Map<String, Integer> countPaymentsByType() throws SQLException {
+        Map<String, Integer> paymentsByType = new HashMap<>();
+        String req = "SELECT type_Payment, COUNT(*) AS Total FROM payment GROUP BY type_Payment";
+        PreparedStatement ps = connection.prepareStatement(req);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String type = rs.getString("type_Payment");
+            int total = rs.getInt("Total");
+            paymentsByType.put(type, total);
+        }
+        return paymentsByType;
+    }
+
+    public int countTotalNumberOfPayments() throws SQLException {
+        int total = 0;
+        String req = "SELECT COUNT(*) AS Total FROM payment";
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        if (rs.next()) {
+            total = rs.getInt("Total");
+        }
+        return total;
+    }
+
+    public Map<String, Integer> countPaymentsByMonth() throws SQLException {
+        Map<String, Integer> paymentsByMonth = new HashMap<>();
+        String req = "SELECT DATE_FORMAT(Date_Payment, '%Y-%m') AS Month, COUNT(*) AS Total FROM payment GROUP BY Month";
+        PreparedStatement ps = connection.prepareStatement(req);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            String month = rs.getString("Month");
+            int total = rs.getInt("Total");
+            paymentsByMonth.put(month, total);
+        }
+        return paymentsByMonth;
+    }
+
+
+
 
 }

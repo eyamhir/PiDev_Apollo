@@ -20,11 +20,30 @@ public class CommandeService implements IService<Commande>{
 
     @Override
     public void ajouter(Commande commande) throws SQLException {
-        String req ="INSERT INTO commande (Prix_total,Date_Creation_Commande) VALUES ('"+commande.getPrix_total()+"','"+commande.getDate_creation_commande()+"')";
-        Statement st = connection.createStatement();
-        st.executeUpdate(req);
-
+        ajouter(commande, null);
     }
+
+    public void ajouter(Commande commande, Integer idPaiement) throws SQLException {
+        String req = "INSERT INTO commande (Prix_total, Date_Creation_Commande";
+        if (idPaiement != null) {
+            req += ", id_Payment";
+        }
+        req += ") VALUES (?, ?";
+        if (idPaiement != null) {
+            req += ", ?";
+        }
+        req += ")";
+
+        try (PreparedStatement ps = connection.prepareStatement(req)) {
+            ps.setFloat(1, commande.getPrix_total());
+            ps.setString(2, commande.getDate_creation_commande());
+            if (idPaiement != null) {
+                ps.setInt(3, idPaiement);
+            }
+            ps.executeUpdate();
+        }
+    }
+
 
     @Override
     public void modifier(Commande commande) throws SQLException {
@@ -87,6 +106,29 @@ public class CommandeService implements IService<Commande>{
             commandsByMonth.put(month, total);
         }
         return commandsByMonth;
+    }
+
+    // Méthode pour récupérer le nombre total de commandes
+    public int countTotalNumberOfOrders() throws SQLException {
+        int total = 0;
+        String req = "SELECT COUNT(*) AS Total FROM commande";
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(req);
+        if (rs.next()) {
+            total = rs.getInt("Total");
+        }
+        return total;
+    }
+
+
+    // Méthode pour associer une commande à un paiement existant
+    public void associerPaiementACommande(int idCommande, int idPaiement) throws SQLException {
+        String req = "UPDATE commande SET id_Payment = ? WHERE id_Commande = ?";
+        try (PreparedStatement ps = connection.prepareStatement(req)) {
+            ps.setInt(1, idPaiement);
+            ps.setInt(2, idCommande);
+            ps.executeUpdate();
+        }
     }
 }
 
