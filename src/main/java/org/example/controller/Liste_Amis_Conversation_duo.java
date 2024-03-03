@@ -66,11 +66,9 @@ public class Liste_Amis_Conversation_duo implements Initializable {
 
     public void Demarrer_Chat(ActionEvent event) throws IOException {
         Utilisateur utilisateurSelectionne = AmiesListView.getSelectionModel().getSelectedItem();
-
         if (utilisateurSelectionne != null) {
             int utilisateurSelectionneId = utilisateurSelectionne.getId_utilisateur();
            id_utilisateur_selectionnee = utilisateurSelectionneId;
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/message.fxml"));
             Parent root = loader.load();
             message_expediteur messagecontroller=loader.getController();

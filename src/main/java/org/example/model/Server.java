@@ -46,7 +46,7 @@ public class Server {
             }
         }
     }
-    public void arreterServeur() throws SQLException {
+  /*  public void arreterServeur() throws SQLException {
         running = false;
         Conversation conversationEnCours = serviceConversation.recupererConversationEnCours();
 
@@ -65,5 +65,27 @@ public class Server {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
+    }*/
+  public void arreterServeur() throws SQLException {
+      running = false;
+      Conversation conversationEnCours = serviceConversation.recupererConversationEnCours();
+
+      if (conversationEnCours != null) {
+          // Définir la date actuelle comme date de fin de la conversation en cours
+          java.util.Date dateFin = new java.util.Date(); // Utilise la date actuelle
+          java.sql.Date sqlDateFin = new java.sql.Date(dateFin.getTime()); // Convertir en java.sql.Date
+          serviceConversation.mettreAJourDateFinConversationEnCours(sqlDateFin);
+      }
+      try {
+          if (serverSocket != null && !serverSocket.isClosed()) {
+              writer.close();
+              reader.close();
+              serverSocket.close();
+              System.out.println("Le serveur a été arrêté.");
+          }
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+  }
+
 }

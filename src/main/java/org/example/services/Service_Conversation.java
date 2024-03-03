@@ -28,7 +28,7 @@ public class Service_Conversation implements Interface_Conversation<Conversation
             statement.setString(2, conversation.getSujet());
             statement.setString(3, conversation.getDescription());
             statement.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now())); // Utiliser la date actuelle
-            statement.setTimestamp(5, Timestamp.valueOf(LocalDateTime.now())); // Définir la date de fin comme '9999-12-31'
+            statement.setTimestamp(5, null); // Définir la date de fin comme '9999-12-31'
             statement.setString(6, conversation.getTypeConversation().name());
             statement.setString(7, conversation.getVisibilite().name());
             statement.setInt(8, conversation.getUtilisateur_id());
@@ -181,11 +181,8 @@ public class Service_Conversation implements Interface_Conversation<Conversation
                 }
             }
         }
-
         return conversations;
     }
-
-
     public Conversation recupererConversationEnCours() throws SQLException {
         LocalDateTime dateActuelle = LocalDateTime.now();
         String query = "SELECT * FROM conversation WHERE date_creation <= ? AND (date_fin IS NULL OR date_fin >= ?)";
@@ -213,11 +210,10 @@ public class Service_Conversation implements Interface_Conversation<Conversation
         }
         return null;
     }
-
-    public void mettreAJourDateFinConversationEnCours(Date dateFin) throws SQLException {
+ /*   public void mettreAJourDateFinConversationEnCours(Date dateFin) throws SQLException {
         Conversation conversationEnCours = recupererConversationEnCours(); // Récupérer la conversation en cours
 
-        if (conversationEnCours != null) { // Vérifier si une conversation est en cours
+        if (conversationEnCours = null) { // Vérifier si une conversation est en cours
             String query = "UPDATE conversation SET date_fin = ? WHERE conversation_id = ?";
             try (PreparedStatement statement = connection.prepareStatement(query)) {
                 statement.setTimestamp(1, new java.sql.Timestamp(conversationEnCours.getDateFin().getTime()));
@@ -227,6 +223,23 @@ public class Service_Conversation implements Interface_Conversation<Conversation
         } else {
             System.out.println("Aucune conversation en cours."); // Gérer le cas où aucune conversation n'est en cours
         }
-    }
+    }*/
+ public void mettreAJourDateFinConversationEnCours(java.util.Date dateFin) throws SQLException {
+     Conversation conversationEnCours = recupererConversationEnCours(); // Récupérer la conversation en cours
+     if (conversationEnCours != null) { // Vérifier si une conversation est en cours
+         if (conversationEnCours.getDateFin() == null) { // Vérifier si la date de fin est null
+             String query = "UPDATE conversation SET date_fin = ? WHERE conversation_id = ?";
+             try (PreparedStatement statement = connection.prepareStatement(query)) {
+                 statement.setTimestamp(1, new Timestamp(dateFin.getTime()));
+                 statement.setInt(2, conversationEnCours.getConversationId());
+                 statement.executeUpdate();
+             }
+         } else {
+             System.out.println("La date de fin de la conversation n'est pas null.");
+         }
+     } else {
+         System.out.println("Aucune conversation en cours."); // Gérer le cas où aucune conversation n'est en cours
+     }
+ }
 
 }

@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -40,35 +38,17 @@
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Label>
-
-           <MenuButton fx:id="VisibiliteTF" layoutX="366.0" layoutY="139.0" lineSpacing="3.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="154.0" styleClass="incomming-bubble" stylesheets="@styles/style.css" text="Vesibilite">
-           <items>
-               <MenuItem fx:id="PUBLIC" mnemonicParsing="true" text="PUBLIC" userData="PUBLIC" />
-               <MenuItem fx:id="PRIVATE" mnemonicParsing="true" text="PRIVATE" userData="PRIVATE" />
-           </items>
-            <padding>
-               <Insets right="10.0" />
-            </padding>
-         </MenuButton>
       <ImageView fitHeight="69.0" fitWidth="56.0" layoutX="-4.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="images/apollo.png" />
          </image>
       </ImageView>
-
-      <MenuButton fx:id="TypeTF" layoutX="366.0" layoutY="93.0" lineSpacing="3.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="154.0" styleClass="incomming-bubble" stylesheets="@styles/style.css" text="Type">
-         <items>
-            <MenuItem fx:id="GROUP" mnemonicParsing="true" text="GROUP" userData="DUO" />
-            <MenuItem fx:id="DUO" mnemonicParsing="true" text="DUO" userData="GROUP" />
-         </items>
-         <padding>
-            <Insets right="10.0" />
-         </padding>
-      </MenuButton>
       <Label layoutX="283.0" layoutY="100.0" text="Type">
          <font>
             <Font name="Arial Rounded MT Bold" size="14.0" />
          </font>
       </Label>
+      <ComboBox fx:id="type" layoutX="366.0" layoutY="93.0" prefWidth="150.0" promptText="type" styleClass="transparent-background" stylesheets="@styles/style.css" />
+      <ComboBox fx:id="ves" layoutX="366.0" layoutY="139.0" prefWidth="150.0" promptText="visibilite" styleClass="transparent-background" stylesheets="@styles/style.css" />
     </children>
 </AnchorPane>

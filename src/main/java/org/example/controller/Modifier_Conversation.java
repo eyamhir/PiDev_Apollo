@@ -1,11 +1,9 @@
 package org.example.controller;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.example.enumarate.Conversation_Type;
 import org.example.enumarate.Visibilite;
 import org.example.model.Conversation;
@@ -14,7 +12,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class Modifier_Conversation implements Initializable {
+public class Modifier_Conversation  {
 
     @FXML
     private TextField titreTF;
@@ -26,22 +24,32 @@ public class Modifier_Conversation implements Initializable {
     private TextArea descriptionTA;
 
     @FXML
-    private MenuButton TypeTF;
-
+    private ComboBox<String> type;
     @FXML
-    private MenuButton VisibiliteTF;
+    private ComboBox<String> ves;
 
     private Service_Conversation serviceConversation = new Service_Conversation();
 
     private Conversation conversation;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Ne pas initialiser les champs ici, ils seront initialisés à l'aide de la méthode initData()
-    }
 
+    public void initialize() {
+        ObservableList<String> types= FXCollections.observableArrayList(
+                "GROUP","DUO");
+        type.setItems(types);
+        ObservableList<String> visibilite= FXCollections.observableArrayList(
+                "PRIVATE","PUBLIC");
+        ves.setItems(visibilite);
+
+    }
     // Méthode pour initialiser les données de la conversation
     public void initData(int conversationId) {
+        ObservableList<String> types= FXCollections.observableArrayList(
+                "GROUP","DUO");
+        type.setItems(types);
+        ObservableList<String> visibilite= FXCollections.observableArrayList(
+                "PRIVATE","PUBLIC");
+        ves.setItems(visibilite);
         try {
             conversation = serviceConversation.lireConversationunique(conversationId);
             if (conversation != null) {
@@ -50,8 +58,11 @@ public class Modifier_Conversation implements Initializable {
                 descriptionTA.setText(conversation.getDescription());
 
                 // Setting the selected item for TypeTF and VisibiliteTF
-                TypeTF.setText(conversation.getTypeConversation().toString());
-                VisibiliteTF.setText(conversation.getVisibilite().toString());
+                type.setItems(FXCollections.observableArrayList(types));
+                type.getSelectionModel().select(conversationId);
+                ves.setItems(FXCollections.observableArrayList(visibilite));
+                ves.getSelectionModel().select(conversationId);
+
             } else {
                 displayErrorDialog("Conversation introuvable. Veuillez réessayer.");
             }
@@ -64,14 +75,16 @@ public class Modifier_Conversation implements Initializable {
 
     @FXML
     public void ModifierConversation(javafx.event.ActionEvent actionEvent) {
+        String typeValue = type.getValue(); // Récupérer la valeur sélectionnée dans le ComboBox
+        Conversation_Type typeEnum = Conversation_Type.valueOf(typeValue.toUpperCase());
+        String vesValue = ves.getValue(); // Récupérer la valeur sélectionnée dans le ComboBox
+        Visibilite vesEnum = Visibilite.valueOf(vesValue.toUpperCase());
         try {
             // Vérification des champs
-
-
          if(allFieldsFilled()) {
                 // Récupération des valeurs des champs et conversion en types énumérés
-                Conversation_Type conversationType = Conversation_Type.valueOf(TypeTF.getText());
-                Visibilite visibilite = Visibilite.valueOf(VisibiliteTF.getText());
+                Conversation_Type conversationType = Conversation_Type.valueOf(type.getValue());
+                Visibilite visibilite = Visibilite.valueOf(ves.getValue());
                 // Mise à jour des informations de la conversation
                 conversation.setTitre(titreTF.getText());
                 conversation.setSujet(sujetTF.getText());
@@ -108,8 +121,8 @@ public class Modifier_Conversation implements Initializable {
         if (titreTF.getText().isEmpty() ||
                 sujetTF.getText().isEmpty() ||
                 descriptionTA.getText().isEmpty() ||
-                TypeTF.getText().isEmpty() ||
-                VisibiliteTF.getText().isEmpty()) {
+                type.getValue().isEmpty() ||
+                ves.getValue().isEmpty()) {
 
             // Affichage d'une alerte d'erreur indiquant les champs requis
             displayErrorDialog("Veuillez remplir tous les champs obligatoires.");

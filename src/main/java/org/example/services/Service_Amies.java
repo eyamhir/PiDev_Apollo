@@ -18,12 +18,12 @@ public class Service_Amies {
     public List<Utilisateur> getAllArtistsAndClients() throws SQLException {
         List<Utilisateur> utilisateurs = new ArrayList<>();
 
-        String query = "SELECT utilisateur_id, role, nom, prenom FROM utilisateur where  IsActive=1 ";
+        String query = "SELECT id_utilisateur,role, nom, prenom FROM utilisateur where  isActive=1 ";
         try (PreparedStatement statement = connection.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 // Récupérer les informations de l'utilisateur depuis le résultat de la requête
-                int utilisateurId = resultSet.getInt("utilisateur_id");
+                int utilisateurId = resultSet.getInt("id_utilisateur");
                 String role = resultSet.getString("role");
                 String nom = resultSet.getString("nom");
                 String prenom = resultSet.getString("prenom");
@@ -48,7 +48,7 @@ public class Service_Amies {
     public List<Utilisateur> rechercher_par_nom(String nomRecherche) throws SQLException {
         List<Utilisateur> utilisateurs = new ArrayList<>();
 
-        String query = "SELECT   nom, prenom FROM utilisateur WHERE nom LIKE ? AND IsActive=1";
+        String query = "SELECT   nom, prenom FROM utilisateur WHERE nom LIKE ? AND isActive=1";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             // Paramétrer le paramètre nomRecherche dans la requête SQL
             statement.setString(1, "%" + nomRecherche + "%");

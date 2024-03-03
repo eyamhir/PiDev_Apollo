@@ -113,7 +113,7 @@ public class Service_Message implements Interface_Message<Message> {
     public List<String> recupererNomsPrenomsDestinatairesDansConversation(int idConversation) throws SQLException {
         List<String> nomsPrenomsDestinataires = new ArrayList<>();
         String query = "SELECT DISTINCT CONCAT(u.nom, ' ', u.prenom) AS nom_complet FROM utilisateur u " +
-                "JOIN message m ON u.utilisateur_id = m.destinataire_id " +
+                "JOIN message m ON u.id_utilisateur = m.destinataire_id " +
                 "JOIN conversation c ON m.conversation_id = c.conversation_id " +
                 "WHERE c.conversation_id = ? ";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -130,7 +130,7 @@ public class Service_Message implements Interface_Message<Message> {
     public String recupererNomExpediteurDansConversation(int idConversation) throws SQLException {
         String nomExpediteur = null;
         String query = "SELECT DISTINCT CONCAT(u.nom, ' ', u.prenom) AS nom_complet FROM utilisateur u " +
-                "JOIN message m ON u.utilisateur_id = m.expediteur_id " +
+                "JOIN message m ON u.id_utilisateur = m.expediteur_id " +
                 "JOIN conversation c ON m.conversation_id = c.conversation_id " +
                 "WHERE c.conversation_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -172,5 +172,30 @@ public class Service_Message implements Interface_Message<Message> {
             }
         }
         return contenusMessages;
+    }
+    public List<Message> getMessagesBetweenUsers(int userId1, int userId2) throws SQLException {
+        List<Message> messages = new ArrayList<>();
+        String query = "SELECT * FROM messagerie WHERE (id_expediteur = ? AND id_destinataire = ?) OR (id_expediteur = ? AND id_destinataire = ?) ORDER BY date_envoi ASC";
+
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setInt(1, userId1);
+            ps.setInt(2, userId2);
+            ps.setInt(3, userId2);
+            ps.setInt(4, userId1);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Message message = new Message();
+                message.setMessageId(rs.getInt("message_id"));
+                message.setContenu(rs.getString("contenu"));
+                message.setDateEnvoi(rs.getDate("date_envoi"));
+                message.setExpediteur_id(rs.getInt("expediteur_id"));
+                message.setDestinataire_id(rs.getInt("destinataire_id"));
+                messages.add(message);
+            }
+        }
+
+        return messages;
     }
 }
