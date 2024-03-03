@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.EspaceUserController">
+    <children>
+      <ImageView fitHeight="332.0" fitWidth="375.0" layoutX="206.0" layoutY="59.0" opacity="0.25" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../PiDev_images/findart1.jpg" />
+         </image>
+      </ImageView>
+        <Button fx:id="updateUser" alignment="TOP_CENTER" layoutX="320.0" layoutY="332.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="30.0" prefWidth="105.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Mise à jour" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Button>
+        <Label contentDisplay="TOP" layoutX="50.0" layoutY="26.0" prefHeight="60.0" prefWidth="105.0" text="Profile" textAlignment="CENTER" textOverrun="CLIP">
+            <font>
+                <Font name="Andalus" size="38.0" />
+            </font>
+        </Label>
+          <Label layoutX="222.0" layoutY="120.0" text="Prenom">
+              <font>
+                  <Font name="Andalus" size="22.0" />
+              </font>
+          </Label>
+          <Label layoutX="222.0" layoutY="68.0" text="Nom">
+              <font>
+                  <Font name="Andalus" size="22.0" />
+              </font>
+          </Label>
+          <Label layoutX="221.0" layoutY="165.0" text="Email">
+              <font>
+                  <Font name="Andalus" size="22.0" />
+              </font>
+          </Label>
+          <Label layoutX="221.0" layoutY="215.0" text="Date de naissance">
+              <font>
+                  <Font name="Andalus" size="22.0" />
+              </font>
+          </Label>
+          <Label layoutX="224.0" layoutY="266.0" text="Mot De Passe">
+              <font>
+                  <Font name="Andalus" size="22.0" />
+              </font>
+          </Label>
+          <TextField fx:id="prenomL" alignment="CENTER" layoutX="375.0" layoutY="122.0" prefHeight="32.0" prefWidth="149.0" promptText="Prenom" style="-fx-background-color: transparent; -fx-border-color: #b5a595; -fx-border-width: 0px 0px 2px 0px;" />
+          <TextField fx:id="mailL" alignment="CENTER" layoutX="375.0" layoutY="168.0" prefHeight="30.0" prefWidth="149.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #b5a595; -fx-border-width: 0px 0px 2px 0px;" />
+          <DatePicker fx:id="dateNaissancePicker" layoutX="394.0" layoutY="211.0" prefHeight="32.0" prefWidth="130.0" promptText="Date" />
+          <PasswordField fx:id="mdpL" alignment="CENTER" layoutX="375.0" layoutY="259.0" prefHeight="32.0" prefWidth="149.0" promptText="Mot de passe" style="-fx-background-color: transparent; -fx-border-color: #b5a595; -fx-border-width: 0 0 2 0;" />
+          <Button fx:id="backBT" layoutX="684.0" layoutY="412.0" mnemonicParsing="false" onAction="#back" text="Retour" />
+      <TextField fx:id="nomL" alignment="CENTER" layoutX="375.0" layoutY="76.0" prefHeight="32.0" prefWidth="149.0" promptText="Nom" style="-fx-background-color: transparent; -fx-border-color: #b5a595; -fx-border-width: 0 0 2 0;" />
+    </children>
+</AnchorPane>

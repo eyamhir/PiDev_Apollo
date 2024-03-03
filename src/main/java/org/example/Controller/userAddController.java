@@ -16,6 +16,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.regex.Pattern;
 
 public class userAddController {
 
@@ -54,6 +55,42 @@ public class userAddController {
 
     private final Service_Utilisateur serviceUtilisateur = new Service_Utilisateur();
 
+    // Regular expression for validating email addresses
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+    // Method to set up text field validation
+    private void setupValidation() {
+        // Validate nom and prenom fields to allow only letters
+        setupLetterValidation(nomTF);
+        setupLetterValidation(prenomTF);
+
+        // Validate email field to match the email regex pattern
+        emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!isValidEmail(newValue)) {
+                emailTF.setStyle("-fx-border-color: red;");
+            } else {
+                emailTF.setStyle(""); // Remove red border if email is valid
+            }
+        });
+    }
+
+    // Method to validate email using regex pattern
+    private boolean isValidEmail(String email) {
+        return Pattern.matches(EMAIL_REGEX, email);
+    }
+
+    // Method to set up validation to allow only letters in the text field
+    private void setupLetterValidation(TextField textField) {
+        textField.setTextFormatter(new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("[A-Za-z]*")) {
+                return change;
+            }
+            return null;
+        }));
+    }
+
+
 
     // Hashage MD5
     public static String doHashing(String password) {
@@ -71,6 +108,8 @@ public class userAddController {
         }
         return "";
     }
+
+
 
 
    /* @FXML
@@ -122,9 +161,22 @@ public class userAddController {
                     displayErrorDialog("La date d'inscription doit être la date actuelle.");
                     return;
                 }
+                String nom = nomTF.getText().trim();
+                String prenom = prenomTF.getText().trim();
+                String adresse_mail = emailTF.getText().trim();
+                String password = passwordTF.getText(); // No need to trim password
 
+                // Check if the combination of nom and prenom already exists
+                if (serviceUtilisateur.userExists(nom, prenom)) {
+                    displayErrorDialog("Existing User\", \"A user with the same nom and prenom already exists");
+                    return;
+                }
 
-
+                // Check if the email is already registered
+                if (serviceUtilisateur.emailExists(adresse_mail)) {
+                    displayErrorDialog("Existing Email\", \"This email is already registered.");
+                    return;
+                }
 
                 // Créer un objet Utilisateur avec le bon constructeur
                 Utilisateur utilisateur = new Utilisateur(

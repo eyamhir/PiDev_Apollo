@@ -12,15 +12,15 @@
             <Image url="@../PiDev_images/goya-og-munch-presse-01.jpg" />
          </image>
       </ImageView>
-        <Label layoutX="238.0" layoutY="77.0" text="Reset Password">
+        <Label layoutX="211.0" layoutY="111.0" text="Réinitialiser le mot de passe">
             <font>
-                <Font name="Andalus" size="45.0" />
+                <Font name="Andalus" size="30.0" />
             </font>
         </Label>
 
-        <Button fx:id="backBT" layoutX="695.0" layoutY="411.0" mnemonicParsing="false" onAction="#back" text="Back" />
+        <Button fx:id="backBT" layoutX="695.0" layoutY="411.0" mnemonicParsing="false" onAction="#back" text="Retour" />
 
-        <TextField fx:id="mailTF" layoutX="260.0" layoutY="242.0" prefHeight="27.0" prefWidth="250.0" promptText="recovery email address" />
+        <TextField fx:id="mailTF" layoutX="260.0" layoutY="242.0" prefHeight="27.0" prefWidth="250.0" promptText="Adresse mail de récupération" />
 
         <Label layoutX="262.0" layoutY="206.0" text="Adresse Mail :" textFill="#4c3627">
             <font>

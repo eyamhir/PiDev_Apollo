@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.VerifCode">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" styleClass="left-side-background" stylesheets="@../Values/style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.VerifCode">
     <children>
-        <Label layoutX="315.0" layoutY="89.0" text="Reset Password">
+        <ImageView fitHeight="295.0" fitWidth="372.0" layoutX="190.0" layoutY="54.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../PiDev_images/goya-og-munch-presse-01.jpg" />
+            </image>
+        </ImageView>
+        <Label layoutX="210.0" layoutY="109.0" text="Réinitialiser le mot de passe">
             <font>
-                <Font name="System Bold" size="28.0" />
+                <Font name="Andalus" size="30.0" />
             </font>
         </Label>
-        <Button fx:id="backBT" layoutX="23.0" layoutY="377.0" mnemonicParsing="false" onAction="#back" text="Back" />
-        <TextField fx:id="codeTF" layoutX="331.0" layoutY="214.0" promptText="verification code" />
-        <Button fx:id="confirmBT" layoutX="372.0" layoutY="262.0" mnemonicParsing="false" onAction="#confirmCode" text="Confirm" />
+        <TextField fx:id="codeTF" layoutX="282.0" layoutY="225.0" prefHeight="25.0" prefWidth="187.0" promptText="Verification code" />
+        <Button fx:id="backBT" layoutX="677.0" layoutY="392.0" mnemonicParsing="false" onAction="#back" text="Retour" />
+        <Button fx:id="confirmBT" layoutX="282.0" layoutY="272.0" mnemonicParsing="false" onAction="#confirmCode" prefHeight="37.0" prefWidth="187.0" styleClass="custom-button" stylesheets="@../Values/style.css" text="Confirmer le code" />
     </children>
 </AnchorPane>

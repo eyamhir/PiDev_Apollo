@@ -6,6 +6,7 @@ import org.example.Models.Utilisateur;
 import org.example.Utils.MaConnexion;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,6 +130,20 @@ public class Service_Utilisateur implements Interface_Utilisateur {
         statement.executeUpdate();
     }
 
+
+
+    public void mettreAJourUtilisateur2(Utilisateur utilisateur) throws SQLException {
+        String query = "UPDATE utilisateur SET nom = ?, prenom = ?, adresse_mail = ?, date_naissance = ?, mot_passe = ? WHERE id_utilisateur = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1, utilisateur.getNom());
+        statement.setString(2, utilisateur.getPrenom());
+        statement.setString(3, utilisateur.getAdresse_mail());
+        statement.setDate(4,Date.valueOf(utilisateur.getDate_naissance()));
+        statement.setString(5, utilisateur.getMot_passe());
+        statement.setInt(6, utilisateur.getId_utilisateur());
+        statement.executeUpdate();
+    }
+
     @Override
     public void supprimerUtilisateur(int id) throws SQLException {
         String query = "DELETE FROM utilisateur WHERE id_utilisateur = ?";
@@ -242,17 +257,18 @@ public class Service_Utilisateur implements Interface_Utilisateur {
 
     public boolean isAdmin(String adresse_mail) {
         try {
-            String req = "SELECT * FROM `utilisateur` WHERE `adresse_mail` = ? AND `role` = 'Admin'";
-            PreparedStatement pstmt = connection.prepareStatement(req);
-            pstmt.setString(1, adresse_mail);
-            ResultSet rs = pstmt.executeQuery();
-            // result of user checked and Admin
-            return rs.next();
+            // Utilisez la méthode getUserByEmail1 pour récupérer l'utilisateur correspondant à l'adresse e-mail
+            Utilisateur utilisateur = getUserByEmail1(adresse_mail);
+            if (utilisateur != null) {
+                // Vérifiez si l'utilisateur a le rôle "Admin"
+                return utilisateur.getRole().equalsIgnoreCase("Admin");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
     }
+
 
     public boolean emailExists(String adresse_mail) {
         try {
@@ -311,8 +327,39 @@ public class Service_Utilisateur implements Interface_Utilisateur {
             if (rs.next()) {
                 utilisateur = new Utilisateur();
                 utilisateur.setId_utilisateur(rs.getInt("id_utilisateur"));
+                utilisateur.setNom(rs.getString("nom"));
+                utilisateur.setPrenom(rs.getString("prenom"));
                 utilisateur.setAdresse_mail(rs.getString("adresse_mail"));
-                // Définir les autres attributs de l'objet Utilisateur au besoin
+                utilisateur.setDate_naissance(rs.getObject("date_naissance", LocalDate.class));
+                utilisateur.setMot_passe(rs.getString("mot_passe"));
+
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            throw ex;
+        } finally {
+            if (pstmt != null) {
+                pstmt.close();
+            }
+        }
+        return utilisateur;
+    }
+    public Utilisateur getUserByEmail1(String adresse_mail) throws SQLException {
+        Utilisateur utilisateur = null;
+        PreparedStatement pstmt = null;
+        try {
+            String query = "SELECT * FROM utilisateur WHERE adresse_mail = ?";
+            pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, adresse_mail);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                utilisateur = new Utilisateur();
+                utilisateur.setId_utilisateur(rs.getInt("id_utilisateur"));
+                utilisateur.setAdresse_mail(rs.getString("adresse_mail"));
+                utilisateur.setRole(rs.getString("role"));
+
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

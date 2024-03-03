@@ -102,6 +102,23 @@ public class Utilisateur {
         this.role = role;
     }
 
+    public Utilisateur(int id_utilisateur, String nom, String prenom, String adresse_mail, String role) {
+        this.id_utilisateur = id_utilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse_mail = adresse_mail;
+        this.role = role;
+    }
+
+    public Utilisateur(int id_utilisateur, String nom, String prenom, String adresse_mail, LocalDate date_naissance, String mot_passe) {
+        this.id_utilisateur = id_utilisateur;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse_mail = adresse_mail;
+        this.date_naissance = date_naissance;
+        this.mot_passe = mot_passe;
+    }
+
     public int getId_utilisateur() {
         return id_utilisateur;
     }

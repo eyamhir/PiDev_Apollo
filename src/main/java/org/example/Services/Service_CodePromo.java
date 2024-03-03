@@ -118,6 +118,26 @@ public class Service_CodePromo implements Interface_CodePromo {
         }
         return CPList;
     }
+    public List<CodePromo> searchByUserId(int id_utilisateur) {
+        List<CodePromo> promoList = new ArrayList<>();
+        try {
+            String req = "SELECT * FROM `CodePromo` WHERE `id_utilisateur` = ?";
+            PreparedStatement pstmt = connection.prepareStatement(req);
+            pstmt.setInt(1, id_utilisateur);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                CodePromo codepromo = new CodePromo();
+                codepromo.setCode(rs.getString("code"));
+                codepromo.setDateExpiration(rs.getObject("dateExpiration", LocalDate.class));
+                codepromo.setId_utilisateur(rs.getInt("id_utilisateur"));
+
+                promoList.add(codepromo);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return promoList;
+    }
 
     public List<CodePromo> filterByName(String code) {
         return null;

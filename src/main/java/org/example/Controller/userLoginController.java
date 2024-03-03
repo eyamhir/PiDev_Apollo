@@ -7,11 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import org.example.Models.Utilisateur;
 import org.example.Services.Service_Utilisateur;
 
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 
 public class userLoginController {
 
@@ -40,12 +42,10 @@ public class userLoginController {
         }
         return "";
     }
-
     @FXML
     private void LogInAction() {
         String adresse_mail = emailFT.getText();
         String mot_passe = passwordFT.getText();
-        boolean isAdmin = adresse_mail.equals("eya@esprit.tn") && mot_passe.equals("0000");
 
         // Check if email and password fields are empty
         if (adresse_mail.isEmpty() || mot_passe.isEmpty()) {
@@ -54,28 +54,49 @@ public class userLoginController {
         }
 
         // Authenticate the user
-        boolean authenticated = serviceUtilisateur.connecter(adresse_mail,doHashing(mot_passe));
+        boolean authenticated = serviceUtilisateur.connecter(adresse_mail, doHashing(mot_passe));
 
         // Check if authentication was successful
         if (authenticated) {
             // Successful login logic (navigate to the next scene, etc.)
             System.out.println("Login successful!");
             try {
+                // Determine if the user is an admin
+                boolean isAdmin = serviceUtilisateur.isAdmin(adresse_mail);
+
+                // Load the appropriate FXML file based on user role
                 String fxmlFile = isAdmin ? "/FXML_files/BackSigninInterface.fxml" : "/FXML_files/Home.fxml";
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+
                 Parent root = loader.load();
+                // Get the controller
+                if (isAdmin) {
+
+                    BackSignIn controller = loader.getController();
+                    Utilisateur utilisateurConnecte = serviceUtilisateur.getUserByEmail1(adresse_mail);
+                    controller.setLoggedInUser(utilisateurConnecte);
+                } else {
+                    Home controller1 = loader.getController();
+                    Utilisateur utilisateurConnecte = serviceUtilisateur.getUserByEmail(adresse_mail);
+                    controller1.setLoggedInUser(utilisateurConnecte);
+                }
+
+
                 Stage stage = (Stage) LoginFT.getScene().getWindow(); // Get the current stage
                 stage.setScene(new Scene(root));
                 stage.setTitle(isAdmin ? "Admin" : "Home");
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         } else {
             // Display an error message for invalid credentials
             showAlert(Alert.AlertType.ERROR, "Error", "Invalid email or password.");
         }
     }
+
 
 
     private void showAlert(Alert.AlertType type, String title, String message) {

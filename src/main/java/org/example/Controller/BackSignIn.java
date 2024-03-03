@@ -9,8 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.example.Models.Utilisateur;
 
 import java.io.IOException;
+
 
 public class BackSignIn {
 
@@ -22,6 +24,12 @@ public class BackSignIn {
 
     @FXML
     private Button Utilisateur;
+    private org.example.Models.Utilisateur loggedInUser; // Variable to store the logged-in user
+
+    // Setter method for loggedInUser
+    public void setLoggedInUser(Utilisateur utilisateur) {
+        this.loggedInUser = utilisateur;
+    }
 
     @FXML
     void LogOut(ActionEvent event) {

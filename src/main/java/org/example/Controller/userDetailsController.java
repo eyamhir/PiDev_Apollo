@@ -57,16 +57,4 @@ public class userDetailsController {
         motPasseLabel.setText(utilisateur.getMot_passe());
     }
 
-    @FXML
-    void back(ActionEvent event) throws IOException {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML_files/userShowInterface.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately (e.g., log it)
-        }
-    }
 }
