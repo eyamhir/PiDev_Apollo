@@ -104,5 +104,20 @@ public class PaymentService implements IService<Payment> {
 
 
     public void ajouter(Payment payment, String recipient) {
+        try {
+            // Votre code existant pour insérer le paiement dans la base de données reste inchangé
+            String req ="INSERT INTO payment (Montant,type_Payment) VALUES (?, ?)";
+            PreparedStatement ps = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
+            ps.setFloat(1, payment.getMontant());
+            ps.setString(2, payment.getType_Payment());
+            ps.executeUpdate();
+
+            // Envoyer l'e-mail de facture après l'ajout du paiement
+            envoyerFacture(payment, recipient);
+        } catch (SQLException e) {
+            // Gérer les exceptions SQL ici
+            e.printStackTrace();
+        }
     }
+
 }

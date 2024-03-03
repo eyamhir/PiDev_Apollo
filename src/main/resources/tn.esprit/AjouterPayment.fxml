@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1007.0" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterPayment">
+<AnchorPane prefHeight="800.0" prefWidth="1007.0" styleClass="seven-background" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjouterPayment">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" prefHeight="75.0" prefWidth="350.0" stylesheets="@../values/style.css" text="Ajouter Payment" textFill="WHITE">
          <font>
@@ -60,17 +60,17 @@
             <String fx:value="botton" />
             <String fx:value="rect-round" />
          </styleClass></Button>
-      <Button layoutX="808.0" layoutY="618.0" mnemonicParsing="false" onAction="#ListeP" prefHeight="65.0" prefWidth="176.0" stylesheets="@../values/style.css" text=" Liste Payment">
+      <Button layoutX="808.0" layoutY="616.0" mnemonicParsing="false" onAction="#ListeP" prefHeight="50.0" prefWidth="176.0" stylesheets="@../values/style.css" text=" Liste Payment">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="839.0" layoutY="521.0" mnemonicParsing="false" onAction="#versPanier" prefHeight="66.0" prefWidth="114.0" text="Panier">
+      <Button layoutX="808.0" layoutY="548.0" mnemonicParsing="false" onAction="#versPanier" prefHeight="50.0" prefWidth="176.0" text="Panier">
          <font>
             <Font name="Corbel" size="20.0" />
          </font>
       </Button>
-      <Button layoutX="833.0" layoutY="424.0" mnemonicParsing="false" onAction="#versCommande" prefHeight="66.0" prefWidth="126.0" text="Commande">
+      <Button layoutX="814.0" layoutY="474.0" mnemonicParsing="false" onAction="#versCommande" prefHeight="50.0" prefWidth="163.0" text="Commande">
          <font>
             <Font name="Corbel" size="20.0" />
          </font>
@@ -85,8 +85,4 @@
          </font>
       </Button>
    </children>
-   <styleClass>
-      <String fx:value="primary-background" />
-      <String fx:value="seven-background" />
-   </styleClass>
 </AnchorPane>
