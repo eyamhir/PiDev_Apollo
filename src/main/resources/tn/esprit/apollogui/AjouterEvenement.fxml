@@ -9,29 +9,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="hello" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.AjouterEvenement">
+<AnchorPane prefHeight="650.0" prefWidth="750.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.AjouterEvenement">
    <children>
 
      
-      <TextField fx:id="NomTF" layoutX="108.0" layoutY="148.0" prefHeight="25.0" prefWidth="171.0" promptText="Name" />
-      <TextField fx:id="TypeTF" layoutX="108.0" layoutY="188.0" prefHeight="25.0" prefWidth="171.0" promptText="Type" />
-      <TextField fx:id="DescriptionTF" layoutX="310.0" layoutY="148.0" prefHeight="159.0" prefWidth="245.0" promptText="Description" />
-      <Button fx:id="Ajouter" layoutX="136.0" layoutY="320.0" mnemonicParsing="false" onAction="#AjouterEvenement" prefHeight="51.0" prefWidth="115.0" style="-fx-background-color: violet;" text="Add">
+      <TextField fx:id="NomTF" layoutX="144.0" layoutY="224.0" prefHeight="25.0" prefWidth="171.0" promptText="Name" />
+      <TextField fx:id="TypeTF" layoutX="144.0" layoutY="271.0" prefHeight="25.0" prefWidth="171.0" promptText="Type" />
+      <TextField fx:id="DescriptionTF" layoutX="367.0" layoutY="224.0" prefHeight="188.0" prefWidth="245.0" promptText="Description" />
+      <Button fx:id="Ajouter" layoutX="166.0" layoutY="442.0" mnemonicParsing="false" onAction="#AjouterEvenement" prefHeight="51.0" prefWidth="115.0" style="-fx-background-color: violet;" text="Add">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
-      <Label layoutX="231.0" layoutY="14.0" prefHeight="35.0" prefWidth="139.0" text="Add Event " textAlignment="CENTER">
+      <Label layoutX="315.0" layoutY="32.0" prefHeight="35.0" prefWidth="139.0" text="Add Event " textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="449.0" layoutY="320.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="51.0" prefWidth="115.0" style="-fx-background-color: violet;" text="View List">
+      <Button layoutX="612.0" layoutY="574.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="51.0" prefWidth="115.0" style="-fx-background-color: violet;" text="View List">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Button>
 
-      <DatePicker fx:id="Date_debutTF" layoutX="108.0" layoutY="228.0" prefHeight="25.0" prefWidth="171.0" promptText="Starts at" />
-      <DatePicker fx:id="Date_finTF" layoutX="108.0" layoutY="272.0" prefHeight="25.0" prefWidth="171.0" promptText="Ends at" />
+      <DatePicker fx:id="Date_debutTF" layoutX="144.0" layoutY="325.0" prefHeight="25.0" prefWidth="171.0" promptText="Starts at" />
+      <DatePicker fx:id="Date_finTF" layoutX="144.0" layoutY="374.0" prefHeight="25.0" prefWidth="171.0" promptText="Ends at" />
       <ImageView fitHeight="99.0" fitWidth="115.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/loogo.png" />

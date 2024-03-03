@@ -15,6 +15,7 @@ import tn.esprit.apollogui.services.EvenementService;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class AjouterEvenement {
@@ -53,8 +54,11 @@ public class AjouterEvenement {
         ae.setNom(NomTF.getText());
         ae.setDescription(DescriptionTF.getText());
         ae.setType(TypeTF.getText());
-        ae.setDate_debut(new Date());
-        ae.setDate_fin(new Date());
+
+        ae.setDate_debut(Date_debutTF.getValue());
+        ae.setDate_fin(Date_finTF.getValue());
+
+
 
         try {
             evenementService.ajouter(ae);

@@ -1,12 +1,13 @@
 package tn.esprit.apollogui.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class evenement {
 
     private int id;
     private String Nom,Description,Type;
-    private Date Date_debut,Date_fin;
+    private LocalDate Date_debut,Date_fin;
 
 
     public evenement() {
@@ -18,8 +19,15 @@ public class evenement {
         Date_fin = Date_fin;
 
     }
-
-    public evenement(String nom, String description, String type, Date date_debut, Date date_fin) {
+    public evenement(int id, String nom, String description, String type, LocalDate dateDebut, LocalDate dateFin) {
+        this.id = id;
+        this.Nom = nom;
+        this.Description = description;
+        this.Type = type;
+        this.Date_debut = dateDebut;
+        this.Date_fin = dateFin;
+    }
+    public evenement(String nom, String description, String type, LocalDate date_debut, LocalDate date_fin) {
         Nom = nom;
         Description = description;
         Type = type;
@@ -59,19 +67,19 @@ public class evenement {
         Type = type;
     }
 
-    public Date getDate_debut() {
+    public LocalDate getDate_debut() {
         return Date_debut;
     }
 
-    public void setDate_debut(Date date_debut) {
+    public void setDate_debut(LocalDate date_debut) {
         Date_debut = date_debut;
     }
 
-    public Date getDate_fin() {
+    public LocalDate getDate_fin() {
         return Date_fin;
     }
 
-    public void setDate_fin(Date date_fin) {
+    public void setDate_fin(LocalDate date_fin) {
         Date_fin = date_fin;
     }
 

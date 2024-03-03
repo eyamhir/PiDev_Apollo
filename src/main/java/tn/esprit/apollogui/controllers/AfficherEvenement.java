@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
@@ -63,16 +64,16 @@ public class AfficherEvenement {
         alert.showAndWait();
     }
 
-/*
+
     @FXML
     void modifier(ActionEvent event) {
 
         evenement selectedevenement = ListView.getSelectionModel().getSelectedItem();
         if (selectedevenement != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Modifierevenement.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/apollogui/ModifierEvenement.fxml"));
                 Parent root = loader.load();
-                Modifierevenement controller = loader.getController();
+                ModifierEvenement controller = loader.getController();
                 controller.initData(selectedevenement);
                 Stage window = (Stage) ListView.getScene().getWindow();
                 window.setScene(new Scene(root));
@@ -86,7 +87,7 @@ public class AfficherEvenement {
         }
     }
 
-*/
+
 
 
     @FXML
@@ -131,22 +132,83 @@ public class AfficherEvenement {
             ObservableList<evenement> observableList = FXCollections.observableArrayList(evenementList);
             ListView.setItems(observableList);
         } catch (SQLException e) {
-            afficherMessageErreur("Erreur lors de l'initialisation des données.");
+            afficherMessageErreur("Error");
         }
     }
 
 
-    public void goback(ActionEvent event) {
+
+    public void goback(ActionEvent event) throws IOException{
+        try{
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/tn/esprit/apollogui/AjouterEvenement.fxml"));
+            Parent root=loader.load();
+            Scene scene=new Scene(root);
+            Stage window=(Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
+        }catch(IOException e){
+            e.printStackTrace(); // Handle the exception appropriately (e.g., log it)
+        }
+    }
+
+
+    @FXML
+    void goModifier(ActionEvent event) {
+        // Code pour modifier l'utilisateur sélectionné dans la liste
+        evenement selectedevenement = ListView.getSelectionModel().getSelectedItem();
+        if (selectedevenement != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/apollogui/ModifierEvenement.fxml"));
+                Parent root = loader.load();
+                ModifierEvenement controller = loader.getController();
+                controller.initData(selectedevenement);
+                controller.setEvenement(selectedevenement);
+                // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
+                Stage window = (Stage) ListView.getScene().getWindow();
+                window.setScene(new Scene(root));
+                window.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // Aucun utilisateur sélectionné, affichez un message d'erreur
+            afficherMessageErreur("Veuillez sélectionner un encher à modifier.");
+        }
+    }
+
+   /* public void goModifier(ActionEvent event) {
+        evenement selectedevenement = ListView.getSelectionModel().getSelectedItem();
+        if (selectedevenement != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/apollogui/ModifierEvenement.fxml"));
+                Parent root = loader.load();
+                ModifierEvenement controller = loader.getController();
+
+                controller.initData(selectedevenement);
+                controller.setEvenement(selectedevenement);
+                // Passer l'utilisateur sélectionné au contrôleur de l'interface de modification
+                Stage window = (Stage) ListView.getScene().getWindow();
+                window.setScene(new Scene(root));
+                window.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            // Aucun utilisateur sélectionné, affichez un message d'erreur
+            afficherMessageErreur("Please select evenement you want tp update");
+        }
+    }
+
+  */
+   /* private void initData() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/tn/esprit/apollogui/AjouterEvenement.fxml"));
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("Refreshing data...");
+            List<evenement> evenementList = EvenementService.recuperer();
+            ObservableList<evenement> observableList = FXCollections.observableArrayList(evenementList);
+            ListView.setItems(observableList);
+        } catch (SQLException e) {
+            afficherMessageErreur("Error");
         }
-
-
     }
 
-
+    */
 }

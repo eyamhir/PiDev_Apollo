@@ -8,36 +8,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.AfficherEvenement">
+<AnchorPane prefHeight="650.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.AfficherEvenement">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/images/backg.jpg" />
-         </image>
-      </ImageView>
-      <ListView fx:id="ListView" layoutX="97.0" layoutY="115.0" prefHeight="200.0" prefWidth="426.0" />
-      <Button layoutX="257.0" layoutY="328.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Update">
+
+      <ListView fx:id="ListView" layoutX="66.0" layoutY="119.0" prefHeight="333.0" prefWidth="619.0" />
+      <Button layoutX="322.0" layoutY="484.0" mnemonicParsing="false" onAction="#goModifier" prefHeight="39.0" prefWidth="107.0" text="Update">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="416.0" layoutY="328.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="39.0" prefWidth="107.0" text="Delete">
+      <Button layoutX="566.0" layoutY="484.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="39.0" prefWidth="107.0" text="Delete">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="114.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="114.0" fitWidth="107.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="/images/loogo.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="250.0" layoutY="40.0" prefHeight="35.0" prefWidth="120.0" text="Event List" textAlignment="CENTER" textFill="#e4ba13">
+      
+      <Label layoutX="327.0" layoutY="43.0" prefHeight="35.0" prefWidth="120.0" text="Event List" textAlignment="CENTER" textFill="#e4ba13">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="97.0" layoutY="328.0" mnemonicParsing="false" onAction="#goback" prefHeight="39.0" prefWidth="107.0" text="Go back">
+      <Button layoutX="99.0" layoutY="484.0" mnemonicParsing="false" onAction="#goback" prefHeight="39.0" prefWidth="107.0" text="Add">
          <font>
             <Font size="18.0" />
          </font>
