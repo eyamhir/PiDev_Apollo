@@ -96,22 +96,6 @@ public class message_expediteur implements Initializable {
         // Ajout d'un écouteur pour ajuster la valeur de défilement lorsque la hauteur de VBoxMessages change
         VboxMessages.heightProperty().addListener((observableValue, oldValue, newValue) ->
                 sp_main.setVvalue(newValue.doubleValue()));
-
-        // Démarrage du serveur en arrière-plan
-      /*  new Thread(() -> {
-            try {
-                server = new Server(); // Créer une instance de Server
-                socket = new Socket("localhost", 3003);
-                dataInputStream = new DataInputStream(socket.getInputStream());
-                dataOutputStream = new DataOutputStream(socket.getOutputStream());
-                clients = new ArrayList<>();
-                utilisateurHandler = new UtilisateurHandler(socket, clients);
-                utilisateurHandler.recevoirMessages();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            server.accepterConnexions();
-        }).start();*/
         new Thread(this::startServer).start();
     }
     private void startServer() {
@@ -240,7 +224,7 @@ public class message_expediteur implements Initializable {
         badWords.add("pute");
         badWords.add("ass");
         badWords.add("bite");
-        badWords.add("cnne");
+        badWords.add("putana");
 
         for (String badWord : badWords) {
             if (message.toLowerCase().contains(badWord.toLowerCase())) {

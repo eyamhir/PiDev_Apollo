@@ -106,7 +106,6 @@ public class Modifier_Conversation {
             displayErrorDialog("Erreur de saisie. Veuillez vérifier les données saisies.");
         }
     }
-
     private boolean allFieldsFilled() {
         if (titreTF.getText().isEmpty() ||
                 sujetTF.getText().isEmpty() ||
