@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EvenementService implements IService<evenement> {
 
@@ -73,7 +74,6 @@ public class EvenementService implements IService<evenement> {
         }
 
 
-
     }
 
     public void modifier(evenement evenement) throws SQLException {
@@ -98,38 +98,96 @@ public class EvenementService implements IService<evenement> {
 
     public void supprimer(int id) throws SQLException {
         String req = "DELETE FROM evenement WHERE id=?";
-        PreparedStatement ps= connection.prepareStatement(req);
-        ps.setInt(1,id);
+        PreparedStatement ps = connection.prepareStatement(req);
+        ps.setInt(1, id);
         ps.executeUpdate();
 
 
     }
 
-    @Override
-    public  List<evenement> recuperer() throws SQLException {
-        List<evenement> evenements = new ArrayList<>();
-        String req= "SELECT * FROM evenement";
-        Statement st= connection.createStatement();
-        ResultSet rs=st.executeQuery(req);
 
-        while (rs.next()){
-            evenement evenement= new evenement();
+    @Override
+    public List<evenement> recuperer() throws SQLException {
+        List<evenement> evenements = new ArrayList<>();
+        String req = "SELECT * FROM evenement";
+        Statement st = connection.createStatement();
+        ResultSet rs = st.executeQuery(req);
+
+        while (rs.next()) {
+            evenement evenement = new evenement();
             evenement.setId(rs.getInt("Id"));
             evenement.setNom(rs.getString("Nom"));
             evenement.setDate_debut(rs.getObject("Date_debut", LocalDate.class));
             evenement.setDate_fin(rs.getObject("Date_fin", LocalDate.class));
             evenement.setDescription(rs.getString("Description"));
             evenement.setType(rs.getString("Type"));
-            
-            
+
+
             evenements.add(evenement);
         }
         return evenements;
 
 
+    }
+
+    public List<evenement> rechercherParNom(String nom) throws SQLException {
+        List<evenement> evenements = new ArrayList<>();
+        String req = "SELECT * FROM evenement WHERE nom LIKE ?";
+
+        try (PreparedStatement st = connection.prepareStatement(req)) {
+            st.setString(1, "%" + nom + "%");
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                evenements.add(mapResultSetToEvenement(rs));
+            }
+        }
+
+        return evenements;
+    }
+
+    private evenement mapResultSetToEvenement(ResultSet rs) throws SQLException {
+        evenement evenement = new evenement();
+        evenement.setId(rs.getInt("Id"));
+        evenement.setNom(rs.getString("Nom"));
+        evenement.setDate_debut(rs.getObject("Date_debut", LocalDate.class));
+        evenement.setDate_fin(rs.getObject("Date_fin", LocalDate.class));
+        evenement.setDescription(rs.getString("Description"));
+        evenement.setType(rs.getString("Type"));
 
 
+        return evenement;
+    }
 
+    public List<evenement> rechercherParNomStream(String nom) throws SQLException {
+        List<evenement> evenements = recuperer();
+
+        return evenements.stream()
+                .filter(evenement -> evenement.getNom().toLowerCase().contains(nom.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    public void joinEvent(int userID, int eventID) throws SQLException {
+        String query = "INSERT INTO user_event (user_id, event_id) VALUES (?, ?,)";
+
+        try (Connection connection = MyDatabase.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, userID);
+            preparedStatement.setInt(2, eventID);
+
+
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("User added to the event successfully!");
+            } else {
+                System.out.println("User was not added to the event");
+            }
+        } catch (SQLException e) {
+            // Handle SQLException appropriately
+            e.printStackTrace();
+        }
 
     }
+
 }

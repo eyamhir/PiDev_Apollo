@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.AfficherEvenement">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.Participation">
    <children>
 
-      <ListView fx:id="ListView" layoutX="66.0" layoutY="119.0" prefHeight="333.0" prefWidth="619.0" />
-      <Button layoutX="500.0" layoutY="491.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="179.0" text="View participants">
+      <ListView fx:id="ListView" layoutX="66.0" layoutY="101.0" prefHeight="258.0" prefWidth="619.0" />
+      <Button layoutX="563.0" layoutY="368.0" mnemonicParsing="false" onAction="#viewParticipants" prefHeight="39.0" prefWidth="107.0" styleClass="custom-button" stylesheets="@../../../style.css" text="viewParticipants">
          <font>
             <Font size="18.0" />
          </font>
@@ -23,7 +23,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="66.0" layoutY="491.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Join Event">
+      <Button layoutX="84.0" layoutY="369.0" mnemonicParsing="false" onAction="#joinEvent" prefHeight="39.0" prefWidth="107.0" styleClass="custom-button" stylesheets="@../../../style.css" text="joinEvent">
          <font>
             <Font size="18.0" />
          </font>

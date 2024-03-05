@@ -1,5 +1,5 @@
 package tn.esprit.apollogui.controllers;
-
+import java.io.IOException;
 
 import com.google.zxing.WriterException;
 import javafx.collections.FXCollections;
@@ -10,7 +10,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ListCell;
+
 import javafx.stage.Stage;
+import javafx.scene.image.ImageView;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -18,8 +21,6 @@ import javafx.scene.control.ListView;
 import javafx.util.Callback;
 import tn.esprit.apollogui.models.evenement;
 import tn.esprit.apollogui.services.EvenementService;
-
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -32,31 +33,42 @@ public class AfficherEvenement {
     private ListView<evenement> ListView;
 
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
+
         try {
-            if (ListView == null) {
-                throw new IllegalStateException("ListView is null. Check your FXML file.");
-            }
-
-            //List<evenement> evenementList = EvenementService.recuperer();
-            List<evenement>   evenementList=evenementService.recuperer();
-
+            List<evenement> evenementList = evenementService.recuperer();
 
             ListView.getItems().addAll(evenementList);
 
-           /* ListView.setCellFactory(new Callback<ListView<evenement>, CustomListCell>() {
+            // Custom cell factory to display user details
+            ListView.setCellFactory(new Callback<ListView<evenement>, ListCell<evenement>>() {
                 @Override
-                public CustomListCell call(ListView<evenement> param) {
-                    return new CustomListCell();
-                }
-            });*/
+                public ListCell<evenement> call(ListView<evenement> param) {
+                    return new ListCell<evenement>() {
+                        @Override
+                        protected void updateItem(evenement evenement, boolean empty) {
+                            super.updateItem(evenement, empty);
+                            if (empty || evenement == null) {
+                                setText(null);
+                            } else {
+                                // Set the text of the cell to display only the desired fields
+                                setText("Nom: " + evenement.getNom() + "\n" +
+                                        "Type: " + evenement.getType() + "\n" +
+                                        "Description: " + evenement.getDescription() + "\n" +
+                                        "Date début:" + evenement.getDate_debut() + "\n" +
+                                        "Date fin: " + evenement.getDate_fin()
 
+                                );
+                            }
+                        }
+                    };
+                }
+            });
         } catch (SQLException e) {
-            showErrorAlert("Error", e.getMessage());
-        } catch (IllegalStateException e) {
-            showErrorAlert("Error", e.getMessage());
+            throw new RuntimeException(e);
         }
     }
+
 
     private void showErrorAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -176,7 +188,7 @@ public class AfficherEvenement {
         }
     }
 
-    @FXML
+    /*@FXML
     void generQRCodeE(ActionEvent event) {
         EvenementService evenementService = new EvenementService(); // Create an instance
         ObservableList<evenement> evenementList;
@@ -198,7 +210,7 @@ public class AfficherEvenement {
                     ", Date fin: " + currentEvenement.getDate_fin();
 
             try {
-                String filePath = "C:/Users/elyes/OneDrive/Bureau/Qrcode" +
+                String filePath = "C:/Users/elyes/eclipse-workspace/Apollo/src/main/resources/QRcode/test" +
                         currentEvenement.getId() + ".png";
                 QRCodeGeneratorE.generateQRCode(qrContent, filePath);
                 System.out.println("Code QR généré pour le panier avec l'ID : " + currentEvenement.getId());
@@ -210,7 +222,7 @@ public class AfficherEvenement {
         }
 
         afficherMessageErreur("QRCode generated with success!.");
-    }
+    }*/
 
    /* public void goModifier(ActionEvent event) {
         evenement selectedevenement = ListView.getSelectionModel().getSelectedItem();
@@ -248,4 +260,120 @@ public class AfficherEvenement {
     }
 
     */
+
+    /*@FXML
+    void generQRCodeE(ActionEvent event) {
+        EvenementService evenementService = new EvenementService(); // Create an instance
+        ObservableList<evenement> evenementList;
+
+        try {
+            evenementList = FXCollections.observableArrayList(evenementService.recuperer()); // Call the instance method
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+            afficherMessageErreur("Error retrieving evenements.");
+            return; // Exit the method if an error occurs
+        }
+
+        if (evenementList.isEmpty()) {
+            afficherMessageErreur("No events to generate QR code for.");
+            return; // Exit the method if there are no events
+        }
+
+        evenement lastEvenement = evenementList.get(evenementList.size() - 1); // Get the last event in the list
+
+        String qrContent = "evenement ID: " + lastEvenement.getId() +
+                ", Nom: " + lastEvenement.getNom() +
+                ", Type: " + lastEvenement.getType() +
+                ", Description: " + lastEvenement.getDescription() +
+                ", Date début: " + lastEvenement.getDate_debut() +
+                ", Date fin: " + lastEvenement.getDate_fin();
+
+        try {
+            String filePath = "C:/Users/elyes/eclipse-workspace/Apollo/src/main/resources/QRcode/test" +
+                    lastEvenement.getId() + ".png";
+            QRCodeGeneratorE.generateQRCode(qrContent, filePath);
+            System.out.println("Code QR généré pour le panier avec l'ID : " + lastEvenement.getId());
+
+            // Display the generated QR code
+            //displayQRCode(filePath);
+
+            // Display success message
+            afficherMessage("QRCode generated with success!");
+        } catch (WriterException | IOException e) {
+            System.err.println("Erreur lors de la génération du code QR pour le panier avec l'ID : " +
+                    lastEvenement.getId());
+            e.printStackTrace();
+            afficherMessageErreur("Error generating QRCode.");
+        }
+    }
+
+
+
+    // Add a method to display an information message
+    void afficherMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }*/
+
+
+
+
+    @FXML
+    void generQRCodeE(ActionEvent event) {
+        EvenementService evenementService = new EvenementService(); // Create an instance
+        ObservableList<evenement> evenementList;
+
+        try {
+            evenementList = FXCollections.observableArrayList(evenementService.recuperer()); // Call the instance method
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+            afficherMessageErreur("Error retrieving evenements.");
+            return; // Exit the method if an error occurs
+        }
+
+        if (evenementList.isEmpty()) {
+            afficherMessageErreur("No events to generate QR code for.");
+            return; // Exit the method if there are no events
+        }
+
+        evenement lastEvenement = evenementList.get(evenementList.size() - 1); // Get the last event in the list
+
+        String qrContent = "evenement ID: " + lastEvenement.getId() +
+                ", Nom: " + lastEvenement.getNom() +
+                ", Type: " + lastEvenement.getType() +
+                ", Description: " + lastEvenement.getDescription() +
+                ", Date début: " + lastEvenement.getDate_debut() +
+                ", Date fin: " + lastEvenement.getDate_fin();
+        try {
+            String filePath = "C:/Users/elyes/eclipse-workspace/Apollo/src/main/resources/QRcode/test" +
+                    lastEvenement.getId() + ".png";
+            QRCodeGeneratorE.generateQRCode(qrContent, filePath);
+            System.out.println("Code QR généré pour le panier avec l'ID : " + lastEvenement.getId());
+
+
+            // Display success message
+            afficherMessage("QRCode generated with success!");
+        } catch (WriterException | IOException e) {
+            System.err.println("Erreur lors de la génération du code QR pour le panier avec l'ID : " +
+                    lastEvenement.getId());
+            e.printStackTrace();
+            afficherMessageErreur("Error generating QRCode.");
+        }
+    }
+
+
+    // Add a method to display an information message
+    void afficherMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
+
 }

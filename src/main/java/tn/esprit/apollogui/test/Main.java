@@ -14,13 +14,13 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) throws SQLException, ParseException {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date Date_debut = sdf.parse("2024-02-13");
         Date Date_fin = sdf.parse("2024-02-12");
             EvenementService es = new EvenementService();
             try {
 
-                es.ajouter(new evenement("datech", "datechack", "datechack", Date_debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Date_fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
+               // es.ajouter(new evenement("datech", "datechack", "datechack", Date_debut.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), Date_fin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
 
 
 
@@ -35,5 +35,6 @@ public class Main {
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
             }
-        }
+        }*/
     }
+}

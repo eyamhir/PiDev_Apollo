@@ -11,13 +11,6 @@ public class evenement {
 
 
     public evenement() {
-        this.id = id;
-        Nom = Nom;
-        Description = Description;
-        Type = Type;
-        Date_debut = Date_debut;
-        Date_fin = Date_fin;
-
     }
     public evenement(int id, String nom, String description, String type, LocalDate dateDebut, LocalDate dateFin) {
         this.id = id;

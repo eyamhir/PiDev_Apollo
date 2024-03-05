@@ -34,7 +34,7 @@ public class mainFX extends Application{
 
 
     public void start(Stage primaryStage){
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("/tn/esprit/apollogui/AjouterEvenement.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/tn/esprit/apollogui/ParticiperEvenement.fxml"));
         try{
         Parent root=loader.load();
         Scene scene=new Scene(root);

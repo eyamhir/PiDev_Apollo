@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.AfficherEvenement">
+<AnchorPane prefHeight="450.0" prefWidth="750.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.apollogui.controllers.AfficherEvenement">
    <children>
 
-      <ListView fx:id="ListView" layoutX="66.0" layoutY="119.0" prefHeight="333.0" prefWidth="619.0" />
-      <Button layoutX="322.0" layoutY="484.0" mnemonicParsing="false" onAction="#goModifier" prefHeight="39.0" prefWidth="107.0" text="Update">
+      <ListView fx:id="ListView" layoutX="66.0" layoutY="101.0" prefHeight="258.0" prefWidth="619.0" />
+      <Button layoutX="307.0" layoutY="369.0" mnemonicParsing="false" onAction="#goModifier" prefHeight="22.0" prefWidth="107.0" styleClass="custom-button" text="Update">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="566.0" layoutY="484.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="39.0" prefWidth="107.0" text="Delete">
+      <Button layoutX="563.0" layoutY="368.0" mnemonicParsing="false" onAction="#Supprimer" prefHeight="39.0" prefWidth="107.0" styleClass="custom-button" stylesheets="@../../../style.css" text="Delete">
          <font>
             <Font size="18.0" />
          </font>
@@ -28,7 +28,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="99.0" layoutY="484.0" mnemonicParsing="false" onAction="#goback" prefHeight="39.0" prefWidth="107.0" text="Add">
+      <Button layoutX="84.0" layoutY="369.0" mnemonicParsing="false" onAction="#goback" prefHeight="39.0" prefWidth="107.0" styleClass="custom-button" stylesheets="@../../../style.css" text="Add">
          <font>
             <Font size="18.0" />
          </font>
@@ -38,7 +38,7 @@
             <Image url="@../../../../../../../../Downloads/looogoo.png" />
          </image>
       </ImageView>
-      <Button layoutX="322.0" layoutY="553.0" mnemonicParsing="false" onAction="#generQRCodeE" prefHeight="46.0" prefWidth="107.0" text="QRCode">
+      <Button layoutX="616.0" layoutY="24.0" mnemonicParsing="false" onAction="#generQRCodeE" prefHeight="20.0" prefWidth="107.0" styleClass="custom-button" stylesheets="@../../../style.css" text="QRCode">
          <font>
             <Font size="18.0" />
          </font>

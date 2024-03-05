@@ -88,6 +88,14 @@
             <artifactId>core</artifactId>
             <version>3.5.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>20.0.2</version> <!-- Use the version appropriate for your JavaFX version -->
+        </dependency>
+
+
     </dependencies>
 
     <build>
